@@ -1,0 +1,442 @@
+
+<!DOCTYPE html>
+<html lang="en,zh-tw,default">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Just For Fun">
+    <title>Java Static Analysis Tools - Just For Fun</title>
+    <meta name="author" content="W.D">
+    
+    
+        <link rel="icon" href="https://option0417.github.io/imgs/favicon.ico">
+    
+    
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"W.D","sameAs":["https://github.com/option0417","https://twitter.com/option0417","mailto:option0417@gmail.com"],"image":"profile.jpg"},"articleBody":"程式是人寫的，而人寫的就有可能會有失誤發生，又或是經驗不足，寫出了有漏洞或 Bug 的程式。這時就所以需要工具來幫我們來做檢查。 又或著要統一整體開發的 Coding Style，與其耗費人力檢查，同樣的還是透過工具檢查簡單省力！\n這篇就來簡單介紹我之前在案子上常用的三種不同的靜態程式碼分析工具，分別是能檢查 Bug 或漏洞的 FindBug 和 PMD，以及能定義及檢查 Coding Style 的 CheckStyle\n1. FindBugs首先是個人覺得最好用的 FindBug，為何好用？因為它能幫我們發現可能產生 bug 的程式，從是否有確實釋放 IO 資源到是否會產生 dead lock 之類的 concurrent 問題，都能有效的作檢查。 另外也有支援常用 IDE 的 plugin\n\nPlugin: \nFindbugs IntelliJ Plugin\nFindbugs Eclipse Plugin\nFindbugs Maven Plugin\n\n\nAnalyzing on Xcode\n\n2. PMD而 PMD 主要則檢查寫程式時可能發生的錯誤，例如：宣告了未使用的變數，又或是邏輯上的漏洞等，比較算是 coding 上 bad pratice 的檢查。\n3. CheckStyle最後的 CheckStyle 也許不檢查 bug ，但在統一團隊的 coding style 上則是最好用的一個工具。小的從間隔幾個空格到變數/方法的命名，都能夠自定義規則。\nref:\nhttp://blog.codacy.com/2016/03/22/review-java-static-analysis-tools/\nhttp://continuousdev.com/2015/08/checkstyle-vs-pmd-vs-findbugs/\n\n","dateCreated":"2017-11-13T00:00:00+08:00","dateModified":"2019-03-14T23:20:33+08:00","datePublished":"2017-11-13T00:00:00+08:00","description":"","headline":"Java Static Analysis Tools","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://option0417.github.io/2017/11/13/Java-Static-Analysis-Tools/"},"publisher":{"@type":"Organization","name":"W.D","sameAs":["https://github.com/option0417","https://twitter.com/option0417","mailto:option0417@gmail.com"],"image":"profile.jpg","logo":{"@type":"ImageObject","url":"profile.jpg"}},"url":"https://option0417.github.io/2017/11/13/Java-Static-Analysis-Tools/","keywords":"dev"}</script>
+    <meta name="description" content="程式是人寫的，而人寫的就有可能會有失誤發生，又或是經驗不足，寫出了有漏洞或 Bug 的程式。這時就所以需要工具來幫我們來做檢查。 又或著要統一整體開發的 Coding Style，與其耗費人力檢查，同樣的還是透過工具檢查簡單省力！ 這篇就來簡單介紹我之前在案子上常用的三種不同的靜態程式碼分析工具，分別是能檢查 Bug 或漏洞的 FindBug 和 PMD，以及能定義及檢查 Coding Style">
+<meta name="keywords" content="dev">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="Java Static Analysis Tools">
+<meta property="og:url" content="https://option0417.github.io/2017/11/13/Java-Static-Analysis-Tools/index.html">
+<meta property="og:site_name" content="Just For Fun">
+<meta property="og:description" content="程式是人寫的，而人寫的就有可能會有失誤發生，又或是經驗不足，寫出了有漏洞或 Bug 的程式。這時就所以需要工具來幫我們來做檢查。 又或著要統一整體開發的 Coding Style，與其耗費人力檢查，同樣的還是透過工具檢查簡單省力！ 這篇就來簡單介紹我之前在案子上常用的三種不同的靜態程式碼分析工具，分別是能檢查 Bug 或漏洞的 FindBug 和 PMD，以及能定義及檢查 Coding Style">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-03-14T15:20:33.646Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java Static Analysis Tools">
+<meta name="twitter:description" content="程式是人寫的，而人寫的就有可能會有失誤發生，又或是經驗不足，寫出了有漏洞或 Bug 的程式。這時就所以需要工具來幫我們來做檢查。 又或著要統一整體開發的 Coding Style，與其耗費人力檢查，同樣的還是透過工具檢查簡單省力！ 這篇就來簡單介紹我之前在案子上常用的三種不同的靜態程式碼分析工具，分別是能檢查 Bug 或漏洞的 FindBug 和 PMD，以及能定義及檢查 Coding Style">
+<meta name="twitter:creator" content="@option0417">
+    
+    
+        
+    
+    
+        <meta property="og:image" content="https://option0417.github.io/imgs/profile.jpg"/>
+    
+    
+    
+    
+    <!--STYLES-->
+    <link rel="stylesheet" href="/assets/css/style-c4ozcsklz4kht2pebhp44xorvyverh23toayhn7i6ubrpyedak24hv1v0hyd.min.css">
+    <!--STYLES END-->
+    
+
+    
+</head>
+
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+    
+        
+            
+        
+    
+
+<header id="header" data-behavior="5">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <div class="header-title">
+        <a class="header-title-link" href="/ ">Just For Fun</a>
+    </div>
+    
+        
+            <a class="header-right-picture " href="#about">
+        
+        
+            <img class="header-picture" src="/imgs/profile.jpg" alt="Author&#39;s picture">
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+
+        
+    
+
+<nav id="sidebar" data-behavior="5">
+    <div class="sidebar-container">
+        
+            <div class="sidebar-profile">
+                <a href="/#about">
+                    <img class="sidebar-profile-picture" src="/imgs/profile.jpg" alt="Author&#39;s picture">
+                </a>
+                <h4 class="sidebar-profile-name">W.D</h4>
+                
+                    <h5 class="sidebar-profile-bio"><p>author.bio</p>
+</h5>
+                
+            </div>
+        
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="/ " title="Home">
+                    
+                        <i class="sidebar-button-icon fa fa-home" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Home</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="/all-tags" title="Tags">
+                    
+                        <i class="sidebar-button-icon fa fa-tags" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Tags</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="https://about.me/wd.su" target="_blank" rel="noopener" title="About">
+                    
+                        <i class="sidebar-button-icon fa fa-question" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">About</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="https://github.com/option0417" target="_blank" rel="noopener" title="GitHub">
+                    
+                        <i class="sidebar-button-icon fab fa-github" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">GitHub</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="https://twitter.com/option0417" target="_blank" rel="noopener" title="Twitter">
+                    
+                        <i class="sidebar-button-icon fab fa-twitter" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Twitter</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="mailto:option0417@gmail.com" target="_blank" rel="noopener" title="Mail">
+                    
+                        <i class="sidebar-button-icon fa fa-envelope" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Mail</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+    </div>
+</nav>
+
+            
+            <div id="main" data-behavior="5"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title">
+            Java Static Analysis Tools
+        </h1>
+    
+    
+        <div class="post-meta">
+    <time datetime="2017-11-13T00:00:00+08:00">
+	
+		    Nov 13, 2017
+    	
+    </time>
+    
+</div>
+
+    
+</div>
+
+    
+    <div class="post-content markdown">
+        <div class="main-content-wrap">
+            <p>程式是人寫的，而人寫的就有可能會有失誤發生，又或是經驗不足，寫出了有<a href="https://en.wikipedia.org/wiki/Vulnerability_(computing%29" target="_blank" rel="noopener">漏洞</a>或 <a href="https://en.wikipedia.org/wiki/Software_bug" target="_blank" rel="noopener">Bug</a> 的程式。這時就所以需要工具來幫我們來做檢查。 又或著要統一整體開發的 <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Developer_guide/Coding_Style" target="_blank" rel="noopener">Coding Style</a>，與其耗費人力檢查，同樣的還是透過工具檢查簡單省力！</p>
+<p>這篇就來簡單介紹我之前在案子上常用的三種不同的靜態程式碼分析工具，分別是能檢查 Bug 或漏洞的 <em><strong>FindBug</strong></em> 和 <em><strong>PMD</strong></em>，以及能定義及檢查 Coding Style 的 <em><strong>CheckStyle</strong></em></p>
+<h3 id="1-FindBugs"><a href="#1-FindBugs" class="headerlink" title="1. FindBugs"></a>1. <em><a href="http://findbugs.sourceforge.net/" target="_blank" rel="noopener">FindBugs</a></em></h3><p>首先是個人覺得最好用的 FindBug，為何好用？因為它能幫我們發現可能產生 bug 的程式，從是否有確實釋放 IO 資源到是否會產生 dead lock 之類的 concurrent 問題，都能有效的作檢查。 另外也有支援常用 IDE 的 plugin</p>
+<ul>
+<li>Plugin: <ul>
+<li><em><a href="https://plugins.jetbrains.com/plugin/3847?pr=idea" target="_blank" rel="noopener">Findbugs IntelliJ Plugin</a></em></li>
+<li><em><a href="http://andrei.gmxhome.de/findbugs/index.html" target="_blank" rel="noopener">Findbugs Eclipse Plugin</a></em></li>
+<li><em><a href="http://gleclaire.github.io/findbugs-maven-plugin/usage.html" target="_blank" rel="noopener">Findbugs Maven Plugin</a></em></li>
+</ul>
+</li>
+<li><a href="https://developer.apple.com/library/content/documentation/ToolsLanguages/Conceptual/Xcode_Overview/AnalyzingYourCode.html" target="_blank" rel="noopener">Analyzing on Xcode</a></li>
+</ul>
+<h3 id="2-PMD"><a href="#2-PMD" class="headerlink" title="2. PMD"></a>2. <em><a href="https://pmd.github.io/" target="_blank" rel="noopener">PMD</a></em></h3><p>而 PMD 主要則檢查寫程式時可能發生的錯誤，例如：宣告了未使用的變數，又或是邏輯上的漏洞等，比較算是 coding 上 bad pratice 的檢查。</p>
+<h3 id="3-CheckStyle"><a href="#3-CheckStyle" class="headerlink" title="3. CheckStyle"></a>3. <em><a href="http://checkstyle.sourceforge.net/" target="_blank" rel="noopener">CheckStyle</a></em></h3><p>最後的 <strong>CheckStyle</strong> 也許不檢查 bug ，但在統一團隊的 coding style 上則是最好用的一個工具。<br>小的從間隔幾個空格到變數/方法的命名，都能夠自定義規則。</p>
+<h3 id="ref"><a href="#ref" class="headerlink" title="ref:"></a><em>ref:</em></h3><ol>
+<li><a href="http://blog.codacy.com/2016/03/22/review-java-static-analysis-tools/" target="_blank" rel="noopener">http://blog.codacy.com/2016/03/22/review-java-static-analysis-tools/</a></li>
+<li><a href="http://continuousdev.com/2015/08/checkstyle-vs-pmd-vs-findbugs/" target="_blank" rel="noopener">http://continuousdev.com/2015/08/checkstyle-vs-pmd-vs-findbugs/</a></li>
+</ol>
+
+            
+
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">TAGGED IN</span><br>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/dev/">dev</a>
+
+            </div>
+        
+        
+            <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/11/20/JVM-command-line-utils/" data-tooltip="JVM command-line utils" aria-label="PREVIOUS: JVM command-line utils">
+                
+                    <i class="fa fa-angle-left" aria-hidden="true"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/11/04/吾家有女正長成/" data-tooltip="吾家有女正長成" aria-label="NEXT: 吾家有女正長成">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://option0417.github.io/2017/11/13/Java-Static-Analysis-Tools/" title="Share on Facebook">
+                    <i class="fab fa-facebook" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://option0417.github.io/2017/11/13/Java-Static-Analysis-Tools/" title="Share on Twitter">
+                    <i class="fab fa-twitter" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+        
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+        
+            
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2019 W.D. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/11/20/JVM-command-line-utils/" data-tooltip="JVM command-line utils" aria-label="PREVIOUS: JVM command-line utils">
+                
+                    <i class="fa fa-angle-left" aria-hidden="true"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/11/04/吾家有女正長成/" data-tooltip="吾家有女正長成" aria-label="NEXT: 吾家有女正長成">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://option0417.github.io/2017/11/13/Java-Static-Analysis-Tools/" title="Share on Facebook">
+                    <i class="fab fa-facebook" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://option0417.github.io/2017/11/13/Java-Static-Analysis-Tools/" title="Share on Twitter">
+                    <i class="fab fa-twitter" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+        
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                
+    <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+        <i id="btn-close-shareoptions" class="fa fa-times"></i>
+        <ul class="share-options">
+            
+                
+                
+                <li class="share-option">
+                    <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://option0417.github.io/2017/11/13/Java-Static-Analysis-Tools/">
+                        <i class="fab fa-facebook" aria-hidden="true"></i><span>Share on Facebook</span>
+                    </a>
+                </li>
+            
+                
+                
+                <li class="share-option">
+                    <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https://option0417.github.io/2017/11/13/Java-Static-Analysis-Tools/">
+                        <i class="fab fa-twitter" aria-hidden="true"></i><span>Share on Twitter</span>
+                    </a>
+                </li>
+            
+        </ul>
+    </div>
+
+
+            
+        </div>
+        
+
+
+    
+        
+    
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-times"></i>
+        </div>
+        
+            <img id="about-card-picture" src="/imgs/profile.jpg" alt="Author&#39;s picture">
+        
+            <h4 id="about-card-name">W.D</h4>
+        
+            <div id="about-card-bio"><p>author.bio</p>
+</div>
+        
+        
+            <div id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br>
+                <p>author.job</p>
+
+            </div>
+        
+        
+            <div id="about-card-location">
+                <i class="fa fa-map-marker-alt"></i>
+                <br>
+                Taiwan
+            </div>
+        
+    </div>
+</div>
+
+        
+        
+<div id="cover" style="background-image:url('/imgs/my_cover.jpg');"></div>
+        <!--SCRIPTS-->
+<script src="/assets/js/script-dbd16rvloemmuxdzniplmnxxvwoz24eya9wol0b7vvmlokgqsjivmb8dnscy.min.js"></script>
+<!--SCRIPTS END-->
+
+    
+
+
+
+    </body>
+</html>

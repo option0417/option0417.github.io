@@ -1,0 +1,455 @@
+
+<!DOCTYPE html>
+<html lang="en,zh-tw,default">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Just For Fun">
+    <title>Weekly Reading (2019/May 20 ~ 26) - Just For Fun</title>
+    <meta name="author" content="W.D">
+    
+    
+        <link rel="icon" href="https://option0417.github.io/imgs/favicon.ico">
+    
+    
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"W.D","sameAs":["https://github.com/option0417","https://twitter.com/option0417","mailto:option0417@gmail.com"],"image":"profile.jpg"},"articleBody":"1. redis系列–redis4.0深入持久化Redis 快，但資料終究是存在記憶體裡面，還是得要有「持久化」的機制來保存重要的資料。\n這篇文章就是在介紹 Redis 本身提供的「持久化」機制：\n\nRDB persistent\nAOF Persistence\nMixed RDB and AOP\n\n以及觸發的時機點：\n\nsave command\nbgsave command\nsave \\ \\ rule\nMaster-Slave duplication\nflushall command\nshutdown command\n\n雖說另外透過 DB 來達到持久化也是常見的作法，但若有成本考量、維運考量等情況沒有額外的 DB 下，也不失為一個不錯的辦法。\n\n2. Don’t talk CRUD作者透過開發中最常見的資料操作 C (Create) R (Read) U (Update) D (Delete)，說明開發者與客戶之間溝通的隔閡。\n例如，對程式的會以 create 或 update 命名，但實際的功能邏輯並不只是單純的 create 和 update。\n因此，作者建議透過共通的溝通方式，讓雙方能夠互相了解，也因此提到了 DDD (Domain Driven Design)可作為這樣的溝通語言。\n\n3.「我們失敗了」系列文\n我們失敗了〈一〉- 完美的團隊也會失敗\n我們失敗了〈二〉- 天下武功，唯快不破\n我們失敗了〈三〉- Product/Market Fit\n我們失敗了〈四〉- 軟體品質比你想像的還不重要！？\n\n簡單一句話，完美的團隊也會失敗。對於產品，要找出「被使用者需要」的東西，而不是「讓使用者需要」。而這過程，除了 Fail Early, Fail Often 還要搶快，而搶快，也就表示對軟體的品質是要有所妥協的。 待達到 Product/market fit 再來調整。\n\n4. Web Architecture 101作者以使用者發出一次 Google 搜尋的資料流為例，介紹這樣大型甚至巨型的網站架構，包含 DNS 、 Load Balance 、 Database 等服務，都做了基本的介紹。\n","dateCreated":"2019-05-28T10:40:29+08:00","dateModified":"2019-06-04T01:37:37+08:00","datePublished":"2019-05-28T10:40:29+08:00","description":"","headline":"Weekly Reading (2019/May 20 ~ 26)","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://option0417.github.io/2019/05/28/Weekly-Reading-2019-May-20-26/"},"publisher":{"@type":"Organization","name":"W.D","sameAs":["https://github.com/option0417","https://twitter.com/option0417","mailto:option0417@gmail.com"],"image":"profile.jpg","logo":{"@type":"ImageObject","url":"profile.jpg"}},"url":"https://option0417.github.io/2019/05/28/Weekly-Reading-2019-May-20-26/","keywords":"reading"}</script>
+    <meta name="description" content="1. redis系列–redis4.0深入持久化Redis 快，但資料終究是存在記憶體裡面，還是得要有「持久化」的機制來保存重要的資料。 這篇文章就是在介紹 Redis 本身提供的「持久化」機制：  RDB persistent AOF Persistence Mixed RDB and AOP  以及觸發的時機點：  save command bgsave command save \ \ ru">
+<meta name="keywords" content="reading">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="Weekly Reading (2019&#x2F;May 20 ~ 26)">
+<meta property="og:url" content="https://option0417.github.io/2019/05/28/Weekly-Reading-2019-May-20-26/index.html">
+<meta property="og:site_name" content="Just For Fun">
+<meta property="og:description" content="1. redis系列–redis4.0深入持久化Redis 快，但資料終究是存在記憶體裡面，還是得要有「持久化」的機制來保存重要的資料。 這篇文章就是在介紹 Redis 本身提供的「持久化」機制：  RDB persistent AOF Persistence Mixed RDB and AOP  以及觸發的時機點：  save command bgsave command save \ \ ru">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-06-03T17:37:37.226Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Weekly Reading (2019&#x2F;May 20 ~ 26)">
+<meta name="twitter:description" content="1. redis系列–redis4.0深入持久化Redis 快，但資料終究是存在記憶體裡面，還是得要有「持久化」的機制來保存重要的資料。 這篇文章就是在介紹 Redis 本身提供的「持久化」機制：  RDB persistent AOF Persistence Mixed RDB and AOP  以及觸發的時機點：  save command bgsave command save \ \ ru">
+<meta name="twitter:creator" content="@option0417">
+    
+    
+        
+    
+    
+        <meta property="og:image" content="https://option0417.github.io/imgs/profile.jpg"/>
+    
+    
+    
+    
+    <!--STYLES-->
+    <link rel="stylesheet" href="/assets/css/style-c4ozcsklz4kht2pebhp44xorvyverh23toayhn7i6ubrpyedak24hv1v0hyd.min.css">
+    <!--STYLES END-->
+    
+
+    
+</head>
+
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+    
+        
+            
+        
+    
+
+<header id="header" data-behavior="5">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <div class="header-title">
+        <a class="header-title-link" href="/ ">Just For Fun</a>
+    </div>
+    
+        
+            <a class="header-right-picture " href="#about">
+        
+        
+            <img class="header-picture" src="/imgs/profile.jpg" alt="Author&#39;s picture">
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+
+        
+    
+
+<nav id="sidebar" data-behavior="5">
+    <div class="sidebar-container">
+        
+            <div class="sidebar-profile">
+                <a href="/#about">
+                    <img class="sidebar-profile-picture" src="/imgs/profile.jpg" alt="Author&#39;s picture">
+                </a>
+                <h4 class="sidebar-profile-name">W.D</h4>
+                
+                    <h5 class="sidebar-profile-bio"><p>author.bio</p>
+</h5>
+                
+            </div>
+        
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="/ " title="Home">
+                    
+                        <i class="sidebar-button-icon fa fa-home" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Home</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="/all-tags" title="Tags">
+                    
+                        <i class="sidebar-button-icon fa fa-tags" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Tags</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="https://about.me/wd.su" target="_blank" rel="noopener" title="About">
+                    
+                        <i class="sidebar-button-icon fa fa-question" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">About</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="https://github.com/option0417" target="_blank" rel="noopener" title="GitHub">
+                    
+                        <i class="sidebar-button-icon fab fa-github" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">GitHub</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="https://twitter.com/option0417" target="_blank" rel="noopener" title="Twitter">
+                    
+                        <i class="sidebar-button-icon fab fa-twitter" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Twitter</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="mailto:option0417@gmail.com" target="_blank" rel="noopener" title="Mail">
+                    
+                        <i class="sidebar-button-icon fa fa-envelope" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Mail</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+    </div>
+</nav>
+
+            
+            <div id="main" data-behavior="5"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title">
+            Weekly Reading (2019/May 20 ~ 26)
+        </h1>
+    
+    
+        <div class="post-meta">
+    <time datetime="2019-05-28T10:40:29+08:00">
+	
+		    May 28, 2019
+    	
+    </time>
+    
+</div>
+
+    
+</div>
+
+    
+    <div class="post-content markdown">
+        <div class="main-content-wrap">
+            <h3 id="1-redis系列–redis4-0深入持久化"><a href="#1-redis系列–redis4-0深入持久化" class="headerlink" title="1. redis系列–redis4.0深入持久化"></a>1. <a href="https://www.cnblogs.com/wdliu/p/9377278.html" target="_blank" rel="noopener">redis系列–redis4.0深入持久化</a></h3><p>Redis 快，但資料終究是存在記憶體裡面，還是得要有「持久化」的機制來保存重要的資料。</p>
+<p>這篇文章就是在介紹 Redis 本身提供的「持久化」機制：</p>
+<ol>
+<li>RDB persistent</li>
+<li>AOF Persistence</li>
+<li>Mixed RDB and AOP</li>
+</ol>
+<p>以及觸發的時機點：</p>
+<ol>
+<li><strong>save</strong> command</li>
+<li><strong>bgsave</strong> command</li>
+<li><strong>save \<second\> \<changes\></changes\></second\></strong> rule</li>
+<li><strong>Master-Slave</strong> duplication</li>
+<li><strong>flushall</strong> command</li>
+<li><strong>shutdown</strong> command</li>
+</ol>
+<p>雖說另外透過 DB 來達到持久化也是常見的作法，但若有成本考量、維運考量等情況沒有額外的 DB 下，也不失為一個不錯的辦法。</p>
+<hr>
+<h3 id="2-Don’t-talk-CRUD"><a href="#2-Don’t-talk-CRUD" class="headerlink" title="2. Don’t talk CRUD"></a>2. <a href="https://codecoding.net/ruby/on/rails/2018/09/14/dont-talk-crud.html" target="_blank" rel="noopener">Don’t talk CRUD</a></h3><p>作者透過開發中最常見的資料操作 <strong>C</strong> <em>(Create)</em> <strong>R</strong> <em>(Read)</em> <strong>U</strong> <em>(Update)</em> <strong>D</strong> <em>(Delete)</em>，說明開發者與客戶之間溝通的隔閡。</p>
+<p>例如，對程式的會以 create 或 update 命名，但實際的功能邏輯並不只是單純的 create 和 update。</p>
+<p>因此，作者建議透過共通的溝通方式，讓雙方能夠互相了解，也因此提到了 <a href="https://en.wikipedia.org/wiki/Domain-driven_design" target="_blank" rel="noopener">DDD (Domain Driven Design)</a>可作為這樣的溝通語言。</p>
+<hr>
+<h3 id="3-「我們失敗了」系列文"><a href="#3-「我們失敗了」系列文" class="headerlink" title="3.「我們失敗了」系列文"></a>3.「我們失敗了」系列文</h3><ul>
+<li><a href="https://kf013099.blogspot.com/2015/11/blog-post.html" target="_blank" rel="noopener">我們失敗了〈一〉- 完美的團隊也會失敗</a></li>
+<li><a href="https://kf013099.blogspot.com/2015/11/blog-post_30.html" target="_blank" rel="noopener">我們失敗了〈二〉- 天下武功，唯快不破</a></li>
+<li><a href="https://kf013099.blogspot.com/2015/12/productmarket-fit.html" target="_blank" rel="noopener">我們失敗了〈三〉- Product/Market Fit</a></li>
+<li><a href="https://kf013099.blogspot.com/2015/12/blog-post.html" target="_blank" rel="noopener">我們失敗了〈四〉- 軟體品質比你想像的還不重要！？</a></li>
+</ul>
+<p>簡單一句話，完美的團隊也會失敗。<br>對於產品，要找出「被使用者需要」的東西，而不是「讓使用者需要」。而這過程，除了 Fail Early, Fail Often 還要搶快，而搶快，也就表示對軟體的品質是要有所妥協的。 待達到 <a href="https://en.wikipedia.org/wiki/Product/market_fit" target="_blank" rel="noopener">Product/market fit</a> 再來調整。</p>
+<hr>
+<h3 id="4-Web-Architecture-101"><a href="#4-Web-Architecture-101" class="headerlink" title="4. Web Architecture 101"></a>4. <a href="https://engineering.videoblocks.com/web-architecture-101-a3224e126947" target="_blank" rel="noopener">Web Architecture 101</a></h3><p>作者以使用者發出一次 Google 搜尋的資料流為例，介紹這樣大型甚至巨型的網站架構，包含 <strong>DNS</strong> 、 <strong>Load Balance</strong> 、 <strong>Database</strong> 等服務，都做了基本的介紹。</p>
+
+            
+
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">TAGGED IN</span><br>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/reading/">reading</a>
+
+            </div>
+        
+        
+            <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2019/06/04/Weekly-Reading-2019-May-27-Jun-02/" data-tooltip="Weekly Reading (2019/May 27 ~ Jun 02)" aria-label="PREVIOUS: Weekly Reading (2019/May 27 ~ Jun 02)">
+                
+                    <i class="fa fa-angle-left" aria-hidden="true"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2019/05/24/Install-VirtualBox-on-Mac-Mojave-v10-14-5/" data-tooltip="Install VirtualBox on Mac Mojave v10.14.5" aria-label="NEXT: Install VirtualBox on Mac Mojave v10.14.5">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://option0417.github.io/2019/05/28/Weekly-Reading-2019-May-20-26/" title="Share on Facebook">
+                    <i class="fab fa-facebook" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://option0417.github.io/2019/05/28/Weekly-Reading-2019-May-20-26/" title="Share on Twitter">
+                    <i class="fab fa-twitter" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+        
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+        
+            
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2019 W.D. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2019/06/04/Weekly-Reading-2019-May-27-Jun-02/" data-tooltip="Weekly Reading (2019/May 27 ~ Jun 02)" aria-label="PREVIOUS: Weekly Reading (2019/May 27 ~ Jun 02)">
+                
+                    <i class="fa fa-angle-left" aria-hidden="true"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2019/05/24/Install-VirtualBox-on-Mac-Mojave-v10-14-5/" data-tooltip="Install VirtualBox on Mac Mojave v10.14.5" aria-label="NEXT: Install VirtualBox on Mac Mojave v10.14.5">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://option0417.github.io/2019/05/28/Weekly-Reading-2019-May-20-26/" title="Share on Facebook">
+                    <i class="fab fa-facebook" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://option0417.github.io/2019/05/28/Weekly-Reading-2019-May-20-26/" title="Share on Twitter">
+                    <i class="fab fa-twitter" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+        
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                
+    <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+        <i id="btn-close-shareoptions" class="fa fa-times"></i>
+        <ul class="share-options">
+            
+                
+                
+                <li class="share-option">
+                    <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://option0417.github.io/2019/05/28/Weekly-Reading-2019-May-20-26/">
+                        <i class="fab fa-facebook" aria-hidden="true"></i><span>Share on Facebook</span>
+                    </a>
+                </li>
+            
+                
+                
+                <li class="share-option">
+                    <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https://option0417.github.io/2019/05/28/Weekly-Reading-2019-May-20-26/">
+                        <i class="fab fa-twitter" aria-hidden="true"></i><span>Share on Twitter</span>
+                    </a>
+                </li>
+            
+        </ul>
+    </div>
+
+
+            
+        </div>
+        
+
+
+    
+        
+    
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-times"></i>
+        </div>
+        
+            <img id="about-card-picture" src="/imgs/profile.jpg" alt="Author&#39;s picture">
+        
+            <h4 id="about-card-name">W.D</h4>
+        
+            <div id="about-card-bio"><p>author.bio</p>
+</div>
+        
+        
+            <div id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br>
+                <p>author.job</p>
+
+            </div>
+        
+        
+            <div id="about-card-location">
+                <i class="fa fa-map-marker-alt"></i>
+                <br>
+                Taiwan
+            </div>
+        
+    </div>
+</div>
+
+        
+        
+<div id="cover" style="background-image:url('/imgs/my_cover.jpg');"></div>
+        <!--SCRIPTS-->
+<script src="/assets/js/script-dbd16rvloemmuxdzniplmnxxvwoz24eya9wol0b7vvmlokgqsjivmb8dnscy.min.js"></script>
+<!--SCRIPTS END-->
+
+    
+
+
+
+    </body>
+</html>

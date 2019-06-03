@@ -1,0 +1,454 @@
+
+<!DOCTYPE html>
+<html lang="en,zh-tw,default">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Just For Fun">
+    <title>Weekly reading (2017/Jul 24-30) - Just For Fun</title>
+    <meta name="author" content="W.D">
+    
+    
+        <link rel="icon" href="https://option0417.github.io/imgs/favicon.ico">
+    
+    
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"W.D","sameAs":["https://github.com/option0417","https://twitter.com/option0417","mailto:option0417@gmail.com"],"image":"profile.jpg"},"articleBody":"根本就没有什么所谓的开源商业模式作者翻譯了Stephen R. Walli對於 Open Source 是否存在 Business Model 這個問題，所提出的看法。看來這篇後，針對參與Open Source的影響能歸納出以下幾點：\n\n增進公司產品技術成熟度若將產品開源或選用Open Source軟體並參與其中，則可說是集眾人之智一同來開發、測試和維護。\n\n節省公司成本文中以 Interix 為例，指出與其花費人力、金錢重新打造系統，不如選用熱門的Open Source軟體來得划算。\n\n成就個人參與 Open Source 專案，就是是參與一個軟體專案的開發，甚至可能是世界級的，這樣的經歷比開發政府專案實在好太多！\n\n\nref:\n\nslide\n原文\n\n\nUpgrading Pinterest to HBase 1.2 from 0.94Pinterest 是一個全球10大社群網站之一，使用者主要可以在上面分享照片和文章，也因此在服務背後的資料庫 HBase 保存了 10PB 以上的資料以及10M 以上的 QPS作者主要敘述他們從HBase 0.94 到 1.2 的升級過程，包含：\n\n如何達到 zero downtime\n現有資料的 replication\n備援/Roll back 機制\nHBase 效能的調整\n\n因為目前產品使用也有使用到 HBase ，所以整篇看完特別有感，況且這樣的版本遷移也是總有一天會遇到的事情！\nref:\n\nAsyncHBase\nThrift-Based Patch\nUpgrade HBase\nOffheap Read-Path\n\n","dateCreated":"2017-07-31T00:00:00+08:00","dateModified":"2019-03-14T23:20:33+08:00","datePublished":"2017-07-31T00:00:00+08:00","description":"","headline":"Weekly reading (2017/Jul 24-30)","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://option0417.github.io/2017/07/31/Weekly-reading-2017-Jul-24-30/"},"publisher":{"@type":"Organization","name":"W.D","sameAs":["https://github.com/option0417","https://twitter.com/option0417","mailto:option0417@gmail.com"],"image":"profile.jpg","logo":{"@type":"ImageObject","url":"profile.jpg"}},"url":"https://option0417.github.io/2017/07/31/Weekly-reading-2017-Jul-24-30/","keywords":"reading"}</script>
+    <meta name="description" content="根本就没有什么所谓的开源商业模式作者翻譯了Stephen R. Walli對於 Open Source 是否存在 Business Model 這個問題，所提出的看法。看來這篇後，針對參與Open Source的影響能歸納出以下幾點：  增進公司產品技術成熟度若將產品開源或選用Open Source軟體並參與其中，則可說是集眾人之智一同來開發、測試和維護。  節省公司成本文中以 Interix 為">
+<meta name="keywords" content="reading">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="Weekly reading (2017&#x2F;Jul 24-30)">
+<meta property="og:url" content="https://option0417.github.io/2017/07/31/Weekly-reading-2017-Jul-24-30/index.html">
+<meta property="og:site_name" content="Just For Fun">
+<meta property="og:description" content="根本就没有什么所谓的开源商业模式作者翻譯了Stephen R. Walli對於 Open Source 是否存在 Business Model 這個問題，所提出的看法。看來這篇後，針對參與Open Source的影響能歸納出以下幾點：  增進公司產品技術成熟度若將產品開源或選用Open Source軟體並參與其中，則可說是集眾人之智一同來開發、測試和維護。  節省公司成本文中以 Interix 為">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-03-14T15:20:33.646Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Weekly reading (2017&#x2F;Jul 24-30)">
+<meta name="twitter:description" content="根本就没有什么所谓的开源商业模式作者翻譯了Stephen R. Walli對於 Open Source 是否存在 Business Model 這個問題，所提出的看法。看來這篇後，針對參與Open Source的影響能歸納出以下幾點：  增進公司產品技術成熟度若將產品開源或選用Open Source軟體並參與其中，則可說是集眾人之智一同來開發、測試和維護。  節省公司成本文中以 Interix 為">
+<meta name="twitter:creator" content="@option0417">
+    
+    
+        
+    
+    
+        <meta property="og:image" content="https://option0417.github.io/imgs/profile.jpg"/>
+    
+    
+    
+    
+    <!--STYLES-->
+    <link rel="stylesheet" href="/assets/css/style-c4ozcsklz4kht2pebhp44xorvyverh23toayhn7i6ubrpyedak24hv1v0hyd.min.css">
+    <!--STYLES END-->
+    
+
+    
+</head>
+
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+    
+        
+            
+        
+    
+
+<header id="header" data-behavior="5">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <div class="header-title">
+        <a class="header-title-link" href="/ ">Just For Fun</a>
+    </div>
+    
+        
+            <a class="header-right-picture " href="#about">
+        
+        
+            <img class="header-picture" src="/imgs/profile.jpg" alt="Author&#39;s picture">
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+
+        
+    
+
+<nav id="sidebar" data-behavior="5">
+    <div class="sidebar-container">
+        
+            <div class="sidebar-profile">
+                <a href="/#about">
+                    <img class="sidebar-profile-picture" src="/imgs/profile.jpg" alt="Author&#39;s picture">
+                </a>
+                <h4 class="sidebar-profile-name">W.D</h4>
+                
+                    <h5 class="sidebar-profile-bio"><p>author.bio</p>
+</h5>
+                
+            </div>
+        
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="/ " title="Home">
+                    
+                        <i class="sidebar-button-icon fa fa-home" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Home</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="/all-tags" title="Tags">
+                    
+                        <i class="sidebar-button-icon fa fa-tags" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Tags</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="https://about.me/wd.su" target="_blank" rel="noopener" title="About">
+                    
+                        <i class="sidebar-button-icon fa fa-question" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">About</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="https://github.com/option0417" target="_blank" rel="noopener" title="GitHub">
+                    
+                        <i class="sidebar-button-icon fab fa-github" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">GitHub</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="https://twitter.com/option0417" target="_blank" rel="noopener" title="Twitter">
+                    
+                        <i class="sidebar-button-icon fab fa-twitter" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Twitter</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="mailto:option0417@gmail.com" target="_blank" rel="noopener" title="Mail">
+                    
+                        <i class="sidebar-button-icon fa fa-envelope" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Mail</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+    </div>
+</nav>
+
+            
+            <div id="main" data-behavior="5"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title">
+            Weekly reading (2017/Jul 24-30)
+        </h1>
+    
+    
+        <div class="post-meta">
+    <time datetime="2017-07-31T00:00:00+08:00">
+	
+		    Jul 31, 2017
+    	
+    </time>
+    
+</div>
+
+    
+</div>
+
+    
+    <div class="post-content markdown">
+        <div class="main-content-wrap">
+            <h2 id="根本就没有什么所谓的开源商业模式"><a href="#根本就没有什么所谓的开源商业模式" class="headerlink" title="根本就没有什么所谓的开源商业模式"></a><a href="http://www.ocselected.org/posts/business_model/there_is_no_open_source_business_model/" target="_blank" rel="noopener">根本就没有什么所谓的开源商业模式</a></h2><p>作者翻譯了<a href="https://twitter.com/stephenrwalli" target="_blank" rel="noopener">Stephen R. Walli</a>對於 Open Source 是否存在 Business Model 這個問題，所提出的看法。<br>看來這篇後，針對參與Open Source的影響能歸納出以下幾點：</p>
+<ol>
+<li><p>增進公司產品技術成熟度<br>若將產品開源或選用Open Source軟體並參與其中，則可說是集眾人之智一同來開發、測試和維護。</p>
+</li>
+<li><p>節省公司成本<br>文中以 <a href="https://en.wikipedia.org/wiki/Interix" target="_blank" rel="noopener">Interix</a> 為例，指出與其花費人力、金錢重新打造系統，不如選用熱門的Open Source軟體來得划算。</p>
+</li>
+<li><p>成就個人<br>參與 Open Source 專案，就是是參與一個軟體專案的開發，甚至可能是世界級的，這樣的經歷比開發政府專案實在好太多！</p>
+</li>
+</ol>
+<p><em>ref:</em></p>
+<ul>
+<li><a href="https://www.slideshare.net/LCChina/there-is-no-open-source-business-model" target="_blank" rel="noopener">slide</a></li>
+<li><a href="https://medium.com/@stephenrwalli/there-is-no-open-source-business-model-cdc4cc20238" target="_blank" rel="noopener">原文</a></li>
+</ul>
+<hr>
+<h2 id="Upgrading-Pinterest-to-HBase-1-2-from-0-94"><a href="#Upgrading-Pinterest-to-HBase-1-2-from-0-94" class="headerlink" title="Upgrading Pinterest to HBase 1.2 from 0.94"></a><a href="https://medium.com/@Pinterest_Engineering/upgrading-pinterest-to-hbase-1-2-from-0-94-e6e34c157783" target="_blank" rel="noopener">Upgrading Pinterest to HBase 1.2 from 0.94</a></h2><p>Pinterest 是一個全球10大社群網站之一，使用者主要可以在上面分享照片和文章，也因此在服務背後的資料庫 <a href="http://hbase.apache.org/" target="_blank" rel="noopener">HBase</a> 保存了 10PB 以上的資料以及10M 以上的 QPS<br>作者主要敘述他們從HBase 0.94 到 1.2 的升級過程，包含：</p>
+<ol>
+<li>如何達到 <a href="https://dzone.com/articles/zero-downtime-%E2%80%93-what-it-and" target="_blank" rel="noopener">zero downtime</a></li>
+<li>現有資料的 replication</li>
+<li>備援/Roll back 機制</li>
+<li>HBase 效能的調整</li>
+</ol>
+<p>因為目前產品使用也有使用到 HBase ，所以整篇看完特別有感，況且這樣的版本遷移也是總有一天會遇到的事情！</p>
+<p><em>ref:</em></p>
+<ul>
+<li><a href="http://opentsdb.github.io/asynchbase/" target="_blank" rel="noopener">AsyncHBase</a></li>
+<li><a href="https://issues.apache.org/jira/browse/HBASE-12814" target="_blank" rel="noopener">Thrift-Based Patch</a></li>
+<li><a href="http://hbase.apache.org/book.html#upgrade0.96" target="_blank" rel="noopener">Upgrade HBase</a></li>
+<li><a href="https://blogs.apache.org/hbase/entry/offheap-read-path-in-production" target="_blank" rel="noopener">Offheap Read-Path</a></li>
+</ul>
+
+            
+
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">TAGGED IN</span><br>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/reading/">reading</a>
+
+            </div>
+        
+        
+            <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/08/27/吾家有女初長成/" data-tooltip="吾家有女初長成" aria-label="PREVIOUS: 吾家有女初長成">
+                
+                    <i class="fa fa-angle-left" aria-hidden="true"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/07/18/嬰幼兒推車選購大作戰！/" data-tooltip="嬰幼兒推車+汽座選購大作戰！" aria-label="NEXT: 嬰幼兒推車+汽座選購大作戰！">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://option0417.github.io/2017/07/31/Weekly-reading-2017-Jul-24-30/" title="Share on Facebook">
+                    <i class="fab fa-facebook" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://option0417.github.io/2017/07/31/Weekly-reading-2017-Jul-24-30/" title="Share on Twitter">
+                    <i class="fab fa-twitter" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+        
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+        
+            
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2019 W.D. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/08/27/吾家有女初長成/" data-tooltip="吾家有女初長成" aria-label="PREVIOUS: 吾家有女初長成">
+                
+                    <i class="fa fa-angle-left" aria-hidden="true"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/07/18/嬰幼兒推車選購大作戰！/" data-tooltip="嬰幼兒推車+汽座選購大作戰！" aria-label="NEXT: 嬰幼兒推車+汽座選購大作戰！">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://option0417.github.io/2017/07/31/Weekly-reading-2017-Jul-24-30/" title="Share on Facebook">
+                    <i class="fab fa-facebook" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://option0417.github.io/2017/07/31/Weekly-reading-2017-Jul-24-30/" title="Share on Twitter">
+                    <i class="fab fa-twitter" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+        
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                
+    <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+        <i id="btn-close-shareoptions" class="fa fa-times"></i>
+        <ul class="share-options">
+            
+                
+                
+                <li class="share-option">
+                    <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://option0417.github.io/2017/07/31/Weekly-reading-2017-Jul-24-30/">
+                        <i class="fab fa-facebook" aria-hidden="true"></i><span>Share on Facebook</span>
+                    </a>
+                </li>
+            
+                
+                
+                <li class="share-option">
+                    <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https://option0417.github.io/2017/07/31/Weekly-reading-2017-Jul-24-30/">
+                        <i class="fab fa-twitter" aria-hidden="true"></i><span>Share on Twitter</span>
+                    </a>
+                </li>
+            
+        </ul>
+    </div>
+
+
+            
+        </div>
+        
+
+
+    
+        
+    
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-times"></i>
+        </div>
+        
+            <img id="about-card-picture" src="/imgs/profile.jpg" alt="Author&#39;s picture">
+        
+            <h4 id="about-card-name">W.D</h4>
+        
+            <div id="about-card-bio"><p>author.bio</p>
+</div>
+        
+        
+            <div id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br>
+                <p>author.job</p>
+
+            </div>
+        
+        
+            <div id="about-card-location">
+                <i class="fa fa-map-marker-alt"></i>
+                <br>
+                Taiwan
+            </div>
+        
+    </div>
+</div>
+
+        
+        
+<div id="cover" style="background-image:url('/imgs/my_cover.jpg');"></div>
+        <!--SCRIPTS-->
+<script src="/assets/js/script-dbd16rvloemmuxdzniplmnxxvwoz24eya9wol0b7vvmlokgqsjivmb8dnscy.min.js"></script>
+<!--SCRIPTS END-->
+
+    
+
+
+
+    </body>
+</html>
