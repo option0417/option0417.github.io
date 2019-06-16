@@ -171,6 +171,95 @@
             <div class="postShorten-header">
                 <h1 class="postShorten-title">
                     
+                        <a class="link-unstyled" href="/2018/07/19/Dom-vs-SAX-vs-StAX/">
+                            Dom vs SAX vs StAX
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2018-07-19T02:13:00+08:00">
+	
+		    Jul 19, 2018
+    	
+    </time>
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <p>之前有個 side-project 需要針對 XML 進行解析，也趁此機會好好整理一下<br>在 Java 上，三種不同的解析 XML Document 的方法。</p>
+<h2 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a><a href="https://en.wikipedia.org/wiki/Document_Object_Model" target="_blank" rel="noopener">DOM</a></h2><p>會針對要解析的 XML Document 建立完整的 DOM Tree (如下圖)</p>
+<p> <img src="https://upload.wikimedia.org/wikipedia/commons/5/5a/DOM-model.svg" alt="dom_tree"></p>
+<ul>
+<li><h3 id="優點："><a href="#優點：" class="headerlink" title="優點："></a>優點：</h3><ul>
+<li>可對建立好的 DOM Tree 隨意存取任何一個節點</li>
+</ul>
+</li>
+<li><h3 id="缺點："><a href="#缺點：" class="headerlink" title="缺點："></a>缺點：</h3><ul>
+<li>若 XML Document 過大，則會耗費過多的 Memory，甚至發生無法預期的錯誤，例如： <a href="https://en.wikipedia.org/wiki/Out_of_memory" target="_blank" rel="noopener">OOM</a></li>
+<li>建立 DOM Tree 的時間花費，可能也會是個效能瓶頸。</li>
+</ul>
+</li>
+</ul>
+<h2 id="SAX"><a href="#SAX" class="headerlink" title="SAX"></a><a href="https://en.wikipedia.org/wiki/Simple_API_for_XML" target="_blank" rel="noopener">SAX</a></h2><p>透過 Event-Driven 和 Push-model ，依序將 XML Document 的 Element 一個個 push 到繼承自 DefaultHandler 的自定義 Handler 來解析</p>
+<ul>
+<li><h3 id="優點：-1"><a href="#優點：-1" class="headerlink" title="優點："></a>優點：</h3><ul>
+<li>較 Dom 方法快速許多</li>
+<li>較 Dom 方法節省 Memory</li>
+</ul>
+</li>
+<li><h3 id="缺點：-1"><a href="#缺點：-1" class="headerlink" title="缺點："></a>缺點：</h3><ul>
+<li>無法隨意存取任何一個節點</li>
+<li>若要讀取先前的節點資料，須自行保存</li>
+</ul>
+</li>
+</ul>
+<h2 id="StAX"><a href="#StAX" class="headerlink" title="StAX"></a><a href="https://en.wikipedia.org/wiki/StAX" target="_blank" rel="noopener">StAX</a></h2><p>基本上跟 SAX 同樣都是透過 Event-Driven，但是用 Pull-model 來存取解析 XML Document。</p>
+<ul>
+<li><h3 id="優點：-2"><a href="#優點：-2" class="headerlink" title="優點："></a>優點：</h3><ul>
+<li>較 Dom 方法快速許多</li>
+<li>較 Dom 方法節省 Memory</li>
+</ul>
+</li>
+<li><h3 id="缺點：-2"><a href="#缺點：-2" class="headerlink" title="缺點："></a>缺點：</h3><ul>
+<li>無法隨意存取任何一個節點</li>
+<li>若要讀取先前的節點資料，須自行保存</li>
+</ul>
+</li>
+</ul>
+<h3 id="我的選擇…"><a href="#我的選擇…" class="headerlink" title="我的選擇…"></a>我的選擇…</h3><p>最後選擇用 StAX 來解析 XML Document，一方面 Event-Driven 效能表現比較好，也節省 Memory。 另一方面，不像 SAX 還得先實做對應的 Handler，Pull-model 在實作上比較直覺，因為就像 iterate 一個 Collection 那樣的方式，來取得資料。 當然這是針對我的應用而做的決定，如果遇到的問題不同，或許 Dom 又會是更好的選擇。</p>
+<h3 id="ref"><a href="#ref" class="headerlink" title="ref:"></a><em>ref</em>:</h3><ul>
+<li><a href="https://www.tutorialspoint.com/java_xml/java_dom_parser.htm" target="_blank" rel="noopener">Java Dom Parser, tutorialspoint</a></li>
+<li><a href="https://www.tutorialspoint.com/java_xml/java_sax_parser.htm" target="_blank" rel="noopener">Java SAX Parser, tutorialspoint</a></li>
+<li><a href="https://www.tutorialspoint.com/java_xml/java_stax_parser.htm" target="_blank" rel="noopener">Java StAX Parser, tutorialpoint</a></li>
+<li><a href="http://tutorials.jenkov.com/java-xml/sax-vs-stax.html" target="_blank" rel="noopener">Java SAX vs. StAX, Jenkov.com</a></li>
+</ul>
+
+                    
+                        
+
+                    
+                    
+                        <p>
+                            <a href="/2018/07/19/Dom-vs-SAX-vs-StAX/#post-footer" class="postShorten-excerpt_link link">
+                                Comment and share
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
                         <a class="link-unstyled" href="/2018/07/18/刻意練習/">
                             刻意練習 (Peak: Secrets from the New Science of Expoertise)
                         </a>
@@ -634,60 +723,6 @@
                     
                         <p>
                             <a href="/2017/11/13/Java-Static-Analysis-Tools/#post-footer" class="postShorten-excerpt_link link">
-                                Comment and share
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a class="link-unstyled" href="/2017/11/04/吾家有女正長成/">
-                            吾家有女正長成
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2017-11-04T00:00:00+08:00">
-	
-		    Nov 04, 2017
-    	
-    </time>
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <p>轉眼過了兩個多月，小女盼盼也快三個月大了，這段日子下了班就是和老婆一同照顧她，陪著她，伴著她。 這中間有辛苦的、有忙碌的、有生氣的，但印象最深最多的是甜蜜的！</p>
-<p><img src="/imgs/fig_m1.jpg" alt="fig_m1"></p>
-<h4 id="第一個月"><a href="#第一個月" class="headerlink" title="第一個月:"></a>第一個月:</h4><p>基本上都是在月子中心度過，除了前面幾天老婆還在恢復外，後面都是盡量將盼盼推進房母嬰同室，一方面可以看到盼盼，一方面也能在護理師的幫助下，學會照顧她。 剛開始什麼都懞懞懂懂，盼盼稍有個動靜就緊張不已。 </p>
-<p>也幫盼盼取了名字叫：「蘇品臻」，品：品行、品格  臻：完美、完善，希望她一切都能完好。  總之，第一次抱她；第一次的餵奶；第一次的換尿布；第一次幫她洗澡，種種的第一次都在這個時候～</p>
-<hr>
-<p><img src="/imgs/fig_m2.jpg" alt="fig_m2"><br><img src="/imgs/fig_m22.jpg" alt="fig_m22"></p>
-<h4 id="第二個月"><a href="#第二個月" class="headerlink" title="第二個月:"></a>第二個月:</h4><p>終於將盼盼接了回家，也開始了沒有睡眠時間的日子XD，就像輪班一樣，盼盼大概 2 ~ 3 小時要喝一次奶，所以平常白天交給老婆照顧，我晚上回到家就先洗澡才接手抱她。  接近半夜，老婆就先去休息，我顧到凌晨二、三點才又換手交給她。</p>
-<p>儘管在月子中心時已經練習過，但剛回到家還是手忙腳亂，一哭了就趕緊看是不是尿尿了，或是肚子餓了要喝奶了，有時也會因為不懂她為何一直哭而生氣。  還好，相處久了就大概知道她要的是什麼。</p>
-<hr>
-<p><img src="/imgs/fig_m3.jpg" alt="fig_m3"></p>
-<h4 id="近來："><a href="#近來：" class="headerlink" title="近來："></a>近來：</h4><p>差不多兩個半月，盼盼終於能夠睡過夜，一次睡超過 5~6 小時，半夜比較不會起床哭鬧。  記得第一次睡過夜時，還有些小感動，終於出頭天的港覺～<br>這也表示盼盼她長大了，不只是睡過夜，笑容也變多了，也開始會發出咿咿呀呀的聲音！</p>
-<p>盼盼，蘇品臻，謝謝妳來到爸爸媽媽身邊，當我們的小公主；爸爸媽媽都愛妳，只希望妳身體健健康康，一切安好！<br><img src="/imgs/fig_m33.jpg" alt="fig_m33"></p>
-
-                    
-                        
-
-                    
-                    
-                        <p>
-                            <a href="/2017/11/04/吾家有女正長成/#post-footer" class="postShorten-excerpt_link link">
                                 Comment and share
                             </a>
                         </p>
