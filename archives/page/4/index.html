@@ -172,6 +172,233 @@
             <div class="postShorten-header">
                 <h1 class="postShorten-title">
                     
+                        <a class="link-unstyled" href="/2017/08/27/吾家有女初長成/">
+                            吾家有女初長成
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2017-08-27T00:00:00+08:00">
+	
+		    Aug 27, 2017
+    	
+    </time>
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <p>已經一個月沒有發新文章，因為家裡發生了件大事，也是我人生中的一件大事，就是 吾家有女初生成!!!</p>
+<p>就在等待了整 40 週 + 1 天後，在 8/14 的凌晨，她誕生了。</p>
+<p><img src="/imgs/baby1.jpg" alt="baby1"></p>
+<p>在這一刻，我的身份也立刻升級成為一位父親，這是一份責任重大的職位。<br>也是讓人願意為其付出，甘之如飴的職位。</p>
+<p><img src="/imgs/baby3.jpg" alt="baby3"></p>
+<p>最後，希望妳能好好的健康長大，成為怎樣的人我們晚點再說～</p>
+<p><img src="/imgs/baby2.jpg" alt="baby2"><br><img src="/imgs/baby4.jpg" alt="baby4"></p>
+
+                    
+                        
+
+                    
+                    
+                        <p>
+                            <a href="/2017/08/27/吾家有女初長成/#post-footer" class="postShorten-excerpt_link link">
+                                Comment and share
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
+                        <a class="link-unstyled" href="/2017/07/31/Weekly-reading-2017-Jul-24-30/">
+                            Weekly reading (2017/Jul 24-30)
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2017-07-31T00:00:00+08:00">
+	
+		    Jul 31, 2017
+    	
+    </time>
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <h2 id="根本就没有什么所谓的开源商业模式"><a href="#根本就没有什么所谓的开源商业模式" class="headerlink" title="根本就没有什么所谓的开源商业模式"></a><a href="http://www.ocselected.org/posts/business_model/there_is_no_open_source_business_model/" target="_blank" rel="noopener">根本就没有什么所谓的开源商业模式</a></h2><p>作者翻譯了<a href="https://twitter.com/stephenrwalli" target="_blank" rel="noopener">Stephen R. Walli</a>對於 Open Source 是否存在 Business Model 這個問題，所提出的看法。<br>看來這篇後，針對參與Open Source的影響能歸納出以下幾點：</p>
+<ol>
+<li><p>增進公司產品技術成熟度<br>若將產品開源或選用Open Source軟體並參與其中，則可說是集眾人之智一同來開發、測試和維護。</p>
+</li>
+<li><p>節省公司成本<br>文中以 <a href="https://en.wikipedia.org/wiki/Interix" target="_blank" rel="noopener">Interix</a> 為例，指出與其花費人力、金錢重新打造系統，不如選用熱門的Open Source軟體來得划算。</p>
+</li>
+<li><p>成就個人<br>參與 Open Source 專案，就是是參與一個軟體專案的開發，甚至可能是世界級的，這樣的經歷比開發政府專案實在好太多！</p>
+</li>
+</ol>
+<p><em>ref:</em></p>
+<ul>
+<li><a href="https://www.slideshare.net/LCChina/there-is-no-open-source-business-model" target="_blank" rel="noopener">slide</a></li>
+<li><a href="https://medium.com/@stephenrwalli/there-is-no-open-source-business-model-cdc4cc20238" target="_blank" rel="noopener">原文</a></li>
+</ul>
+<hr>
+<h2 id="Upgrading-Pinterest-to-HBase-1-2-from-0-94"><a href="#Upgrading-Pinterest-to-HBase-1-2-from-0-94" class="headerlink" title="Upgrading Pinterest to HBase 1.2 from 0.94"></a><a href="https://medium.com/@Pinterest_Engineering/upgrading-pinterest-to-hbase-1-2-from-0-94-e6e34c157783" target="_blank" rel="noopener">Upgrading Pinterest to HBase 1.2 from 0.94</a></h2><p>Pinterest 是一個全球10大社群網站之一，使用者主要可以在上面分享照片和文章，也因此在服務背後的資料庫 <a href="http://hbase.apache.org/" target="_blank" rel="noopener">HBase</a> 保存了 10PB 以上的資料以及10M 以上的 QPS<br>作者主要敘述他們從HBase 0.94 到 1.2 的升級過程，包含：</p>
+<ol>
+<li>如何達到 <a href="https://dzone.com/articles/zero-downtime-%E2%80%93-what-it-and" target="_blank" rel="noopener">zero downtime</a></li>
+<li>現有資料的 replication</li>
+<li>備援/Roll back 機制</li>
+<li>HBase 效能的調整</li>
+</ol>
+<p>因為目前產品使用也有使用到 HBase ，所以整篇看完特別有感，況且這樣的版本遷移也是總有一天會遇到的事情！</p>
+<p><em>ref:</em></p>
+<ul>
+<li><a href="http://opentsdb.github.io/asynchbase/" target="_blank" rel="noopener">AsyncHBase</a></li>
+<li><a href="https://issues.apache.org/jira/browse/HBASE-12814" target="_blank" rel="noopener">Thrift-Based Patch</a></li>
+<li><a href="http://hbase.apache.org/book.html#upgrade0.96" target="_blank" rel="noopener">Upgrade HBase</a></li>
+<li><a href="https://blogs.apache.org/hbase/entry/offheap-read-path-in-production" target="_blank" rel="noopener">Offheap Read-Path</a></li>
+</ul>
+
+                    
+                        
+
+                    
+                    
+                        <p>
+                            <a href="/2017/07/31/Weekly-reading-2017-Jul-24-30/#post-footer" class="postShorten-excerpt_link link">
+                                Comment and share
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
+                        <a class="link-unstyled" href="/2017/07/18/嬰幼兒推車選購大作戰！/">
+                            嬰幼兒推車+汽座選購大作戰！
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2017-07-18T00:45:27+08:00">
+	
+		    Jul 18, 2017
+    	
+    </time>
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <p>自從老婆肚子有了消息，身為未來父親的我也已採購了奶瓶、奶嘴、包巾、紗布衣…等族繁不及備載的日常用品，但最重要也最傷荷包的嬰兒床、嬰幼兒推車和嬰幼兒汽車座椅卻遲遲無法決定！<br>直到近來，因為家中長女呼之欲出，只好趕緊來看看出院後就會用到的汽座和相關性最高的推車了！</p>
+<h3 id="以下為個人主觀意見"><a href="#以下為個人主觀意見" class="headerlink" title="===== 以下為個人主觀意見 ====="></a>===== 以下為個人主觀意見 =====</h3><hr>
+<h1 id="嬰幼兒推車"><a href="#嬰幼兒推車" class="headerlink" title="嬰幼兒推車"></a>嬰幼兒推車</h1><p><img src="http://i.imgur.com/6LSps77.jpg" alt="Stroller"><br><em>source:<a href="https://www.flickr.com/photos/kevinpoh/4545094285" target="_blank" rel="noopener">Kevin Poh</a></em></p>
+<p>網路上看了許多心得和資料後，首先可分作兩大類：</p>
+<ol>
+<li><p>歐系車：</p>
+<ul>
+<li>優點：空間大、行進穩</li>
+<li>缺點：重、收車不易、佔用空間大</li>
+</ul>
+</li>
+<li><p>日系／台系車：</p>
+<ul>
+<li>優點：輕巧、單手收車</li>
+<li>缺點：崎嶇路面易不穩或彈跳、如在車上掛東西有”倒頭栽”的可能</li>
+</ul>
+</li>
+</ol>
+<p>
+
+</p><p>接著依照個人的需求，歸納出以下幾點：<br><strong>1. 雙向：</strong>  老婆希望就算不結合提籃也能看著寶寶<br><strong>2. 好收：</strong>  老婆獨自帶寶寶出門時，能夠獨立作業<br><strong>3. 座位空間可調整：</strong>  隨著寶寶長大，希望也能坐得舒服<br><strong>4. 置物空間大：</strong>  希望能多放點東西，就能少拿點東西<br><strong>5. 置物空間好收放：</strong>  除了多放東西也希望能好放好拿<br><strong>6. 遮陽範圍廣：</strong>  除了上半身，也希望腳腳不要曬黑<br><strong>7. 可與汽車提籃結合：</strong>  個人希望能和汽座提籃達到「無縫接軌」</p>
+<p>最後，也根據這篇<a href="https://drkentsui.com/2016/08/01/%E5%AC%B0%E5%85%92%E6%8E%A8%E8%BB%8A%E9%81%B8%E8%B3%BC%E8%A6%81%E9%BB%9E-%EF%BC%9A%E5%85%92%E7%A7%91%E9%86%AB%E5%B8%AB%E8%89%AF%E5%BF%83%E5%BB%BA%E8%AD%B0/" target="_blank" rel="noopener">文章</a>的建議，考量跟安全相關的重點：<br><strong>1. 五點式安全帶:</strong>  根據美國的統計，跟嬰幼兒推車相關的意外裡，最大的原因就是因為沒有繫安全帶！ 所以這點是一定要的！<br><strong>2. 安全、無毒材質:</strong>  寶寶在車上，除了會亂咬亂舔外，皮膚也會直接接觸到推車，所以希望能夠是讓人放心的推車材質。<br><strong>3. 推車結構:</strong> 除了顛頗路面的小彈跳、小碰撞外，也希望推車放了東西後的重量能夠平均，不要「倒頭栽」！</p>
+<hr>
+<h1 id="嬰幼兒汽車座椅"><a href="#嬰幼兒汽車座椅" class="headerlink" title="嬰幼兒汽車座椅"></a>嬰幼兒汽車座椅</h1><p><img src="http://i.imgur.com/Vj7YfL0.jpg" alt="Car Seat"><br><em>source: <a href="http://www.chicco.com/it.html" target="_blank" rel="noopener">Chicco</a></em></p>
+<p>而在汽座的部分，可以依照<a href="https://en.wikipedia.org/wiki/American_Academy_of_Pediatrics" target="_blank" rel="noopener">美國兒科協會(AAP)</a>)的<a href="https://www.healthychildren.org/English/safety-prevention/on-the-go/pages/Car-Safety-Seats-Information-for-Families.aspx" target="_blank" rel="noopener">指引</a>來做選擇，該指引列出了以下幾點建議：</p>
+<ol>
+<li>2 歲以下且身高體重在後向汽座限制內的嬰幼兒，應選擇 <strong>後向汽座(Rear-Facing))</strong></li>
+<li>2~8 歲且身高體重在前向汽座限制內，或2歲以下且身高體重超過後向汽座限制內的嬰幼兒，應選擇 <strong>前向汽座(Forward-Facing)</strong></li>
+<li>8 歲以上且身高不到 4’9” (約144公分)，或身高體重超過前向汽座限制，應選擇 <strong>增高式汽座(Booster)</strong></li>
+<li>8 歲以上且身高超過 4’9” (約144公分)，或身高體重超過增高式汽座限制，應選擇 <strong>三點式安全帶座位(Vehicle Seat Belt)</strong> </li>
+<li>未滿 13 歲的兒童應坐在車子的 <strong>後座(Rear Seat)</strong> </li>
+</ol>
+<p>
+
+</p><p>再來是汽座的類型，分作：<br><strong>1. <a href="http://www.childcarseats.org.uk/types-of-seat/rearward-facing-baby-seats" target="_blank" rel="noopener">後向式/提籃</a>：</strong> </p>
+<ul>
+<li>如上述指引，2 歲前的嬰幼兒應坐後向汽座，而未滿 1 歲的新生兒更可選擇提籃汽座，讓寶寶較不受打擾。</li>
+</ul>
+<p><strong>2. <a href="http://www.childcarseats.org.uk/types-of-seat/forward-facing-seats" target="_blank" rel="noopener">前向</a>：</strong> </p>
+<ul>
+<li>再大點的寶寶就要坐前向汽座，也是市面上常見的 0 ~ 7、1 ~ 12 等等成長型的汽座。</li>
+</ul>
+<p><strong>3. <a href="http://www.childcarseats.org.uk/types-of-seat/booster-cushions" target="_blank" rel="noopener">增高式</a>：</strong> </p>
+<ul>
+<li>8 歲以上的寶寶，嗯…應該稱兒童，應坐在增高式汽座來配合其身高。</li>
+</ul>
+<p><strong>4. <a href="http://www.childcarseats.org.uk/types-of-seat/i-size-seats" target="_blank" rel="noopener">i-Size</a>：</strong> 這是歐洲在 2013 年公佈的新標準，台灣市面上好像還沒有符合這個標準的汽座，基本上有三點：</p>
+<ul>
+<li>i-size seats are based on the child’s height rather than weight </li>
+<li>i-size rearward-facing restraints are for babies up to 15 months old</li>
+<li>side impact test </li>
+</ul>
+<p>
+
+</p><p>最後，汽座的安裝因前座有安全氣囊所致，皆在汽車的後座位置。至於後座側邊氣囊目前未證實對汽座有影響，細節可參見<a href="https://zh.wikipedia.org/wiki/%E5%BA%A7%E4%BD%8D%E5%AE%89%E5%85%A8%E5%B8%B6" target="_blank" rel="noopener">此討論串</a>，而安裝的方法共有三種不同的標準來配合不同車種的汽車座椅：<br><strong>1. <a href="https://zh.wikipedia.org/wiki/%E5%BA%A7%E4%BD%8D%E5%AE%89%E5%85%A8%E5%B8%B6" target="_blank" rel="noopener">安全帶</a>：</strong>  指的是三點式安全帶，而非後座中間位子常見的兩點式安全帶。 家中老車目前只能選擇這一種規格，看過安裝影片，看起來也是穩穩的！<br>  <em>三點式</em>：<img src="https://upload.wikimedia.org/wikipedia/commons/7/7d/Seatbelt.png" alt="3p"><br>  <em>兩點式</em>：<img src="https://upload.wikimedia.org/wikipedia/commons/b/bc/Airplane_seat_belt_1.jpg" alt="2p"></p>
+<p><strong>2. <a href="https://en.wikipedia.org/wiki/Isofix" target="_blank" rel="noopener">ISOFIX</a>：</strong>  為座椅左右兩端固定的扣環，之前常見於歐系車但現在我看不管哪一系幾乎都有符合標準。<br>  <em>ISOFIX</em>：<img src="http://i.imgur.com/mcUOIHCm.jpg" alt="isopfix"></p>
+<p><strong>3. <a href="http://thecarseatlady.com/the-latch-system" target="_blank" rel="noopener">Latch</a>：</strong> 為座椅上下兩端固定的扣環，常見於美系車，台灣國內的車輛好像很少看到這個標準。<br>  <em>LATCH</em>：<img src="http://i.imgur.com/muFsoPr.jpg" alt="latch"></p>
+<hr>
+<h1 id="所以到底要怎麼買"><a href="#所以到底要怎麼買" class="headerlink" title="所以到底要怎麼買"></a>所以到底要怎麼買</h1><p>文章發布的這個當下，我也還沒決定。 只能說除了上面這麼多，最重要還有要看預算呀！</p>
+<h3 id="ref"><a href="#ref" class="headerlink" title="ref:"></a>ref:</h3><ul>
+<li><a href="https://well.blogs.nytimes.com/2016/08/17/more-head-injuries-reported-for-babies-in-stroller-accidents" target="_blank" rel="noopener">More Head Injuries Reported for Babies in Stroller Accidents</a></li>
+<li><a href="http://pediatrics.aappublications.org/content/pediatrics/early/2011/03/21/peds.2011-0213.full.pdf" target="_blank" rel="noopener">Car Seats Policy</a></li>
+<li><a href="https://mobile01.com/topicdetail.php?f=214&amp;t=1773418" target="_blank" rel="noopener">請問後座側邊輔助氣囊對嬰兒或幼兒的影響</a></li>
+</ul>
+
+                    
+                        
+
+                    
+                    
+                        <p>
+                            <a href="/2017/07/18/嬰幼兒推車選購大作戰！/#post-footer" class="postShorten-excerpt_link link">
+                                Comment and share
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
                         <a class="link-unstyled" href="/2017/07/12/Weekly-reading-2017-Jul-1-9/">
                             Weekly reading (2017/Jul 1-9)
                         </a>
@@ -262,160 +489,6 @@
         
     </article>
     
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a class="link-unstyled" href="/2017/06/26/Weekly-reading-2017-Jun-19-25/">
-                            Weekly reading (2017/Jun 19-25)
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2017-06-26T00:00:00+08:00">
-	
-		    Jun 26, 2017
-    	
-    </time>
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <h2 id="Where-should-I-put-script-tags-in-HTML-markup"><a href="#Where-should-I-put-script-tags-in-HTML-markup" class="headerlink" title="Where should I put script tags in HTML markup?"></a><a href="https://stackoverflow.com/questions/436411/where-should-i-put-script-tags-in-html-markup" target="_blank" rel="noopener">Where should I put <em>script</em> tags in HTML markup?</a></h2><p>  最近再次回歸 <em>Javascript</em> 的懷抱，因此才有機會來研究一下為何 <em><strong>script</strong></em> 的宣告要放在 Body的最後一行，也就是的上面，<br>  文章中有解釋這其實關係到 browser 解析 HTML 跟 Javascript 的方式，且在 HTML5 也提供了 <strong>async</strong> 和 <strong>defer</strong> 來處理這個問題。<br>  掰惹未，目前處於只會用<a href="http://vanilla-js.com" target="_blank" rel="noopener">vanilla.js</a>的狀態，有需要再來找套framework來用吧！</p>
-<h2 id="Double-precision-floating-point-format"><a href="#Double-precision-floating-point-format" class="headerlink" title="Double-precision floating-point format"></a><a href="https://en.wikipedia.org/wiki/Double-precision_floating-point_format" target="_blank" rel="noopener">Double-precision floating-point format</a></h2><p>  如上述，最近在進行 <em>Javascript</em> 的開發，因會需要儲存 <em>時間戳記 (Timestamp)</em> 這樣的資料欄位，也才想到 js 中對於數字的設計和定義是怎樣的，如 Java 和 C 會有 int, long, double 這樣的差異。 而原來 js 中對數字一律定義為 double-precision floating-point，也就是 Double 的概念！</p>
-<h2 id="An-Empirical-Study-of-Load-Balancing-Algorithms"><a href="#An-Empirical-Study-of-Load-Balancing-Algorithms" class="headerlink" title="An Empirical Study of Load Balancing Algorithms"></a><a href="http://liblb.com/study.html" target="_blank" rel="noopener">An Empirical Study of Load Balancing Algorithms</a></h2><p>  基本上是介紹一個以 Go 寫成的 Load Balance service，但主要作者對於所用的演算法 <em>Round Robin</em>、 <em>Two Random Choices</em>、 <em>Consistent Hashing</em> 、 <em>Bounded Consistent Hashing</em>有著不錯的優劣分析，以及比較。總之，就是乾貨！</p>
-
-                    
-                        
-
-                    
-                    
-                        <p>
-                            <a href="/2017/06/26/Weekly-reading-2017-Jun-19-25/#post-footer" class="postShorten-excerpt_link link">
-                                Comment and share
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a class="link-unstyled" href="/2017/06/19/Weekly-reading-2017-Jun-12-18/">
-                            Weekly reading (2017/Jun 12-18)
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2017-06-19T00:00:00+08:00">
-	
-		    Jun 19, 2017
-    	
-    </time>
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <h2 id="You-are-not-Google"><a href="#You-are-not-Google" class="headerlink" title="You are not Google"></a><a href="https://blog.bradfieldcs.com/you-are-not-google-84912cf44afb" target="_blank" rel="noopener">You are not Google</a></h2><p>  作者指出軟體工程師常會因業界大頭(例如: Google) 或論壇熱門討論的技術，一頭熱的想導入自己的系統架構中，而忽略的是否真的需要這樣的技術以及真正的問題。<br>  作者亦提出了 <strong>UNPHAT</strong> 的自我審視方式，來檢驗是否真的要導入一項技術。</p>
-<ul>
-<li>Don’t even start considering solutions until you <strong>Understa</strong> the problem. Your goal should be to “solve” the problem mostly within the problem domain, not the solution domain.</li>
-<li><strong>eNumerate</strong> multiple candidate solutions. Don’t just start prodding at your favorite!</li>
-<li>Consider a candidate solution, then read the <strong>Paper</strong> if there is one.</li>
-<li>Determine the <strong>Historical context</strong> in which the candidate solution was designed or developed.</li>
-<li>Weigh <strong>Advantages</strong> against disadvantages. Determine what was de-prioritized to achieve what was prioritized.</li>
-<li><p><strong>Think!</strong> Soberly and humbly ponder how well this solution fits your problem. What fact would need to be different for you to change your mind? For instance, how much smaller would the data need to be before you’d elect not to use Hadoop?</p>
-<p>覺得概念如同 <a href="https://en.wikipedia.org/wiki/Donald_Knuth" target="_blank" rel="noopener"><strong>Donald Ervin Knuth</strong></a> 說過的 <strong>premature optimization is the root of all evil (or at least most of it) in programming</strong> (<em>過早的最佳化是種罪惡</em>)，先把焦點放在<strong>要解決的問題</strong>，而不是解決問題的方法。</p>
-</li>
-</ul>
-<h2 id="否决你方案的领导并不傻！小心让优越感毁掉你的职业生涯"><a href="#否决你方案的领导并不傻！小心让优越感毁掉你的职业生涯" class="headerlink" title="否决你方案的领导并不傻！小心让优越感毁掉你的职业生涯"></a><a href="http://36kr.com/p/5079363.html" target="_blank" rel="noopener">否决你方案的领导并不傻！小心让优越感毁掉你的职业生涯</a></h2><p>  所謂「文人相輕，武人相重」，工程師這類文人在職場上的確多少會有意見被否決或各執一詞的時候。在溝通當下該如何理性的看待事情，而不被情緒影響，我想是需要學習的一門課題。 這篇文章就以作者自身的體驗來講述成因以及如何解決。</p>
-<p>  簡單講就是 <strong>態度</strong> 和 <strong>謙遜</strong>！ 把目標放在問題本身，而非自我或溝通過程。何況「三人行必有我師焉」，每個人的成長、學習、生活方式都不同，多多少少都有可以跟他人學習的地方。共勉之！ </p>
-
-                    
-                        
-
-                    
-                    
-                        <p>
-                            <a href="/2017/06/19/Weekly-reading-2017-Jun-12-18/#post-footer" class="postShorten-excerpt_link link">
-                                Comment and share
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a class="link-unstyled" href="/2017/06/07/The-Ten-Commandments-of-Egoless-Programming/">
-                            The Ten Commandments of Egoless Programming
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2017-06-07T00:00:00+08:00">
-	
-		    Jun 07, 2017
-    	
-    </time>
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <h2 id="軟體十誡"><a href="#軟體十誡" class="headerlink" title="軟體十誡"></a>軟體十誡</h2><p>聖經中有十誡作為宗教律法，而對軟體工程師也有人提出所謂的十誡，雖不至於像宗教律法般的嚴格，但同樣字字珠璣，感同身受。 故特地留一份於此，供我自己及後人景仰XD</p>
-<p>軟體工程師的十誡出自<a href="https://en.wikipedia.org/wiki/Gerald_Weinberg" target="_blank" rel="noopener">Gerald Weinberg</a>在西元1971寫的<a href="https://www.amazon.com/exec/obidos/ASIN/0932633420/codihorr-20" target="_blank" rel="noopener">The Psychology of Computer Programming</a>這本書。 由<a href="https://blog.codinghorror.com/about-me" target="_blank" rel="noopener">Jeff Atwood</a>的<a href="https://blog.codinghorror.com/the-ten-commandments-of-egoless-programming" target="_blank" rel="noopener">部落格文章</a>所整理。</p>
-<h3 id="1-Understand-and-accept-that-you-will-make-mistakes"><a href="#1-Understand-and-accept-that-you-will-make-mistakes" class="headerlink" title="1. Understand and accept that you will make mistakes."></a>1. Understand and accept that you will make mistakes.</h3><p>The point is to find them early, before they make it into production. Fortunately, except for the few of us developing rocket guidance software at JPL, mistakes are rarely fatal in our industry, so we can, and should, learn, laugh, and move on.</p>
-<h3 id="2-You-are-not-your-code"><a href="#2-You-are-not-your-code" class="headerlink" title="2. You are not your code."></a>2. You are not your code.</h3><p>Remember that the entire point of a review is to find problems, and problems will be found. Don’t take it personally when one is uncovered.</p>
-<h3 id="3-No-matter-how-much-“karate”-you-know-someone-else-will-always-know-more"><a href="#3-No-matter-how-much-“karate”-you-know-someone-else-will-always-know-more" class="headerlink" title="3. No matter how much “karate” you know, someone else will always know more."></a>3. No matter how much “karate” you know, someone else will always know more.</h3><p>Such an individual can teach you some new moves if you ask. Seek and accept input from others, especially when you think it’s not needed.</p>
-<h3 id="4-Don’t-rewrite-code-without-consultation"><a href="#4-Don’t-rewrite-code-without-consultation" class="headerlink" title="4. Don’t rewrite code without consultation."></a>4. Don’t rewrite code without consultation.</h3><p>There’s a fine line between “fixing code” and “rewriting code.” Know the difference, and pursue stylistic changes within the framework of a code review, not as a lone enforcer.</p>
-<h3 id="5-Treat-people-who-know-less-than-you-with-respect-deference-and-patience"><a href="#5-Treat-people-who-know-less-than-you-with-respect-deference-and-patience" class="headerlink" title="5. Treat people who know less than you with respect, deference, and patience."></a>5. Treat people who know less than you with respect, deference, and patience.</h3><p>Nontechnical people who deal with developers on a regular basis almost universally hold the opinion that we are prima donnas at best and crybabies at worst. Don’t reinforce this stereotype with anger and impatience.</p>
-<h3 id="6-The-only-constant-in-the-world-is-change"><a href="#6-The-only-constant-in-the-world-is-change" class="headerlink" title="6. The only constant in the world is change."></a>6. The only constant in the world is change.</h3><p>Be open to it and accept it with a smile. Look at each change to your requirements, platform, or tool as a new challenge, not as some serious inconvenience to be fought.</p>
-<h3 id="7-The-only-true-authority-stems-from-knowledge-not-from-position"><a href="#7-The-only-true-authority-stems-from-knowledge-not-from-position" class="headerlink" title="7. The only true authority stems from knowledge, not from position."></a>7. The only true authority stems from knowledge, not from position.</h3><p>Knowledge engenders authority, and authority engenders respect – so if you want respect in an egoless environment, cultivate knowledge.</p>
-<h3 id="8-Fight-for-what-you-believe-but-gracefully-accept-defeat"><a href="#8-Fight-for-what-you-believe-but-gracefully-accept-defeat" class="headerlink" title="8. Fight for what you believe, but gracefully accept defeat."></a>8. Fight for what you believe, but gracefully accept defeat.</h3><p>Understand that sometimes your ideas will be overruled. Even if you do turn out to be right, don’t take revenge or say, “I told you so” more than a few times at most, and don’t make your dearly departed idea a martyr or rallying cry.</p>
-<h3 id="9-Don’t-be-“the-guy-in-the-room-”"><a href="#9-Don’t-be-“the-guy-in-the-room-”" class="headerlink" title="9. Don’t be “the guy in the room.”"></a>9. Don’t be “the guy in the room.”</h3><p>Don’t be the guy coding in the dark office emerging only to buy cola. The guy in the room is out of touch, out of sight, and out of control and has no place in an open, collaborative environment.</p>
-<h3 id="10-Critique-code-instead-of-people-–-be-kind-to-the-coder-not-to-the-code"><a href="#10-Critique-code-instead-of-people-–-be-kind-to-the-coder-not-to-the-code" class="headerlink" title="10. Critique code instead of people – be kind to the coder, not to the code."></a>10. Critique code instead of people – be kind to the coder, not to the code.</h3><p>As much as possible, make all of your comments positive and oriented to improving the code. Relate comments to local standards, program specs, increased performance, etc.</p>
-
-                    
-                        
-
-                    
-                    
-                        <p>
-                            <a href="/2017/06/07/The-Ten-Commandments-of-Egoless-Programming/#post-footer" class="postShorten-excerpt_link link">
-                                Comment and share
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
     <div class="pagination-bar">
     <ul class="pagination">
         
@@ -434,7 +507,7 @@
             </a>
           </li>
         
-        <li class="pagination-number">page 4 of 6</li>
+        <li class="pagination-number">page 4 of 7</li>
     </ul>
 </div>
 

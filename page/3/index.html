@@ -171,6 +171,374 @@
             <div class="postShorten-header">
                 <h1 class="postShorten-title">
                     
+                        <a class="link-unstyled" href="/2018/07/03/Setup-linux-terminal-with-chinese/">
+                            Setup linux terminal with chinese
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2018-07-03T00:00:00+08:00">
+	
+		    Jul 03, 2018
+    	
+    </time>
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <p>最近用 Vagrant 建環境時，因為下載的 Ubuntu Box 只有安裝英文語系，也就是沒辦法在 Terminal 上正常顯示和輸入中文。<br>為避免記性差了，特以此文章做個紀錄！</p>
+<h2 id="解決步驟："><a href="#解決步驟：" class="headerlink" title="解決步驟："></a>解決步驟：</h2><h3 id="1-確認目前系統安裝的語系"><a href="#1-確認目前系統安裝的語系" class="headerlink" title="1. 確認目前系統安裝的語系"></a>1. 確認目前系統安裝的語系</h3><p>輸入 <em>locale -a</em><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ locale -a</span><br><span class="line"></span><br><span class="line">C</span><br><span class="line">C.UTF-8</span><br><span class="line">en_US.utf8</span><br><span class="line">POSIX</span><br></pre></td></tr></table></figure></p>
+<p>可以看到只有英文語系（C, POSIX, en_US.UTF8…等）的設定。</p>
+<h3 id="2-確認目前語系的設定"><a href="#2-確認目前語系的設定" class="headerlink" title="2. 確認目前語系的設定"></a>2. 確認目前語系的設定</h3><p>輸入 <em>locale</em><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">  $ locale</span><br><span class="line">  </span><br><span class="line">LANG=en_US.utf8</span><br></pre></td></tr></table></figure></p>
+<p>可以看到只有 <strong>LANG</strong> 被設定為 _en<em>US.UTF8</em><br>下面也列出語系相關的設定值：</p>
+<ul>
+<li><p>LANG<br>為所有語系設定的預設值，若其他語系設定有設定值，則取代此預設值。</p>
+</li>
+<li><p>LC<em>ADDRESS<br>地址的顯示格式 e.g. </em>台灣, 台北<em> 或是 </em>台北, 台灣_</p>
+</li>
+<li><p>LC_ALL<br>所有語系設定的設定值，可直接覆蓋其他語系設定的設定值。</p>
+</li>
+<li><p>LC_COLLATE<br>字串的排序方式。 e.g. 檔名字典排序</p>
+</li>
+<li><p>LC_CTYPE<br>字元轉換為文字或數字的設定。 e.g. 鍵盤的輸入字元轉換為文字</p>
+</li>
+<li><p>LC_IDENTIFICATION<br>語系資訊的 Metadata 的設定。</p>
+</li>
+<li><p>LC<em>MEASUREMENT<br>度量衡使用的單位 e.g. </em>公斤<em>/</em>英鎊<em>, </em>公尺<em>/</em>英尺_</p>
+</li>
+<li><p>LC_MESSAGES<br>系統訊息顯示的語系。</p>
+</li>
+<li><p>LC_MONETARY<br>貨幣使用的單位和名稱。 e.g. <em>NTD</em>, <em>USD</em></p>
+</li>
+<li><p>LC_NAME<br>名字顯示的格式。 e.g. <em>First name</em>, <em>Last name</em></p>
+</li>
+<li><p>LC_NUMERIC<br>數字顯示的格式。 e.g. 123.456, 123,456</p>
+</li>
+<li><p>LC_PAPER<br>紙張列印尺寸的設定。 e.g. A4, 11 x 17 英尺</p>
+</li>
+<li><p>LC_RESPONSE<br>系統回應訊息的顯示格式。 e.g. <em>Yes</em>/<em>No</em>, <em>y</em>/<em>n</em></p>
+</li>
+<li><p>LC_TELEPHONE<br>電話號碼的顯示格式。</p>
+</li>
+<li><p>LC_TIME<br>時間和日期的顯示格式。</p>
+</li>
+</ul>
+<h3 id="3-新增系統語系"><a href="#3-新增系統語系" class="headerlink" title="3. 新增系統語系"></a>3. 新增系統語系</h3><p>輸入 <em>sudo locale-gen locale1, locale2</em> …</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ sudo locale-gen zh_TW zh_TW.UTF-8</span><br><span class="line"></span><br><span class="line">Generating locales...</span><br><span class="line">  zh_TW.BIG5... done</span><br><span class="line">  zh_TW.UTF-8... done</span><br><span class="line">Generation complete.</span><br></pre></td></tr></table></figure>
+<p>或是編輯 <em>/var/lib/locales/supported.d/local</em><br>增加想新增的語系後，輸入 <em>sudo locale-gen</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ sudo locale-gen</span><br><span class="line"></span><br><span class="line">en_US.UTF-8 UTF-8</span><br><span class="line">zh_TW.UTF-8 UTF-8</span><br><span class="line">zh_TW BIG5</span><br></pre></td></tr></table></figure>
+<h3 id="4-變更語系設定"><a href="#4-變更語系設定" class="headerlink" title="4. 變更語系設定"></a>4. 變更語系設定</h3><ul>
+<li><h4 id="變更系統層級的全域設定"><a href="#變更系統層級的全域設定" class="headerlink" title="變更系統層級的全域設定"></a>變更系統層級的全域設定</h4><p>編輯 <em>/etc/default/locale</em><br>將  <strong>LANG</strong> 和 <strong>LC_ALL</strong> 設定為 _<strong>zh_TW.UTF-8</strong>_</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ sudo vim /etc/default/locale</span><br><span class="line"></span><br><span class="line">  LANG=&quot;zh_TW.UTF-8&quot;</span><br><span class="line">  LC_ALL=&quot;zh_TW.UTF-8&quot;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><h4 id="變更個人-User-層級的設定"><a href="#變更個人-User-層級的設定" class="headerlink" title="變更個人 User 層級的設定"></a>變更個人 User 層級的設定</h4><p>編輯 _/.bash<em>profile</em> 等 User 設定檔<br>將  <strong>LANG</strong> 和 <strong>LC_ALL</strong> 設定為 _<strong>zh_TW.UTF-8</strong>_</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ sudo vim _/.bash_profile_</span><br><span class="line"></span><br><span class="line">  export LANG=&quot;zh_TW.UTF-8&quot;</span><br><span class="line">  export LC_ALL=&quot;zh_TW.UTF-8&quot;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="5-最後"><a href="#5-最後" class="headerlink" title="5. 最後"></a>5. 最後</h3><p>重新登入後，就可以看到 Terminal 支援中文囉！</p>
+<h2 id="Ref"><a href="#Ref" class="headerlink" title="Ref:"></a><em>Ref</em>:</h2><ul>
+<li><a href="https://help.ubuntu.com/community/Locale" target="_blank" rel="noopener">Ubuntu - Locale</a></li>
+<li><a href="http://sfs.chc.edu.tw/~chi/blog/index.php?load=read&amp;id=296" target="_blank" rel="noopener">Ubuntu 14.04 主機的終端機中文顯示</a></li>
+<li><a href="http://www.davidpai.tw/ubuntu/2011/ubuntu-set-locale" target="_blank" rel="noopener">[Ubuntu] 如何設定語系locale</a></li>
+</ul>
+
+                    
+                        
+
+                    
+                    
+                        <p>
+                            <a href="/2018/07/03/Setup-linux-terminal-with-chinese/#post-footer" class="postShorten-excerpt_link link">
+                                Comment and share
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
+                        <a class="link-unstyled" href="/2017/11/20/JVM-command-line-utils/">
+                            JVM command-line utils
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2017-11-20T00:00:00+08:00">
+	
+		    Nov 20, 2017
+    	
+    </time>
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <p>話說，當軟體過了開發衝刺的高峰後，接下來就可以開始進行 <a href="https://docs.oracle.com/cd/E13222_01/wls/docs81/perform/JVMTuning.html" target="_blank" rel="noopener">JVM tuning</a> 的動作了，而這時就會用到一些工具來觀察 <a href="https://en.wikipedia.org/wiki/Java_virtual_machine" target="_blank" rel="noopener">JVM</a> 運行的狀況。<br>基本上還是推薦好操作，好上手的工具來使用，例如：<a href="https://visualvm.github.io/" target="_blank" rel="noopener">VisualVM</a>、<a href="https://www.ej-technologies.com/products/jprofiler/overview.html" target="_blank" rel="noopener">Profiler</a>或至少用個 <a href="https://docs.oracle.com/javase/7/docs/technotes/guides/management/jconsole.html" target="_blank" rel="noopener">JConsole</a>！</p>
+<p>但有時，天不從人願，就是會遇到只有 console 的情況… 這時就只好用 JDK 內建的 command-line 工具來觀察 JVM 了！</p>
+<h3 id="1-jps-查看目前系統上運行的JVM的-Process-資訊"><a href="#1-jps-查看目前系統上運行的JVM的-Process-資訊" class="headerlink" title="1. jps 查看目前系統上運行的JVM的 Process 資訊"></a>1. jps 查看目前系統上運行的JVM的 Process 資訊</h3><p>我主要是用來看觀察目標的 PID，以供後續使用，僅此而已。但下面講到的 jcmd 也有這樣的功能，所以就更少用到了。</p>
+<ul>
+<li><em>jps</em> &lt;argument&gt;<ul>
+<li>-l 條列各個JVM啟動點 main 的完整 package 資訊</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="2-jcmd-觀察-JVM-設定-資源和-thread-使用量"><a href="#2-jcmd-觀察-JVM-設定-資源和-thread-使用量" class="headerlink" title="2. jcmd 觀察 JVM 設定/資源和 thread 使用量"></a>2. jcmd 觀察 JVM 設定/資源和 thread 使用量</h3><p>這個工具能觀察的東西就多了，例如 JVM 的系統參數、JVM 啟動參數、JVM 運行時間、載入的 Class 資訊、目前運行的 thread 資訊等等，都是在進行 tuning 時參考的資訊。</p>
+<table>
+<thead>
+<tr>
+<th>Commands</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Thread.print</td>
+<td>Print all threads with stacktraces. <strong><em>Commonly used</em></strong></td>
+</tr>
+<tr>
+<td>GC.rotate_log</td>
+<td>Force the GC log file to be rotated.</td>
+</tr>
+<tr>
+<td>GC.class_stats</td>
+<td>Provide statistics about Java class meta data.</td>
+</tr>
+<tr>
+<td>GC.class_histogram</td>
+<td>Provide statistics about the Java heap usage. <strong><em>Commonly used</em></strong></td>
+</tr>
+<tr>
+<td>GC.heap_dump</td>
+<td>Generate a HPROF format dump of the Java heap.</td>
+</tr>
+<tr>
+<td>GC.run_finalization</td>
+<td>Call java.lang.System.runFinalization().</td>
+</tr>
+<tr>
+<td>GC.run</td>
+<td>Call java.lang.System.gc().</td>
+</tr>
+<tr>
+<td>VM.uptime</td>
+<td>Print VM uptime.</td>
+</tr>
+<tr>
+<td>VM.flags</td>
+<td>Print VM flag options and their current values. <strong><em>Commonly used</em></strong></td>
+</tr>
+<tr>
+<td>VM.system_properties</td>
+<td>Print VM flag options and their current values. <strong><em>Commonly used</em></strong></td>
+</tr>
+<tr>
+<td>VM.command_line</td>
+<td>Print system properties. <strong><em>Commonly used</em></strong></td>
+</tr>
+<tr>
+<td>VM.version</td>
+<td>Print JVM version information.</td>
+</tr>
+<tr>
+<td>VM.native_memory</td>
+<td>Print native memory usage</td>
+</tr>
+<tr>
+<td>ManagementAgent.stop</td>
+<td>Stop remote management agent.</td>
+</tr>
+<tr>
+<td>ManagementAgent.start_local</td>
+<td>Start local management agent.</td>
+</tr>
+<tr>
+<td>ManagementAgent.start</td>
+<td>Start remote management agent.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="3-jstat-即時觀察-JVM-GC的情況"><a href="#3-jstat-即時觀察-JVM-GC的情況" class="headerlink" title="3. jstat 即時觀察 JVM GC的情況"></a>3. jstat 即時觀察 JVM GC的情況</h3><p>最後，jstat 這項工具主要用於觀察 GC 的狀況，例如：各記憶體區塊的使用狀況、GC event 的次數、GC 花費的時間等等，透過這些資訊配合上一個 jcmd 就更容易找出 JVM 的 bottleneck。</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-class</td>
+<td>Class loader statistics. <strong><em>Commonly used</em></strong></td>
+</tr>
+<tr>
+<td>-compiler</td>
+<td>Java HotSpot VM Just-in-Time compiler statistics.</td>
+</tr>
+<tr>
+<td>-gc</td>
+<td>Garbage-collected heap statistics.</td>
+</tr>
+<tr>
+<td>-gccapacity</td>
+<td>Memory pool generation and space capacities.</td>
+</tr>
+<tr>
+<td>-gccause</td>
+<td>Displays the summary of garbage collection statistics, includes the causes of the last garbage collection event and (when applicable) the current garbage collection event.</td>
+</tr>
+<tr>
+<td>-gcmetacapacity</td>
+<td>Metaspace size statistics.</td>
+</tr>
+<tr>
+<td>-gcnew</td>
+<td>New generation statistics.</td>
+</tr>
+<tr>
+<td>-gcnewcapacity</td>
+<td>New generation space size statistics.</td>
+</tr>
+<tr>
+<td>-gcold</td>
+<td>Old generation and metaspace behavior statistics.</td>
+</tr>
+<tr>
+<td>-gcoldcapacity</td>
+<td>Old generation size statistics.</td>
+</tr>
+<tr>
+<td>-gcutil</td>
+<td>Summary of garbage collection statistics. <strong><em>Commonly used</em></strong></td>
+</tr>
+<tr>
+<td>-printcompilation</td>
+<td>Java HotSpot VM compiler method statistics.</td>
+</tr>
+</tbody>
+</table>
+<p>下面以我常用的 <em>-gcutil</em> 來說明觀察 GC 時的參數<br><img src="imgs/gcutil.png" alt="gcutil"></p>
+<ul>
+<li><strong>S0</strong>: Survivor space 0 記憶體使用率</li>
+<li><strong>S1</strong>: Survivor space 1 記憶體使用率</li>
+<li><strong>E</strong>:  Eden space 記憶體使用率</li>
+<li><strong>O</strong>:  Old space 記憶體使用率</li>
+<li><strong>P</strong>:  記憶體使用率</li>
+<li><strong>YGC</strong>: young generation GC events 次數</li>
+<li><strong>YGCT</strong>: Young generation GC time </li>
+<li><strong>FGC</strong>: Full GC events 次數</li>
+<li><strong>FGCT</strong>: Full GC time in second since the JVM started</li>
+<li><strong>GCT</strong>: Total gc time in second since the JVM started</li>
+</ul>
+<hr>
+<h4 id="ref"><a href="#ref" class="headerlink" title="ref:"></a><em>ref:</em></h4><ul>
+<li><p><a href="http://www.oracle.com/webfolder/technetwork/tutorials/obe/java/JavaJCMD/index.html" target="_blank" rel="noopener">Java SE 7: Reviewing JVM Performance Command Line Tools</a></p>
+</li>
+<li><p><a href="http://docs.oracle.com/javase/1.5.0/docs/tooldocs/share/jstat.html" target="_blank" rel="noopener">jstat - Java Virtual Machine Statistics Monitoring Tool</a></p>
+</li>
+<li><p><a href="https://stackoverflow.com/questions/29798704/specific-meanings-of-jstat-parameters-ygct-fgct-gct" target="_blank" rel="noopener">Specific meanings of jstat parameters : YGCT FGCT GCT</a></p>
+</li>
+</ul>
+
+                    
+                        
+
+                    
+                    
+                        <p>
+                            <a href="/2017/11/20/JVM-command-line-utils/#post-footer" class="postShorten-excerpt_link link">
+                                Comment and share
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
+                        <a class="link-unstyled" href="/2017/11/13/Java-Static-Analysis-Tools/">
+                            Java Static Analysis Tools
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2017-11-13T00:00:00+08:00">
+	
+		    Nov 13, 2017
+    	
+    </time>
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <p>程式是人寫的，而人寫的就有可能會有失誤發生，又或是經驗不足，寫出了有<a href="https://en.wikipedia.org/wiki/Vulnerability_(computing%29" target="_blank" rel="noopener">漏洞</a>或 <a href="https://en.wikipedia.org/wiki/Software_bug" target="_blank" rel="noopener">Bug</a> 的程式。這時就所以需要工具來幫我們來做檢查。 又或著要統一整體開發的 <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Developer_guide/Coding_Style" target="_blank" rel="noopener">Coding Style</a>，與其耗費人力檢查，同樣的還是透過工具檢查簡單省力！</p>
+<p>這篇就來簡單介紹我之前在案子上常用的三種不同的靜態程式碼分析工具，分別是能檢查 Bug 或漏洞的 <em><strong>FindBug</strong></em> 和 <em><strong>PMD</strong></em>，以及能定義及檢查 Coding Style 的 <em><strong>CheckStyle</strong></em></p>
+<h3 id="1-FindBugs"><a href="#1-FindBugs" class="headerlink" title="1. FindBugs"></a>1. <em><a href="http://findbugs.sourceforge.net/" target="_blank" rel="noopener">FindBugs</a></em></h3><p>首先是個人覺得最好用的 FindBug，為何好用？因為它能幫我們發現可能產生 bug 的程式，從是否有確實釋放 IO 資源到是否會產生 dead lock 之類的 concurrent 問題，都能有效的作檢查。 另外也有支援常用 IDE 的 plugin</p>
+<ul>
+<li>Plugin: <ul>
+<li><em><a href="https://plugins.jetbrains.com/plugin/3847?pr=idea" target="_blank" rel="noopener">Findbugs IntelliJ Plugin</a></em></li>
+<li><em><a href="http://andrei.gmxhome.de/findbugs/index.html" target="_blank" rel="noopener">Findbugs Eclipse Plugin</a></em></li>
+<li><em><a href="http://gleclaire.github.io/findbugs-maven-plugin/usage.html" target="_blank" rel="noopener">Findbugs Maven Plugin</a></em></li>
+</ul>
+</li>
+<li><a href="https://developer.apple.com/library/content/documentation/ToolsLanguages/Conceptual/Xcode_Overview/AnalyzingYourCode.html" target="_blank" rel="noopener">Analyzing on Xcode</a></li>
+</ul>
+<h3 id="2-PMD"><a href="#2-PMD" class="headerlink" title="2. PMD"></a>2. <em><a href="https://pmd.github.io/" target="_blank" rel="noopener">PMD</a></em></h3><p>而 PMD 主要則檢查寫程式時可能發生的錯誤，例如：宣告了未使用的變數，又或是邏輯上的漏洞等，比較算是 coding 上 bad pratice 的檢查。</p>
+<h3 id="3-CheckStyle"><a href="#3-CheckStyle" class="headerlink" title="3. CheckStyle"></a>3. <em><a href="http://checkstyle.sourceforge.net/" target="_blank" rel="noopener">CheckStyle</a></em></h3><p>最後的 <strong>CheckStyle</strong> 也許不檢查 bug ，但在統一團隊的 coding style 上則是最好用的一個工具。<br>小的從間隔幾個空格到變數/方法的命名，都能夠自定義規則。</p>
+<h3 id="ref"><a href="#ref" class="headerlink" title="ref:"></a><em>ref:</em></h3><ol>
+<li><a href="http://blog.codacy.com/2016/03/22/review-java-static-analysis-tools/" target="_blank" rel="noopener">http://blog.codacy.com/2016/03/22/review-java-static-analysis-tools/</a></li>
+<li><a href="http://continuousdev.com/2015/08/checkstyle-vs-pmd-vs-findbugs/" target="_blank" rel="noopener">http://continuousdev.com/2015/08/checkstyle-vs-pmd-vs-findbugs/</a></li>
+</ol>
+
+                    
+                        
+
+                    
+                    
+                        <p>
+                            <a href="/2017/11/13/Java-Static-Analysis-Tools/#post-footer" class="postShorten-excerpt_link link">
+                                Comment and share
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
                         <a class="link-unstyled" href="/2017/11/04/吾家有女正長成/">
                             吾家有女正長成
                         </a>
@@ -300,233 +668,6 @@
         
     </article>
     
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a class="link-unstyled" href="/2017/08/27/吾家有女初長成/">
-                            吾家有女初長成
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2017-08-27T00:00:00+08:00">
-	
-		    Aug 27, 2017
-    	
-    </time>
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <p>已經一個月沒有發新文章，因為家裡發生了件大事，也是我人生中的一件大事，就是 吾家有女初生成!!!</p>
-<p>就在等待了整 40 週 + 1 天後，在 8/14 的凌晨，她誕生了。</p>
-<p><img src="/imgs/baby1.jpg" alt="baby1"></p>
-<p>在這一刻，我的身份也立刻升級成為一位父親，這是一份責任重大的職位。<br>也是讓人願意為其付出，甘之如飴的職位。</p>
-<p><img src="/imgs/baby3.jpg" alt="baby3"></p>
-<p>最後，希望妳能好好的健康長大，成為怎樣的人我們晚點再說～</p>
-<p><img src="/imgs/baby2.jpg" alt="baby2"><br><img src="/imgs/baby4.jpg" alt="baby4"></p>
-
-                    
-                        
-
-                    
-                    
-                        <p>
-                            <a href="/2017/08/27/吾家有女初長成/#post-footer" class="postShorten-excerpt_link link">
-                                Comment and share
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a class="link-unstyled" href="/2017/07/31/Weekly-reading-2017-Jul-24-30/">
-                            Weekly reading (2017/Jul 24-30)
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2017-07-31T00:00:00+08:00">
-	
-		    Jul 31, 2017
-    	
-    </time>
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <h2 id="根本就没有什么所谓的开源商业模式"><a href="#根本就没有什么所谓的开源商业模式" class="headerlink" title="根本就没有什么所谓的开源商业模式"></a><a href="http://www.ocselected.org/posts/business_model/there_is_no_open_source_business_model/" target="_blank" rel="noopener">根本就没有什么所谓的开源商业模式</a></h2><p>作者翻譯了<a href="https://twitter.com/stephenrwalli" target="_blank" rel="noopener">Stephen R. Walli</a>對於 Open Source 是否存在 Business Model 這個問題，所提出的看法。<br>看來這篇後，針對參與Open Source的影響能歸納出以下幾點：</p>
-<ol>
-<li><p>增進公司產品技術成熟度<br>若將產品開源或選用Open Source軟體並參與其中，則可說是集眾人之智一同來開發、測試和維護。</p>
-</li>
-<li><p>節省公司成本<br>文中以 <a href="https://en.wikipedia.org/wiki/Interix" target="_blank" rel="noopener">Interix</a> 為例，指出與其花費人力、金錢重新打造系統，不如選用熱門的Open Source軟體來得划算。</p>
-</li>
-<li><p>成就個人<br>參與 Open Source 專案，就是是參與一個軟體專案的開發，甚至可能是世界級的，這樣的經歷比開發政府專案實在好太多！</p>
-</li>
-</ol>
-<p><em>ref:</em></p>
-<ul>
-<li><a href="https://www.slideshare.net/LCChina/there-is-no-open-source-business-model" target="_blank" rel="noopener">slide</a></li>
-<li><a href="https://medium.com/@stephenrwalli/there-is-no-open-source-business-model-cdc4cc20238" target="_blank" rel="noopener">原文</a></li>
-</ul>
-<hr>
-<h2 id="Upgrading-Pinterest-to-HBase-1-2-from-0-94"><a href="#Upgrading-Pinterest-to-HBase-1-2-from-0-94" class="headerlink" title="Upgrading Pinterest to HBase 1.2 from 0.94"></a><a href="https://medium.com/@Pinterest_Engineering/upgrading-pinterest-to-hbase-1-2-from-0-94-e6e34c157783" target="_blank" rel="noopener">Upgrading Pinterest to HBase 1.2 from 0.94</a></h2><p>Pinterest 是一個全球10大社群網站之一，使用者主要可以在上面分享照片和文章，也因此在服務背後的資料庫 <a href="http://hbase.apache.org/" target="_blank" rel="noopener">HBase</a> 保存了 10PB 以上的資料以及10M 以上的 QPS<br>作者主要敘述他們從HBase 0.94 到 1.2 的升級過程，包含：</p>
-<ol>
-<li>如何達到 <a href="https://dzone.com/articles/zero-downtime-%E2%80%93-what-it-and" target="_blank" rel="noopener">zero downtime</a></li>
-<li>現有資料的 replication</li>
-<li>備援/Roll back 機制</li>
-<li>HBase 效能的調整</li>
-</ol>
-<p>因為目前產品使用也有使用到 HBase ，所以整篇看完特別有感，況且這樣的版本遷移也是總有一天會遇到的事情！</p>
-<p><em>ref:</em></p>
-<ul>
-<li><a href="http://opentsdb.github.io/asynchbase/" target="_blank" rel="noopener">AsyncHBase</a></li>
-<li><a href="https://issues.apache.org/jira/browse/HBASE-12814" target="_blank" rel="noopener">Thrift-Based Patch</a></li>
-<li><a href="http://hbase.apache.org/book.html#upgrade0.96" target="_blank" rel="noopener">Upgrade HBase</a></li>
-<li><a href="https://blogs.apache.org/hbase/entry/offheap-read-path-in-production" target="_blank" rel="noopener">Offheap Read-Path</a></li>
-</ul>
-
-                    
-                        
-
-                    
-                    
-                        <p>
-                            <a href="/2017/07/31/Weekly-reading-2017-Jul-24-30/#post-footer" class="postShorten-excerpt_link link">
-                                Comment and share
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a class="link-unstyled" href="/2017/07/18/嬰幼兒推車選購大作戰！/">
-                            嬰幼兒推車+汽座選購大作戰！
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2017-07-18T00:45:27+08:00">
-	
-		    Jul 18, 2017
-    	
-    </time>
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <p>自從老婆肚子有了消息，身為未來父親的我也已採購了奶瓶、奶嘴、包巾、紗布衣…等族繁不及備載的日常用品，但最重要也最傷荷包的嬰兒床、嬰幼兒推車和嬰幼兒汽車座椅卻遲遲無法決定！<br>直到近來，因為家中長女呼之欲出，只好趕緊來看看出院後就會用到的汽座和相關性最高的推車了！</p>
-<h3 id="以下為個人主觀意見"><a href="#以下為個人主觀意見" class="headerlink" title="===== 以下為個人主觀意見 ====="></a>===== 以下為個人主觀意見 =====</h3><hr>
-<h1 id="嬰幼兒推車"><a href="#嬰幼兒推車" class="headerlink" title="嬰幼兒推車"></a>嬰幼兒推車</h1><p><img src="http://i.imgur.com/6LSps77.jpg" alt="Stroller"><br><em>source:<a href="https://www.flickr.com/photos/kevinpoh/4545094285" target="_blank" rel="noopener">Kevin Poh</a></em></p>
-<p>網路上看了許多心得和資料後，首先可分作兩大類：</p>
-<ol>
-<li><p>歐系車：</p>
-<ul>
-<li>優點：空間大、行進穩</li>
-<li>缺點：重、收車不易、佔用空間大</li>
-</ul>
-</li>
-<li><p>日系／台系車：</p>
-<ul>
-<li>優點：輕巧、單手收車</li>
-<li>缺點：崎嶇路面易不穩或彈跳、如在車上掛東西有”倒頭栽”的可能</li>
-</ul>
-</li>
-</ol>
-<p>
-
-</p><p>接著依照個人的需求，歸納出以下幾點：<br><strong>1. 雙向：</strong>  老婆希望就算不結合提籃也能看著寶寶<br><strong>2. 好收：</strong>  老婆獨自帶寶寶出門時，能夠獨立作業<br><strong>3. 座位空間可調整：</strong>  隨著寶寶長大，希望也能坐得舒服<br><strong>4. 置物空間大：</strong>  希望能多放點東西，就能少拿點東西<br><strong>5. 置物空間好收放：</strong>  除了多放東西也希望能好放好拿<br><strong>6. 遮陽範圍廣：</strong>  除了上半身，也希望腳腳不要曬黑<br><strong>7. 可與汽車提籃結合：</strong>  個人希望能和汽座提籃達到「無縫接軌」</p>
-<p>最後，也根據這篇<a href="https://drkentsui.com/2016/08/01/%E5%AC%B0%E5%85%92%E6%8E%A8%E8%BB%8A%E9%81%B8%E8%B3%BC%E8%A6%81%E9%BB%9E-%EF%BC%9A%E5%85%92%E7%A7%91%E9%86%AB%E5%B8%AB%E8%89%AF%E5%BF%83%E5%BB%BA%E8%AD%B0/" target="_blank" rel="noopener">文章</a>的建議，考量跟安全相關的重點：<br><strong>1. 五點式安全帶:</strong>  根據美國的統計，跟嬰幼兒推車相關的意外裡，最大的原因就是因為沒有繫安全帶！ 所以這點是一定要的！<br><strong>2. 安全、無毒材質:</strong>  寶寶在車上，除了會亂咬亂舔外，皮膚也會直接接觸到推車，所以希望能夠是讓人放心的推車材質。<br><strong>3. 推車結構:</strong> 除了顛頗路面的小彈跳、小碰撞外，也希望推車放了東西後的重量能夠平均，不要「倒頭栽」！</p>
-<hr>
-<h1 id="嬰幼兒汽車座椅"><a href="#嬰幼兒汽車座椅" class="headerlink" title="嬰幼兒汽車座椅"></a>嬰幼兒汽車座椅</h1><p><img src="http://i.imgur.com/Vj7YfL0.jpg" alt="Car Seat"><br><em>source: <a href="http://www.chicco.com/it.html" target="_blank" rel="noopener">Chicco</a></em></p>
-<p>而在汽座的部分，可以依照<a href="https://en.wikipedia.org/wiki/American_Academy_of_Pediatrics" target="_blank" rel="noopener">美國兒科協會(AAP)</a>)的<a href="https://www.healthychildren.org/English/safety-prevention/on-the-go/pages/Car-Safety-Seats-Information-for-Families.aspx" target="_blank" rel="noopener">指引</a>來做選擇，該指引列出了以下幾點建議：</p>
-<ol>
-<li>2 歲以下且身高體重在後向汽座限制內的嬰幼兒，應選擇 <strong>後向汽座(Rear-Facing))</strong></li>
-<li>2~8 歲且身高體重在前向汽座限制內，或2歲以下且身高體重超過後向汽座限制內的嬰幼兒，應選擇 <strong>前向汽座(Forward-Facing)</strong></li>
-<li>8 歲以上且身高不到 4’9” (約144公分)，或身高體重超過前向汽座限制，應選擇 <strong>增高式汽座(Booster)</strong></li>
-<li>8 歲以上且身高超過 4’9” (約144公分)，或身高體重超過增高式汽座限制，應選擇 <strong>三點式安全帶座位(Vehicle Seat Belt)</strong> </li>
-<li>未滿 13 歲的兒童應坐在車子的 <strong>後座(Rear Seat)</strong> </li>
-</ol>
-<p>
-
-</p><p>再來是汽座的類型，分作：<br><strong>1. <a href="http://www.childcarseats.org.uk/types-of-seat/rearward-facing-baby-seats" target="_blank" rel="noopener">後向式/提籃</a>：</strong> </p>
-<ul>
-<li>如上述指引，2 歲前的嬰幼兒應坐後向汽座，而未滿 1 歲的新生兒更可選擇提籃汽座，讓寶寶較不受打擾。</li>
-</ul>
-<p><strong>2. <a href="http://www.childcarseats.org.uk/types-of-seat/forward-facing-seats" target="_blank" rel="noopener">前向</a>：</strong> </p>
-<ul>
-<li>再大點的寶寶就要坐前向汽座，也是市面上常見的 0 ~ 7、1 ~ 12 等等成長型的汽座。</li>
-</ul>
-<p><strong>3. <a href="http://www.childcarseats.org.uk/types-of-seat/booster-cushions" target="_blank" rel="noopener">增高式</a>：</strong> </p>
-<ul>
-<li>8 歲以上的寶寶，嗯…應該稱兒童，應坐在增高式汽座來配合其身高。</li>
-</ul>
-<p><strong>4. <a href="http://www.childcarseats.org.uk/types-of-seat/i-size-seats" target="_blank" rel="noopener">i-Size</a>：</strong> 這是歐洲在 2013 年公佈的新標準，台灣市面上好像還沒有符合這個標準的汽座，基本上有三點：</p>
-<ul>
-<li>i-size seats are based on the child’s height rather than weight </li>
-<li>i-size rearward-facing restraints are for babies up to 15 months old</li>
-<li>side impact test </li>
-</ul>
-<p>
-
-</p><p>最後，汽座的安裝因前座有安全氣囊所致，皆在汽車的後座位置。至於後座側邊氣囊目前未證實對汽座有影響，細節可參見<a href="https://zh.wikipedia.org/wiki/%E5%BA%A7%E4%BD%8D%E5%AE%89%E5%85%A8%E5%B8%B6" target="_blank" rel="noopener">此討論串</a>，而安裝的方法共有三種不同的標準來配合不同車種的汽車座椅：<br><strong>1. <a href="https://zh.wikipedia.org/wiki/%E5%BA%A7%E4%BD%8D%E5%AE%89%E5%85%A8%E5%B8%B6" target="_blank" rel="noopener">安全帶</a>：</strong>  指的是三點式安全帶，而非後座中間位子常見的兩點式安全帶。 家中老車目前只能選擇這一種規格，看過安裝影片，看起來也是穩穩的！<br>  <em>三點式</em>：<img src="https://upload.wikimedia.org/wikipedia/commons/7/7d/Seatbelt.png" alt="3p"><br>  <em>兩點式</em>：<img src="https://upload.wikimedia.org/wikipedia/commons/b/bc/Airplane_seat_belt_1.jpg" alt="2p"></p>
-<p><strong>2. <a href="https://en.wikipedia.org/wiki/Isofix" target="_blank" rel="noopener">ISOFIX</a>：</strong>  為座椅左右兩端固定的扣環，之前常見於歐系車但現在我看不管哪一系幾乎都有符合標準。<br>  <em>ISOFIX</em>：<img src="http://i.imgur.com/mcUOIHCm.jpg" alt="isopfix"></p>
-<p><strong>3. <a href="http://thecarseatlady.com/the-latch-system" target="_blank" rel="noopener">Latch</a>：</strong> 為座椅上下兩端固定的扣環，常見於美系車，台灣國內的車輛好像很少看到這個標準。<br>  <em>LATCH</em>：<img src="http://i.imgur.com/muFsoPr.jpg" alt="latch"></p>
-<hr>
-<h1 id="所以到底要怎麼買"><a href="#所以到底要怎麼買" class="headerlink" title="所以到底要怎麼買"></a>所以到底要怎麼買</h1><p>文章發布的這個當下，我也還沒決定。 只能說除了上面這麼多，最重要還有要看預算呀！</p>
-<h3 id="ref"><a href="#ref" class="headerlink" title="ref:"></a>ref:</h3><ul>
-<li><a href="https://well.blogs.nytimes.com/2016/08/17/more-head-injuries-reported-for-babies-in-stroller-accidents" target="_blank" rel="noopener">More Head Injuries Reported for Babies in Stroller Accidents</a></li>
-<li><a href="http://pediatrics.aappublications.org/content/pediatrics/early/2011/03/21/peds.2011-0213.full.pdf" target="_blank" rel="noopener">Car Seats Policy</a></li>
-<li><a href="https://mobile01.com/topicdetail.php?f=214&amp;t=1773418" target="_blank" rel="noopener">請問後座側邊輔助氣囊對嬰兒或幼兒的影響</a></li>
-</ul>
-
-                    
-                        
-
-                    
-                    
-                        <p>
-                            <a href="/2017/07/18/嬰幼兒推車選購大作戰！/#post-footer" class="postShorten-excerpt_link link">
-                                Comment and share
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
     <div class="pagination-bar">
     <ul class="pagination">
         
@@ -545,7 +686,7 @@
             </a>
           </li>
         
-        <li class="pagination-number">page 3 of 6</li>
+        <li class="pagination-number">page 3 of 7</li>
     </ul>
 </div>
 

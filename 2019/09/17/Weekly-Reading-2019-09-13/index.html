@@ -1,0 +1,441 @@
+
+<!DOCTYPE html>
+<html lang="en,zh-tw,default">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Just For Fun">
+    <title>Weekly Reading (2019/Jun 09 ~ 13) - Just For Fun</title>
+    <meta name="author" content="W.D">
+    
+    
+        <link rel="icon" href="https://option0417.github.io/imgs/favicon.ico">
+    
+    
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"W.D","sameAs":["https://github.com/option0417","https://twitter.com/option0417","mailto:option0417@gmail.com"],"image":"profile.jpg"},"articleBody":"\n別跟我稱兄道弟，我們不是一家人 : 瘋狂的 Netflix\n不近人情的要求，相對也可得到豐富的報酬，各取所需罷了。\n\nIs High Quality Software Worth the Cost?\n作者 Martin Fowler) 首先將 Quality 分作 External 使用者能直接體會到的特性 (ex. 好的UI , 較少Bug) 和 Internal 使用者較無法體會的特性 (ex. 設計良好的 Software Architecture)。\n好的 UI 設計能吸引使用者，賣得好價錢。那使用者看不到的架構設計值得追求嗎？ 答案當然是 Yes!!優良的設計能在同樣的品質下，增減功能。 若在不良的設計下增減功能，常常會是個悲劇。\n\n谁在“谋杀” Hadoop？因為工作，在 Hadoop 上琢磨不少時間。 文中的一段話\n123除了竞争关系，这篇外媒评论文中还提到了一个重要观点，那就是 Hadoop 使用繁琐，用户体验糟糕，MongoDB 和 Elasticsearch 使用方便，而这也导致了 Hadoop 的“衰败”。\n看了心有戚戚焉，在使用 Hadoop 的確踩了不少坑。現在關於 Big Data 的 solution，Hadoop 已經不是唯一的選擇了。\n\nCloudflare outage caused by bad software deploy看似簡單的 Regular expression，也是能讓系統崩潰的… \n\n一起來了解 Web Authentication加入了實體裝置來作為驗證途徑，在現在人手一機的世界或許會是之後的趨勢，值得花時間深入研究。\n\nCockroachDB: Architecture of a Geo-distributed SQL Database架構上和 HBase 相似，同樣有 Leadership、Replication等概念，但主要以 Raft) 作為 consensus algorithm)。不同的是有所謂 Distributed Transaction 的功能。但從其流程來看，若寫入頻繁的話，效能會是個議題。\n\n\n","dateCreated":"2019-09-17T00:00:00+08:00","dateModified":"2019-09-18T00:49:10+08:00","datePublished":"2019-09-17T00:00:00+08:00","description":"","headline":"Weekly Reading (2019/Jun 09 ~ 13)","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://option0417.github.io/2019/09/17/Weekly-Reading-2019-09-13/"},"publisher":{"@type":"Organization","name":"W.D","sameAs":["https://github.com/option0417","https://twitter.com/option0417","mailto:option0417@gmail.com"],"image":"profile.jpg","logo":{"@type":"ImageObject","url":"profile.jpg"}},"url":"https://option0417.github.io/2019/09/17/Weekly-Reading-2019-09-13/","keywords":"reading"}</script>
+    <meta name="description" content="別跟我稱兄道弟，我們不是一家人 : 瘋狂的 Netflix 不近人情的要求，相對也可得到豐富的報酬，各取所需罷了。  Is High Quality Software Worth the Cost? 作者 Martin Fowler) 首先將 Quality 分作 External 使用者能直接體會到的特性 (ex. 好的UI , 較少Bug) 和 Internal 使用者較無法體會的特性 (e">
+<meta name="keywords" content="reading">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="Weekly Reading (2019&#x2F;Jun 09 ~ 13)">
+<meta property="og:url" content="https://option0417.github.io/2019/09/17/Weekly-Reading-2019-09-13/index.html">
+<meta property="og:site_name" content="Just For Fun">
+<meta property="og:description" content="別跟我稱兄道弟，我們不是一家人 : 瘋狂的 Netflix 不近人情的要求，相對也可得到豐富的報酬，各取所需罷了。  Is High Quality Software Worth the Cost? 作者 Martin Fowler) 首先將 Quality 分作 External 使用者能直接體會到的特性 (ex. 好的UI , 較少Bug) 和 Internal 使用者較無法體會的特性 (e">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-09-17T16:49:10.514Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Weekly Reading (2019&#x2F;Jun 09 ~ 13)">
+<meta name="twitter:description" content="別跟我稱兄道弟，我們不是一家人 : 瘋狂的 Netflix 不近人情的要求，相對也可得到豐富的報酬，各取所需罷了。  Is High Quality Software Worth the Cost? 作者 Martin Fowler) 首先將 Quality 分作 External 使用者能直接體會到的特性 (ex. 好的UI , 較少Bug) 和 Internal 使用者較無法體會的特性 (e">
+<meta name="twitter:creator" content="@option0417">
+    
+    
+        
+    
+    
+        <meta property="og:image" content="https://option0417.github.io/imgs/profile.jpg"/>
+    
+    
+    
+    
+    <!--STYLES-->
+    <link rel="stylesheet" href="/assets/css/style-c4ozcsklz4kht2pebhp44xorvyverh23toayhn7i6ubrpyedak24hv1v0hyd.min.css">
+    <!--STYLES END-->
+    
+
+    
+</head>
+
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+    
+        
+            
+        
+    
+
+<header id="header" data-behavior="5">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <div class="header-title">
+        <a class="header-title-link" href="/ ">Just For Fun</a>
+    </div>
+    
+        
+            <a class="header-right-picture " href="#about">
+        
+        
+            <img class="header-picture" src="/imgs/profile.jpg" alt="Author&#39;s picture">
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+
+        
+    
+
+<nav id="sidebar" data-behavior="5">
+    <div class="sidebar-container">
+        
+            <div class="sidebar-profile">
+                <a href="/#about">
+                    <img class="sidebar-profile-picture" src="/imgs/profile.jpg" alt="Author&#39;s picture">
+                </a>
+                <h4 class="sidebar-profile-name">W.D</h4>
+                
+                    <h5 class="sidebar-profile-bio"><p>author.bio</p>
+</h5>
+                
+            </div>
+        
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="/ " title="Home">
+                    
+                        <i class="sidebar-button-icon fa fa-home" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Home</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="/all-tags" title="Tags">
+                    
+                        <i class="sidebar-button-icon fa fa-tags" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Tags</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="https://about.me/wd.su" target="_blank" rel="noopener" title="About">
+                    
+                        <i class="sidebar-button-icon fa fa-question" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">About</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="https://github.com/option0417" target="_blank" rel="noopener" title="GitHub">
+                    
+                        <i class="sidebar-button-icon fab fa-github" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">GitHub</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="https://twitter.com/option0417" target="_blank" rel="noopener" title="Twitter">
+                    
+                        <i class="sidebar-button-icon fab fa-twitter" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Twitter</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="mailto:option0417@gmail.com" target="_blank" rel="noopener" title="Mail">
+                    
+                        <i class="sidebar-button-icon fa fa-envelope" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Mail</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+    </div>
+</nav>
+
+            
+            <div id="main" data-behavior="5"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title">
+            Weekly Reading (2019/Jun 09 ~ 13)
+        </h1>
+    
+    
+        <div class="post-meta">
+    <time datetime="2019-09-17T00:00:00+08:00">
+	
+		    Sep 17, 2019
+    	
+    </time>
+    
+</div>
+
+    
+</div>
+
+    
+    <div class="post-content markdown">
+        <div class="main-content-wrap">
+            <ul>
+<li><p><a href="https://vocus.cc/bass/5cd1184afd897800012a535c" target="_blank" rel="noopener">別跟我稱兄道弟，我們不是一家人 : 瘋狂的 Netflix</a></p>
+<p>不近人情的要求，相對也可得到豐富的報酬，各取所需罷了。</p>
+</li>
+<li><p><a href="https://martinfowler.com/articles/is-quality-worth-cost.html" target="_blank" rel="noopener">Is High Quality Software Worth the Cost?</a></p>
+<p>作者 <a href="https://en.wikipedia.org/wiki/Martin_Fowler_(software_engineer" target="_blank" rel="noopener">Martin Fowler</a>) 首先將 Quality 分作 <strong>External</strong> 使用者能直接體會到的特性 <em>(ex. 好的UI , 較少Bug)</em> 和 <strong>Internal</strong> 使用者較無法體會的特性 <em>(ex. 設計良好的 Software Architecture)</em>。</p>
+<p>好的 UI 設計能吸引使用者，賣得好價錢。那使用者看不到的架構設計值得追求嗎？ 答案當然是 Yes!!<br>優良的設計能在同樣的品質下，增減功能。 若在不良的設計下增減功能，常常會是個悲劇。</p>
+</li>
+<li><p><a href="https://www.infoq.cn/article/bBpKUAcd*JwLhIEVSVbD" target="_blank" rel="noopener">谁在“谋杀” Hadoop？</a><br>因為工作，在 Hadoop 上琢磨不少時間。 文中的一段話</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">除了竞争关系，这篇外媒评论文中还提到了一个重要观点，</span><br><span class="line">那就是 Hadoop 使用繁琐，用户体验糟糕，MongoDB 和 Elasticsearch 使用方便，</span><br><span class="line">而这也导致了 Hadoop 的“衰败”。</span><br></pre></td></tr></table></figure>
+<p>看了心有戚戚焉，在使用 Hadoop 的確踩了不少坑。<br>現在關於 Big Data 的 solution，Hadoop 已經不是唯一的選擇了。</p>
+</li>
+<li><p><a href="https://blog.cloudflare.com/cloudflare-outage/" target="_blank" rel="noopener">Cloudflare outage caused by bad software deploy</a><br>看似簡單的 Regular expression，也是能讓系統崩潰的… </p>
+</li>
+<li><p><a href="https://blog.techbridge.cc/2019/08/17/webauthn-intro/" target="_blank" rel="noopener">一起來了解 Web Authentication</a><br>加入了實體裝置來作為驗證途徑，在現在人手一機的世界或許會是之後的趨勢，值得花時間深入研究。</p>
+</li>
+<li><p><a href="https://www.infoq.com/presentations/cockroachdb-distributed-sql/" target="_blank" rel="noopener">CockroachDB: Architecture of a Geo-distributed SQL Database</a><br>架構上和 <a href="https://hbase.apache.org/" target="_blank" rel="noopener">HBase</a> 相似，同樣有 Leadership、Replication等概念，但主要以 <a href="https://en.wikipedia.org/wiki/Raft_(computer_science" target="_blank" rel="noopener">Raft</a>) 作為 <a href="https://en.wikipedia.org/wiki/Consensus_(computer_science" target="_blank" rel="noopener">consensus algorithm</a>)。<br>不同的是有所謂 <a href="https://en.wikipedia.org/wiki/Distributed_transaction" target="_blank" rel="noopener">Distributed Transaction</a> 的功能。<br>但從其流程來看，若寫入頻繁的話，效能會是個議題。</p>
+</li>
+</ul>
+
+            
+
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">TAGGED IN</span><br>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/reading/">reading</a>
+
+            </div>
+        
+        
+            <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled">
+                
+                    <i class="fa fa-angle-left" aria-hidden="true"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2019/09/05/What-is-JWT-JSON-Web-Token/" data-tooltip="[WhatIs]  JWT  (JSON Web Token)" aria-label="NEXT: [WhatIs]  JWT  (JSON Web Token)">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://option0417.github.io/2019/09/17/Weekly-Reading-2019-09-13/" title="Share on Facebook">
+                    <i class="fab fa-facebook" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://option0417.github.io/2019/09/17/Weekly-Reading-2019-09-13/" title="Share on Twitter">
+                    <i class="fab fa-twitter" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+        
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+        
+            
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2019 W.D. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled">
+                
+                    <i class="fa fa-angle-left" aria-hidden="true"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2019/09/05/What-is-JWT-JSON-Web-Token/" data-tooltip="[WhatIs]  JWT  (JSON Web Token)" aria-label="NEXT: [WhatIs]  JWT  (JSON Web Token)">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://option0417.github.io/2019/09/17/Weekly-Reading-2019-09-13/" title="Share on Facebook">
+                    <i class="fab fa-facebook" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://option0417.github.io/2019/09/17/Weekly-Reading-2019-09-13/" title="Share on Twitter">
+                    <i class="fab fa-twitter" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+        
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                
+    <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+        <i id="btn-close-shareoptions" class="fa fa-times"></i>
+        <ul class="share-options">
+            
+                
+                
+                <li class="share-option">
+                    <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://option0417.github.io/2019/09/17/Weekly-Reading-2019-09-13/">
+                        <i class="fab fa-facebook" aria-hidden="true"></i><span>Share on Facebook</span>
+                    </a>
+                </li>
+            
+                
+                
+                <li class="share-option">
+                    <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https://option0417.github.io/2019/09/17/Weekly-Reading-2019-09-13/">
+                        <i class="fab fa-twitter" aria-hidden="true"></i><span>Share on Twitter</span>
+                    </a>
+                </li>
+            
+        </ul>
+    </div>
+
+
+            
+        </div>
+        
+
+
+    
+        
+    
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-times"></i>
+        </div>
+        
+            <img id="about-card-picture" src="/imgs/profile.jpg" alt="Author&#39;s picture">
+        
+            <h4 id="about-card-name">W.D</h4>
+        
+            <div id="about-card-bio"><p>author.bio</p>
+</div>
+        
+        
+            <div id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br>
+                <p>author.job</p>
+
+            </div>
+        
+        
+            <div id="about-card-location">
+                <i class="fa fa-map-marker-alt"></i>
+                <br>
+                Taiwan
+            </div>
+        
+    </div>
+</div>
+
+        
+        
+<div id="cover" style="background-image:url('/imgs/my_cover.jpg');"></div>
+        <!--SCRIPTS-->
+<script src="/assets/js/script-dbd16rvloemmuxdzniplmnxxvwoz24eya9wol0b7vvmlokgqsjivmb8dnscy.min.js"></script>
+<!--SCRIPTS END-->
+
+    
+
+
+
+    </body>
+</html>
