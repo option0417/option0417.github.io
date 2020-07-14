@@ -172,6 +172,131 @@
             <div class="postShorten-header">
                 <h1 class="postShorten-title">
                     
+                        <a class="link-unstyled" href="/2019/06/04/Weekly-Reading-2019-May-27-Jun-02/">
+                            Weekly Reading (2019/May 27 ~ Jun 02)
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2019-06-04T01:40:00+08:00">
+	
+		    Jun 04, 2019
+    	
+    </time>
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <h3 id="JWT-Related"><a href="#JWT-Related" class="headerlink" title="JWT Related"></a>JWT Related</h3><p>近來針對專案的登入驗證想做些調整，因此先複習了傳統 Cookie-based 和 Session-based 的驗證方式，也跟著了解何謂 JSON Web Token (JWT)。  </p>
+<p>整體來說，JWT 針對 Cookie 和 Session 所遇到的問題 (e.g. CSRF, Distributed Deploy) 都有相對應的解決方案，<br>但是否就能以 JWT 取代，我想主要還是以應用需求、限制、環境等條件總和考量為佳。</p>
+<ul>
+<li><a href="https://blog.cssuen.tw/json-web-token-jwt-%E7%B0%A1%E4%BB%8B-a5719a1b0a70" target="_blank" rel="noopener">JSON Web Token(JWT) 簡介</a></li>
+<li><a href="https://chengandpeng.github.io/2016/04/15/jwtvscookie/" target="_blank" rel="noopener">浅谈使用Json Web Token和Cookie的利弊</a></li>
+<li><a href="https://medium.com/@leon740727/%E4%BB%A5-json-web-token-%E5%8F%96%E4%BB%A3-session-bae47556dde2" target="_blank" rel="noopener">以 JSON Web Token 替代傳統 Token</a></li>
+<li><a href="https://medium.com/@leon740727/%E4%BB%A5-json-web-token-%E5%8F%96%E4%BB%A3-session-bae47556dde2" target="_blank" rel="noopener">以 JSON Web Token 取代 session</a></li>
+<li><a href="http://zhuanlan.51cto.com/art/201708/548195.htm" target="_blank" rel="noopener">講真，別再使用JWT了</a></li>
+<li><a href="https://www.guonanjun.com/220.html" target="_blank" rel="noopener">JWT介绍和优缺点及适用场景分析</a></li>
+</ul>
+
+                    
+                        
+
+                    
+                    
+                        <p>
+                            <a href="/2019/06/04/Weekly-Reading-2019-May-27-Jun-02/#post-footer" class="postShorten-excerpt_link link">
+                                Comment and share
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
+                        <a class="link-unstyled" href="/2019/05/28/Weekly-Reading-2019-May-20-26/">
+                            Weekly Reading (2019/May 20 ~ 26)
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2019-05-28T10:40:29+08:00">
+	
+		    May 28, 2019
+    	
+    </time>
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <h3 id="1-redis系列–redis4-0深入持久化"><a href="#1-redis系列–redis4-0深入持久化" class="headerlink" title="1. redis系列–redis4.0深入持久化"></a>1. <a href="https://www.cnblogs.com/wdliu/p/9377278.html" target="_blank" rel="noopener">redis系列–redis4.0深入持久化</a></h3><p>Redis 快，但資料終究是存在記憶體裡面，還是得要有「持久化」的機制來保存重要的資料。</p>
+<p>這篇文章就是在介紹 Redis 本身提供的「持久化」機制：</p>
+<ol>
+<li>RDB persistent</li>
+<li>AOF Persistence</li>
+<li>Mixed RDB and AOP</li>
+</ol>
+<p>以及觸發的時機點：</p>
+<ol>
+<li><strong>save</strong> command</li>
+<li><strong>bgsave</strong> command</li>
+<li><strong>save \<second\> \<changes\></changes\></second\></strong> rule</li>
+<li><strong>Master-Slave</strong> duplication</li>
+<li><strong>flushall</strong> command</li>
+<li><strong>shutdown</strong> command</li>
+</ol>
+<p>雖說另外透過 DB 來達到持久化也是常見的作法，但若有成本考量、維運考量等情況沒有額外的 DB 下，也不失為一個不錯的辦法。</p>
+<hr>
+<h3 id="2-Don’t-talk-CRUD"><a href="#2-Don’t-talk-CRUD" class="headerlink" title="2. Don’t talk CRUD"></a>2. <a href="https://codecoding.net/ruby/on/rails/2018/09/14/dont-talk-crud.html" target="_blank" rel="noopener">Don’t talk CRUD</a></h3><p>作者透過開發中最常見的資料操作 <strong>C</strong> <em>(Create)</em> <strong>R</strong> <em>(Read)</em> <strong>U</strong> <em>(Update)</em> <strong>D</strong> <em>(Delete)</em>，說明開發者與客戶之間溝通的隔閡。</p>
+<p>例如，對程式的會以 create 或 update 命名，但實際的功能邏輯並不只是單純的 create 和 update。</p>
+<p>因此，作者建議透過共通的溝通方式，讓雙方能夠互相了解，也因此提到了 <a href="https://en.wikipedia.org/wiki/Domain-driven_design" target="_blank" rel="noopener">DDD (Domain Driven Design)</a>可作為這樣的溝通語言。</p>
+<hr>
+<h3 id="3-「我們失敗了」系列文"><a href="#3-「我們失敗了」系列文" class="headerlink" title="3.「我們失敗了」系列文"></a>3.「我們失敗了」系列文</h3><ul>
+<li><a href="https://kf013099.blogspot.com/2015/11/blog-post.html" target="_blank" rel="noopener">我們失敗了〈一〉- 完美的團隊也會失敗</a></li>
+<li><a href="https://kf013099.blogspot.com/2015/11/blog-post_30.html" target="_blank" rel="noopener">我們失敗了〈二〉- 天下武功，唯快不破</a></li>
+<li><a href="https://kf013099.blogspot.com/2015/12/productmarket-fit.html" target="_blank" rel="noopener">我們失敗了〈三〉- Product/Market Fit</a></li>
+<li><a href="https://kf013099.blogspot.com/2015/12/blog-post.html" target="_blank" rel="noopener">我們失敗了〈四〉- 軟體品質比你想像的還不重要！？</a></li>
+</ul>
+<p>簡單一句話，完美的團隊也會失敗。<br>對於產品，要找出「被使用者需要」的東西，而不是「讓使用者需要」。而這過程，除了 Fail Early, Fail Often 還要搶快，而搶快，也就表示對軟體的品質是要有所妥協的。 待達到 <a href="https://en.wikipedia.org/wiki/Product/market_fit" target="_blank" rel="noopener">Product/market fit</a> 再來調整。</p>
+<hr>
+<h3 id="4-Web-Architecture-101"><a href="#4-Web-Architecture-101" class="headerlink" title="4. Web Architecture 101"></a>4. <a href="https://engineering.videoblocks.com/web-architecture-101-a3224e126947" target="_blank" rel="noopener">Web Architecture 101</a></h3><p>作者以使用者發出一次 Google 搜尋的資料流為例，介紹這樣大型甚至巨型的網站架構，包含 <strong>DNS</strong> 、 <strong>Load Balance</strong> 、 <strong>Database</strong> 等服務，都做了基本的介紹。</p>
+
+                    
+                        
+
+                    
+                    
+                        <p>
+                            <a href="/2019/05/28/Weekly-Reading-2019-May-20-26/#post-footer" class="postShorten-excerpt_link link">
+                                Comment and share
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
                         <a class="link-unstyled" href="/2018/07/18/刻意練習/">
                             刻意練習 (Peak: Secrets from the New Science of Expoertise)
                         </a>
@@ -431,103 +556,6 @@
         
     </article>
     
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a class="link-unstyled" href="/2017/07/12/Weekly-reading-2017-Jul-1-9/">
-                            Weekly reading (2017/Jul 1-9)
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2017-07-12T00:00:00+08:00">
-	
-		    Jul 12, 2017
-    	
-    </time>
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <h2 id="Everything-You-Need-to-Know-About-AR-in-5-Minutes"><a href="#Everything-You-Need-to-Know-About-AR-in-5-Minutes" class="headerlink" title="Everything You Need to Know About AR in 5 Minutes"></a><a href="https://medium.com/swlh/everything-you-need-to-know-about-ar-in-5-minutes-8d33b5a8f2e5" target="_blank" rel="noopener">Everything You Need to Know About AR in 5 Minutes</a></h2><p>  一篇簡單介紹目前 <a href="https://en.wikipedia.org/wiki/Augmented_reality" target="_blank" rel="noopener">AR</a> 產業界發展情況的短文，感覺目前各大廠的產品都還處於 Prototype 的階段，離實際商業化成消費性產品還有段路要走，<br>    真能達到文中提到在2020年有 1500 億美金的市場規模嗎? 拭目以待。 我想目前最成功的 AR 應用應該就屬 <a href="http://www.pokemongo.com" target="_blank" rel="noopener">Pokemon Go</a>了吧！<br>  文章中也<a href="https://drive.google.com/file/d/0BxFGUJc2Cr8rRi1MblF3bENPUmM/edit" target="_blank" rel="noopener">列出</a>了目前在發展 AR 的公司，除了常見的大廠也有許許多多不同的公司在各自的AR領域發展(怎麼找不到 HTC…)。</p>
-<p>  希望在未來不久就能看到跟電影<a href="http://www.imdb.com/title/tt0181689" target="_blank" rel="noopener">關鍵報告</a>一樣的操作屏幕出現呀！</p>
-<h2 id="資料庫索引數據結構及主鍵設計-b-tree-part-1"><a href="#資料庫索引數據結構及主鍵設計-b-tree-part-1" class="headerlink" title="資料庫索引數據結構及主鍵設計(b+tree)(part 1))"></a><a href="https://www.slideshare.net/yftzeng/btreepart-1" target="_blank" rel="noopener">資料庫索引數據結構及主鍵設計(b+tree)(part 1)</a>)</h2><p>  重溫 <a href="https://www.facebook.com/yftzeng.tw" target="_blank" rel="noopener">Ant</a> 大在2016年分享的簡報，其從 UUID 帶入主題，也就是資料庫索引的設計。<br>    因而比較了 B-Tree 和 B+Tree的優略，還有MySQL 和 PostgreSQL 在索引功能實作的差異，以及所遭遇的問題。總之就是篇針對資料庫索引的硬派文章！<br>    HBase 用久了再回來看這個，感想還是一樣。 不管是 Relational 或 NoSQL 都各有優劣，主要還是看 Application 的特性來決定要用什麼。<a href="https://en.wikipedia.org/wiki/No_Silver_Bullet" target="_blank" rel="noopener">No Silver Bullet</a>!</p>
-
-                    
-                        
-
-                    
-                    
-                        <p>
-                            <a href="/2017/07/12/Weekly-reading-2017-Jul-1-9/#post-footer" class="postShorten-excerpt_link link">
-                                Comment and share
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a class="link-unstyled" href="/2017/07/01/Weekly-reading-2017-Jun-26-30/">
-                            Weekly reading (2017/Jun 26-30)
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2017-07-01T23:40:11+08:00">
-	
-		    Jul 01, 2017
-    	
-    </time>
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <h2 id="The-CTO-Journey-at-a-Small-Startup"><a href="#The-CTO-Journey-at-a-Small-Startup" class="headerlink" title="The CTO Journey at a Small Startup"></a><a href="https://zapier.com/engineering/startup-cto" target="_blank" rel="noopener">The CTO Journey at a Small Startup</a></h2><p>  <a href="https://zapier.com" target="_blank" rel="noopener">Zapier</a>的co-fonder/CTO Bryan Helmig 以遊戲技能樹的概念，講述一個新創團隊技術部門的成長故事。<br>  從兩人小組溝通無礙，火力全開。到10幾人的團隊光說明一件事就花了許多時間成本。還有請益其他公司CTO卻也都沒有一個標準答案。<br>  作者最後歸納了幾點結論：</p>
-<ol>
-<li>Embrace the Breaking Points<br>不要怕犯錯，也不要想預測問題。 發生了問題才知道怎樣是正確的方向！</li>
-<li>No Man’s Land<br>10幾人以上的團隊，在管理和溝通的成本就很大，同樣的一件事要不厭其煩的重複叮嚀，避免 No Man’s Land</li>
-<li>Mimic Structure<br>對於團隊管理，每間公司都有不同的解決方式，應避免套用別人的方法。而要去蕪存菁，創造出適合的管理方式。</li>
-<li><p>Focus Up<br>團隊人數越多更要專注在重要的專案上，並不是人多就能進行多個專案。記得溝通和管理的成本！</p>
-<p>總而言之，良好到位的溝通最重要！</p>
-</li>
-</ol>
-<h2 id="加速雲端系列文"><a href="#加速雲端系列文" class="headerlink" title="加速雲端系列文"></a><a href="https://www.facebook.com/shihhaohung/notes?lst=1200532567%3A100000974924946%3A1498802718" target="_blank" rel="noopener">加速雲端系列文</a></h2><p>  台大資工 <a href="https://www.facebook.com/shihhaohung" target="_blank" rel="noopener">洪士灝</a> 教授以自身在業界與學界的經驗，闡述台灣資訊科技產業的現況、遇到的問題，也對比美國矽谷的經驗來提出台灣未來可以如何發展的建議。文章中也包含對年輕學子們的期許後和已身處在業界的人可以如何應對的想法。<br>  也因為洪教授的研究領域主要在 <a href="https://en.wikipedia.org/wiki/Parallel_computing" target="_blank" rel="noopener">平行處理</a>、<a href="https://en.wikipedia.org/wiki/Program_optimization" target="_blank" rel="noopener">效能優化</a>、<a href="https://en.wikipedia.org/wiki/Heterogeneous_computing" target="_blank" rel="noopener">異質運算</a>、<a href="https://en.wikipedia.org/wiki/Big_data" target="_blank" rel="noopener">大數據</a>、<a href="https://en.wikipedia.org/wiki/Computer_security" target="_blank" rel="noopener">資訊安全</a>，所以在文章中針對上述領域也都有一番見解！</p>
-
-                    
-                        
-
-                    
-                    
-                        <p>
-                            <a href="/2017/07/01/Weekly-reading-2017-Jun-26-30/#post-footer" class="postShorten-excerpt_link link">
-                                Comment and share
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
     <div class="pagination-bar">
     <ul class="pagination">
         
@@ -546,7 +574,7 @@
             </a>
           </li>
         
-        <li class="pagination-number">page 2 of 3</li>
+        <li class="pagination-number">page 2 of 4</li>
     </ul>
 </div>
 
@@ -555,7 +583,7 @@
 
                 <footer id="footer" class="main-content-wrap">
     <span class="copyrights">
-        Copyrights &copy; 2019 W.D. All Rights Reserved.
+        Copyrights &copy; 2020 W.D. All Rights Reserved.
     </span>
 </footer>
 

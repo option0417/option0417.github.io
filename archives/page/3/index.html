@@ -172,6 +172,172 @@
             <div class="postShorten-header">
                 <h1 class="postShorten-title">
                     
+                        <a class="link-unstyled" href="/2018/10/09/What-and-how-of-the-HTTP-Cache-基本應用/">
+                            What and how of the HTTP Cache - 基本應用
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2018-10-09T00:00:00+08:00">
+	
+		    Oct 09, 2018
+    	
+    </time>
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <p>這陣子因為工作的關係跟 Cache 有了接觸的機會，從系統底層一直到網路的傳輸多少都有些涉略，也因此想將這陣子所學做些整理。<br>首先本文想先介紹 HTTP 的 Cache 機制，其主要目的，簡單講就是減少 Client 端 (主要為 Browser)與 Server 端之間的資料傳輸的次數和資料量。</p>
+<p>下面就來針對 HTTP 1.0/1.1 的 Cache 機制作個就介紹。</p>
+<h2 id="HTTP-1-0"><a href="#HTTP-1-0" class="headerlink" title="HTTP 1.0"></a>HTTP 1.0</h2><p>在 HTTP 1.0 時就有提供 <a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.21" target="_blank" rel="noopener"><em><strong>Expires</strong></em></a>、<a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.32" target="_blank" rel="noopener"><em><strong>Pragma</strong></em></a>、<a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.29" target="_blank" rel="noopener"><strong>Last-Modified</strong></a> 和 <a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.25" target="_blank" rel="noopener"><strong>If-Modified-Since</strong></a> 這幾個 Header 來達成 Cache 的效果。</p>
+<h3 id="Expires"><a href="#Expires" class="headerlink" title="Expires"></a>Expires</h3><p>用來定義 Cache 資料的過期時間 t，以此來告訴 Browser 資料在 t 時間後才需要更新資料。</p>
+<p>  <img src="https://i.imgur.com/dHlGCR0.png" alt="img_expires"></p>
+<p>如上圖，Server 告訴 Client 這個 Response 在 <em>Thu, 09 Aug 2018 00:00:00 GMT</em> 後才過期。而 Client 在這個時間到之前就不會再發出 Request 跟 Server 要資料。</p>
+<p>而 <strong>Expires</strong> 有一缺點，其是回傳特定的時間點 <strong><em>t</em></strong> ，若 Client 有調整過系統時間或是因不同時區造成其時間為 <strong><em>t’</em></strong> 而 <strong><em>t &lt; t’</em></strong>，則 Expires 就會失去Cache 的效果，同樣發出 Request 來拿資料 (如下圖)。</p>
+<p><img src="https://i.imgur.com/NpNTbcf.png" alt="img_expire_issue"></p>
+<h3 id="Pragma-no-cache"><a href="#Pragma-no-cache" class="headerlink" title="Pragma : no-cache"></a>Pragma : no-cache</h3><p>用來讓 Client 告訴 Proxy 是否使用 Cache。</p>
+<p>  <img src="https://i.imgur.com/NXft5vh.png" alt="img_pragma"><br>  若有 <em>no-cache</em> ，則 Proxy 會再向來源 Server 發送 Request 取得資料；<br>  若無 <em>no-cache</em> ，則直接由 Proxy 回覆 Cached 的資料</p>
+<h3 id="Last-Modified-If-Modified-Since"><a href="#Last-Modified-If-Modified-Since" class="headerlink" title="Last-Modified / If-Modified-Since"></a>Last-Modified / If-Modified-Since</h3><p>顧名思義，Server 在 Response 回傳特定的時間點在 <em>Last-Modified</em> ，而後續 Client 就將這個時間放在 <em>If-Modified-Since</em> 來告訴 Server，Client 的 Cache 是哪個時間點的資料，來判斷是否要回傳新的資料和時間。</p>
+<p>  <img src="https://i.imgur.com/I3qZ30E.png" alt="last-if"></p>
+<hr>
+<h2 id="HTTP-1-1"><a href="#HTTP-1-1" class="headerlink" title="HTTP 1.1"></a>HTTP 1.1</h2><p>在 HTTP 1.1 針對 Cache 增加了像是 <a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9" target="_blank" rel="noopener">Cache-Control</a>, <a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.19" target="_blank" rel="noopener">ETag</a>…等，來完整 Cache 機制</p>
+<h3 id="ETag-If-None-Match"><a href="#ETag-If-None-Match" class="headerlink" title="ETag / If-None-Match"></a><a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.19" target="_blank" rel="noopener">ETag</a> / <a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.26" target="_blank" rel="noopener">If-None-Match</a></h3><p><strong>ETag</strong> 通常會是一段 Server 產生的 hash 字串，例如：<em>UOqMY6DFJ/mlGYgYDOfJGg==</em> ，而這字串就是給 Client 後續驗證資料是否有更動的依據，就像是透過 MD5 驗證檔案有沒有被更改。</p>
+<p><strong>If-None-Match</strong> 則是 Client 收到 Server 的 ETag hash 字串之後，在 Request 用這個 Header 並夾帶 hash 字串，讓 Server 驗證請求的資料是否有變動。</p>
+<ul>
+<li><p>若沒變動，則回傳 <a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.3.5" target="_blank" rel="noopener">304 Not Modified</a> 告知 Client，並且可在 Response 中再夾帶 cache-control: Max-Age 讓 Client 重新計算資料的 Timeout 時間。 </p>
+<p><img src="https://i.imgur.com/hq37xvz.png" alt="304"></p>
+<ul>
+<li>若有變動，則回傳 <a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1" target="_blank" rel="noopener">200 OK</a> 和新的資料，並在 Response 中夾帶新的 ETag 和 cache-control: Max-Age。</li>
+</ul>
+<p><img src="https://i.imgur.com/1yKBifm.png" alt="200"></p>
+</li>
+</ul>
+<hr>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
+<li><a href="https://tools.ietf.org/html/rfc7234#section-2" target="_blank" rel="noopener">RFC 7234 Hypertext Transfer Protocol (HTTP/1.1): Caching</a></li>
+<li><a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching?hl=zh-tw" target="_blank" rel="noopener">HTTP 快取</a></li>
+<li><a href="https://blog.techbridge.cc/2017/06/17/cache-introduction/" target="_blank" rel="noopener">循序漸進理解 HTTP Cache 機制</a></li>
+<li><a href="https://blog.othree.net/log/2012/12/22/cache-control-and-etag/" target="_blank" rel="noopener">Cache Control 與 ETag</a></li>
+<li><a href="https://www.cnblogs.com/tyb1222/archive/2011/12/24/2300246.html" target="_blank" rel="noopener">REST笔记(五):你应该知道的HTTP头——ETag</a></li>
+<li><a href="https://stackoverflow.com/questions/1046966/whats-the-difference-between-cache-control-max-age-0-and-no-cache" target="_blank" rel="noopener">What’s the difference between Cache-Control: max-age=0 and no-cache?</a></li>
+<li><a href="https://blog.toright.com/posts/3414/%E5%88%9D%E6%8E%A2-http-1-1-cache-%E6%A9%9F%E5%88%B6.html" target="_blank" rel="noopener">初探 HTTP 1.1 Cache 機制</a></li>
+</ul>
+
+                    
+                        
+
+                    
+                    
+                        <p>
+                            <a href="/2018/10/09/What-and-how-of-the-HTTP-Cache-基本應用/#post-footer" class="postShorten-excerpt_link link">
+                                Comment and share
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
+                        <a class="link-unstyled" href="/2018/07/19/Dom-vs-SAX-vs-StAX/">
+                            Dom vs SAX vs StAX
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2018-07-19T02:13:00+08:00">
+	
+		    Jul 19, 2018
+    	
+    </time>
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <p>之前有個 side-project 需要針對 XML 進行解析，也趁此機會好好整理一下<br>在 Java 上，三種不同的解析 XML Document 的方法。</p>
+<h2 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a><a href="https://en.wikipedia.org/wiki/Document_Object_Model" target="_blank" rel="noopener">DOM</a></h2><p>會針對要解析的 XML Document 建立完整的 DOM Tree (如下圖)</p>
+<p> <img src="https://upload.wikimedia.org/wikipedia/commons/5/5a/DOM-model.svg" alt="dom_tree"></p>
+<ul>
+<li><h3 id="優點："><a href="#優點：" class="headerlink" title="優點："></a>優點：</h3><ul>
+<li>可對建立好的 DOM Tree 隨意存取任何一個節點</li>
+</ul>
+</li>
+<li><h3 id="缺點："><a href="#缺點：" class="headerlink" title="缺點："></a>缺點：</h3><ul>
+<li>若 XML Document 過大，則會耗費過多的 Memory，甚至發生無法預期的錯誤，例如： <a href="https://en.wikipedia.org/wiki/Out_of_memory" target="_blank" rel="noopener">OOM</a></li>
+<li>建立 DOM Tree 的時間花費，可能也會是個效能瓶頸。</li>
+</ul>
+</li>
+</ul>
+<h2 id="SAX"><a href="#SAX" class="headerlink" title="SAX"></a><a href="https://en.wikipedia.org/wiki/Simple_API_for_XML" target="_blank" rel="noopener">SAX</a></h2><p>透過 Event-Driven 和 Push-model ，依序將 XML Document 的 Element 一個個 push 到繼承自 DefaultHandler 的自定義 Handler 來解析</p>
+<ul>
+<li><h3 id="優點：-1"><a href="#優點：-1" class="headerlink" title="優點："></a>優點：</h3><ul>
+<li>較 Dom 方法快速許多</li>
+<li>較 Dom 方法節省 Memory</li>
+</ul>
+</li>
+<li><h3 id="缺點：-1"><a href="#缺點：-1" class="headerlink" title="缺點："></a>缺點：</h3><ul>
+<li>無法隨意存取任何一個節點</li>
+<li>若要讀取先前的節點資料，須自行保存</li>
+</ul>
+</li>
+</ul>
+<h2 id="StAX"><a href="#StAX" class="headerlink" title="StAX"></a><a href="https://en.wikipedia.org/wiki/StAX" target="_blank" rel="noopener">StAX</a></h2><p>基本上跟 SAX 同樣都是透過 Event-Driven，但是用 Pull-model 來存取解析 XML Document。</p>
+<ul>
+<li><h3 id="優點：-2"><a href="#優點：-2" class="headerlink" title="優點："></a>優點：</h3><ul>
+<li>較 Dom 方法快速許多</li>
+<li>較 Dom 方法節省 Memory</li>
+</ul>
+</li>
+<li><h3 id="缺點：-2"><a href="#缺點：-2" class="headerlink" title="缺點："></a>缺點：</h3><ul>
+<li>無法隨意存取任何一個節點</li>
+<li>若要讀取先前的節點資料，須自行保存</li>
+</ul>
+</li>
+</ul>
+<h3 id="我的選擇…"><a href="#我的選擇…" class="headerlink" title="我的選擇…"></a>我的選擇…</h3><p>最後選擇用 StAX 來解析 XML Document，一方面 Event-Driven 效能表現比較好，也節省 Memory。 另一方面，不像 SAX 還得先實做對應的 Handler，Pull-model 在實作上比較直覺，因為就像 iterate 一個 Collection 那樣的方式，來取得資料。 當然這是針對我的應用而做的決定，如果遇到的問題不同，或許 Dom 又會是更好的選擇。</p>
+<h3 id="ref"><a href="#ref" class="headerlink" title="ref:"></a><em>ref</em>:</h3><ul>
+<li><a href="https://www.tutorialspoint.com/java_xml/java_dom_parser.htm" target="_blank" rel="noopener">Java Dom Parser, tutorialspoint</a></li>
+<li><a href="https://www.tutorialspoint.com/java_xml/java_sax_parser.htm" target="_blank" rel="noopener">Java SAX Parser, tutorialspoint</a></li>
+<li><a href="https://www.tutorialspoint.com/java_xml/java_stax_parser.htm" target="_blank" rel="noopener">Java StAX Parser, tutorialpoint</a></li>
+<li><a href="http://tutorials.jenkov.com/java-xml/sax-vs-stax.html" target="_blank" rel="noopener">Java SAX vs. StAX, Jenkov.com</a></li>
+</ul>
+
+                    
+                        
+
+                    
+                    
+                        <p>
+                            <a href="/2018/07/19/Dom-vs-SAX-vs-StAX/#post-footer" class="postShorten-excerpt_link link">
+                                Comment and share
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
                         <a class="link-unstyled" href="/2018/07/18/刻意練習/">
                             刻意練習 (Peak: Secrets from the New Science of Expoertise)
                         </a>
@@ -585,120 +751,6 @@
         
     </article>
     
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a class="link-unstyled" href="/2017/11/13/Java-Static-Analysis-Tools/">
-                            Java Static Analysis Tools
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2017-11-13T00:00:00+08:00">
-	
-		    Nov 13, 2017
-    	
-    </time>
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <p>程式是人寫的，而人寫的就有可能會有失誤發生，又或是經驗不足，寫出了有<a href="https://en.wikipedia.org/wiki/Vulnerability_(computing%29" target="_blank" rel="noopener">漏洞</a>或 <a href="https://en.wikipedia.org/wiki/Software_bug" target="_blank" rel="noopener">Bug</a> 的程式。這時就所以需要工具來幫我們來做檢查。 又或著要統一整體開發的 <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Developer_guide/Coding_Style" target="_blank" rel="noopener">Coding Style</a>，與其耗費人力檢查，同樣的還是透過工具檢查簡單省力！</p>
-<p>這篇就來簡單介紹我之前在案子上常用的三種不同的靜態程式碼分析工具，分別是能檢查 Bug 或漏洞的 <em><strong>FindBug</strong></em> 和 <em><strong>PMD</strong></em>，以及能定義及檢查 Coding Style 的 <em><strong>CheckStyle</strong></em></p>
-<h3 id="1-FindBugs"><a href="#1-FindBugs" class="headerlink" title="1. FindBugs"></a>1. <em><a href="http://findbugs.sourceforge.net/" target="_blank" rel="noopener">FindBugs</a></em></h3><p>首先是個人覺得最好用的 FindBug，為何好用？因為它能幫我們發現可能產生 bug 的程式，從是否有確實釋放 IO 資源到是否會產生 dead lock 之類的 concurrent 問題，都能有效的作檢查。 另外也有支援常用 IDE 的 plugin</p>
-<ul>
-<li>Plugin: <ul>
-<li><em><a href="https://plugins.jetbrains.com/plugin/3847?pr=idea" target="_blank" rel="noopener">Findbugs IntelliJ Plugin</a></em></li>
-<li><em><a href="http://andrei.gmxhome.de/findbugs/index.html" target="_blank" rel="noopener">Findbugs Eclipse Plugin</a></em></li>
-<li><em><a href="http://gleclaire.github.io/findbugs-maven-plugin/usage.html" target="_blank" rel="noopener">Findbugs Maven Plugin</a></em></li>
-</ul>
-</li>
-<li><a href="https://developer.apple.com/library/content/documentation/ToolsLanguages/Conceptual/Xcode_Overview/AnalyzingYourCode.html" target="_blank" rel="noopener">Analyzing on Xcode</a></li>
-</ul>
-<h3 id="2-PMD"><a href="#2-PMD" class="headerlink" title="2. PMD"></a>2. <em><a href="https://pmd.github.io/" target="_blank" rel="noopener">PMD</a></em></h3><p>而 PMD 主要則檢查寫程式時可能發生的錯誤，例如：宣告了未使用的變數，又或是邏輯上的漏洞等，比較算是 coding 上 bad pratice 的檢查。</p>
-<h3 id="3-CheckStyle"><a href="#3-CheckStyle" class="headerlink" title="3. CheckStyle"></a>3. <em><a href="http://checkstyle.sourceforge.net/" target="_blank" rel="noopener">CheckStyle</a></em></h3><p>最後的 <strong>CheckStyle</strong> 也許不檢查 bug ，但在統一團隊的 coding style 上則是最好用的一個工具。<br>小的從間隔幾個空格到變數/方法的命名，都能夠自定義規則。</p>
-<h3 id="ref"><a href="#ref" class="headerlink" title="ref:"></a><em>ref:</em></h3><ol>
-<li><a href="http://blog.codacy.com/2016/03/22/review-java-static-analysis-tools/" target="_blank" rel="noopener">http://blog.codacy.com/2016/03/22/review-java-static-analysis-tools/</a></li>
-<li><a href="http://continuousdev.com/2015/08/checkstyle-vs-pmd-vs-findbugs/" target="_blank" rel="noopener">http://continuousdev.com/2015/08/checkstyle-vs-pmd-vs-findbugs/</a></li>
-</ol>
-
-                    
-                        
-
-                    
-                    
-                        <p>
-                            <a href="/2017/11/13/Java-Static-Analysis-Tools/#post-footer" class="postShorten-excerpt_link link">
-                                Comment and share
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a class="link-unstyled" href="/2017/11/04/吾家有女正長成/">
-                            吾家有女正長成
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2017-11-04T00:00:00+08:00">
-	
-		    Nov 04, 2017
-    	
-    </time>
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <p>轉眼過了兩個多月，小女盼盼也快三個月大了，這段日子下了班就是和老婆一同照顧她，陪著她，伴著她。 這中間有辛苦的、有忙碌的、有生氣的，但印象最深最多的是甜蜜的！</p>
-<p><img src="/imgs/fig_m1.jpg" alt="fig_m1"></p>
-<h4 id="第一個月"><a href="#第一個月" class="headerlink" title="第一個月:"></a>第一個月:</h4><p>基本上都是在月子中心度過，除了前面幾天老婆還在恢復外，後面都是盡量將盼盼推進房母嬰同室，一方面可以看到盼盼，一方面也能在護理師的幫助下，學會照顧她。 剛開始什麼都懞懞懂懂，盼盼稍有個動靜就緊張不已。 </p>
-<p>也幫盼盼取了名字叫：「蘇品臻」，品：品行、品格  臻：完美、完善，希望她一切都能完好。  總之，第一次抱她；第一次的餵奶；第一次的換尿布；第一次幫她洗澡，種種的第一次都在這個時候～</p>
-<hr>
-<p><img src="/imgs/fig_m2.jpg" alt="fig_m2"><br><img src="/imgs/fig_m22.jpg" alt="fig_m22"></p>
-<h4 id="第二個月"><a href="#第二個月" class="headerlink" title="第二個月:"></a>第二個月:</h4><p>終於將盼盼接了回家，也開始了沒有睡眠時間的日子XD，就像輪班一樣，盼盼大概 2 ~ 3 小時要喝一次奶，所以平常白天交給老婆照顧，我晚上回到家就先洗澡才接手抱她。  接近半夜，老婆就先去休息，我顧到凌晨二、三點才又換手交給她。</p>
-<p>儘管在月子中心時已經練習過，但剛回到家還是手忙腳亂，一哭了就趕緊看是不是尿尿了，或是肚子餓了要喝奶了，有時也會因為不懂她為何一直哭而生氣。  還好，相處久了就大概知道她要的是什麼。</p>
-<hr>
-<p><img src="/imgs/fig_m3.jpg" alt="fig_m3"></p>
-<h4 id="近來："><a href="#近來：" class="headerlink" title="近來："></a>近來：</h4><p>差不多兩個半月，盼盼終於能夠睡過夜，一次睡超過 5~6 小時，半夜比較不會起床哭鬧。  記得第一次睡過夜時，還有些小感動，終於出頭天的港覺～<br>這也表示盼盼她長大了，不只是睡過夜，笑容也變多了，也開始會發出咿咿呀呀的聲音！</p>
-<p>盼盼，蘇品臻，謝謝妳來到爸爸媽媽身邊，當我們的小公主；爸爸媽媽都愛妳，只希望妳身體健健康康，一切安好！<br><img src="/imgs/fig_m33.jpg" alt="fig_m33"></p>
-
-                    
-                        
-
-                    
-                    
-                        <p>
-                            <a href="/2017/11/04/吾家有女正長成/#post-footer" class="postShorten-excerpt_link link">
-                                Comment and share
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
     <div class="pagination-bar">
     <ul class="pagination">
         
@@ -727,7 +779,7 @@
 
                 <footer id="footer" class="main-content-wrap">
     <span class="copyrights">
-        Copyrights &copy; 2019 W.D. All Rights Reserved.
+        Copyrights &copy; 2020 W.D. All Rights Reserved.
     </span>
 </footer>
 

@@ -171,6 +171,156 @@
             <div class="postShorten-header">
                 <h1 class="postShorten-title">
                     
+                        <a class="link-unstyled" href="/2019/09/05/What-is-JWT-JSON-Web-Token/">
+                            [WhatIs]  JWT  (JSON Web Token)
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2019-09-05T00:00:00+08:00">
+	
+		    Sep 05, 2019
+    	
+    </time>
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <h2 id="什麼是-JWT-JSON-Web-Token"><a href="#什麼是-JWT-JSON-Web-Token" class="headerlink" title="什麼是 JWT (JSON Web Token) ?"></a>什麼是 JWT (JSON Web Token) ?</h2><p>JWT 顧名思義，是一種以 JSON 為「明文」資料格式，以 Token 為主的認證機制。 而在傳輸過程中， JWT 會以密文方式呈現，如下範例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">eyJ0eXAiOiJqd3QiLCJhbGciOiJIUzI1NiJ9.</span><br><span class="line">eyJ1c2VyaWQiOiJhYmMtMTIzIiwidXNlcm5hbWUiOiJOb25hbWUifQ.</span><br><span class="line">f9eixg-OO06ZLZGpWcvUcAocAlubFT0uRrBW8HhokoY</span><br></pre></td></tr></table></figure>
+<p>上面範例以 <strong>.</strong> 隔開可分作三個部分： <strong>Header</strong>, <strong>Payload</strong> 和 <strong>Signature</strong> 。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">header.payload.signture</span><br></pre></td></tr></table></figure>
+<p>首先， <strong>Header</strong> 定義 JWT 所使用的加密演算法以及內容類型。<br>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;alg&quot;: 加密演算法</span><br><span class="line">  &quot;typ&quot;: JSON 資料類型</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>而 <strong>Payload</strong> 則是放業務邏輯相關的資料。<br>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;userid&quot;: &quot;abc-123&quot;,</span><br><span class="line">  &quot;username&quot;: &quot;Wei-De Su&quot;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>接著 <strong>Signture</strong>，就是將上面 Header 和 Payload 的內容經過 <a href="https://tools.ietf.org/html/rfc4648#section-5" target="_blank" rel="noopener">Base64 for URL</a> 的方式轉為密文，再以 <strong>.</strong> 將內容合在一起進行加密演算後產生的密文。</p>
+<p><em>例如以 HMAC256 作為加密演算法</em><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Signture = HMAC256(Base64(header).Base64(Payload))</span><br><span class="line">         = f9eixg-OO06ZLZGpWcvUcAocAlubFT0uRrBW8HhokoY</span><br></pre></td></tr></table></figure></p>
+<h2 id="為什麼要用-JWT-JSON-Web-Token"><a href="#為什麼要用-JWT-JSON-Web-Token" class="headerlink" title="為什麼要用 JWT (JSON Web Token) ?"></a>為什麼要用 JWT (JSON Web Token) ?</h2><h3 id="1-安全性"><a href="#1-安全性" class="headerlink" title="1. 安全性"></a>1. 安全性</h3><ul>
+<li>cookie-base 的認證機制會將資訊儲存在 Client 端 (ex. Browser)，但這樣的方式會有 <a href="https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF" target="_blank" rel="noopener">CSRF</a>) 的安全性議題。</li>
+</ul>
+<h3 id="2-可擴展性"><a href="#2-可擴展性" class="headerlink" title="2. 可擴展性"></a>2. 可擴展性</h3><ul>
+<li>Session-base 的認證機制會將資訊儲存在 Server 端，這樣的方式在分散式架構就會有 Session 在多節點如何同步的問題。</li>
+</ul>
+<h3 id="3-應用廣"><a href="#3-應用廣" class="headerlink" title="3. 應用廣"></a>3. 應用廣</h3><ul>
+<li>JWT 除了用於登入驗證外，也可用在一次性驗證的服務上，<br>例如購物優惠的驗證、註冊確認的驗證等。</li>
+</ul>
+<h2 id="JWT-要怎麼用-JSON-Web-Token"><a href="#JWT-要怎麼用-JSON-Web-Token" class="headerlink" title="JWT 要怎麼用 (JSON Web Token) ?"></a>JWT 要怎麼用 (JSON Web Token) ?</h2><p>下圖是 JWT 的流程圖：</p>
+<ol>
+<li>Browser 發送 <em>username</em> 和 <em>password</em> 到 Server 進行登入。</li>
+<li>Server 以登入相關資訊和預寫的 <strong>secret</strong> 產生 JWT</li>
+<li>Server 回傳 JWT 給 Browser</li>
+<li>Browser 後續發出的 Request 都將 JWT 置於 HTTP Request 的 Header</li>
+<li>Server 驗證 Browser 送過來的 JWT 是否正確</li>
+<li>若正確，則回覆資料給 Browser</li>
+</ol>
+<p><img src="https://auth0.com/learn/wp-content/uploads/2016/01/17.png" alt="jwt_flow"><br><em>Source: <a href="https://auth0.com/learn/json-web-tokens/" target="_blank" rel="noopener">Auth0</a></em></p>
+<h2 id="延伸閱讀"><a href="#延伸閱讀" class="headerlink" title="延伸閱讀"></a>延伸閱讀</h2><ul>
+<li><a href="https://tools.ietf.org/html/rfc7519" target="_blank" rel="noopener">RFC 7519 - JSON Web Token (JWT)</a></li>
+<li><a href="https://tools.ietf.org/html/rfc7518" target="_blank" rel="noopener">RFC 7518 - JSON Web Algorithms (JWA)</a></li>
+<li><a href="https://tools.ietf.org/html/rfc7517" target="_blank" rel="noopener">RFC 7517 - JSON Web Key (JWK)</a></li>
+<li><a href="https://tools.ietf.org/html/rfc7516" target="_blank" rel="noopener">RFC 7516 - JSON Web Encryption (JWE)</a></li>
+<li><p><a href="https://tools.ietf.org/html/rfc7515" target="_blank" rel="noopener">RFC 7515 - JSON Web Signature (JWS)</a></p>
+</li>
+<li><p><a href="https://chengandpeng.github.io/2016/04/15/jwtvscookie/" target="_blank" rel="noopener">浅谈使用Json Web Token和Cookie的利弊</a></p>
+</li>
+<li><a href="https://medium.com/@leon740727/%E4%BB%A5-json-web-token-%E5%8F%96%E4%BB%A3-session-bae47556dde2" target="_blank" rel="noopener">以 JSON Web Token 替代傳統 Token</a></li>
+<li><a href="https://medium.com/@leon740727/%E4%BB%A5-json-web-token-%E5%8F%96%E4%BB%A3-session-bae47556dde2" target="_blank" rel="noopener">以 JSON Web Token 取代 session</a></li>
+<li><a href="http://zhuanlan.51cto.com/art/201708/548195.htm" target="_blank" rel="noopener">講真，別再使用JWT了</a></li>
+<li><a href="https://blog.cssuen.tw/json-web-token-jwt-%E7%B0%A1%E4%BB%8B-a5719a1b0a70" target="_blank" rel="noopener">JSON Web Token(JWT) 簡介</a></li>
+<li><p><a href="https://www.guonanjun.com/220.html" target="_blank" rel="noopener">JWT介绍和优缺点及适用场景分析</a></p>
+</li>
+<li><p><a href="https://en.wikipedia.org/wiki/Security_Assertion_Markup_Language" target="_blank" rel="noopener">SAML</a></p>
+</li>
+<li><p><a href="https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)" target="_blank" rel="noopener">CSRF</a></p>
+<ul>
+<li><a href="https://blog.techbridge.cc/2017/02/25/csrf-introduction" target="_blank" rel="noopener">讓我們來談談 CSRF</a></li>
+</ul>
+</li>
+<li><p><a href="https://en.wikipedia.org/wiki/Session_(computer_science)" target="_blank" rel="noopener">Session</a></p>
+<ul>
+<li><a href="http://fred-zone.blogspot.com/2014/01/web-session.html" target="_blank" rel="noopener">Web 技術中的 Session 是什麼？</a></li>
+<li><a href="http://yken919.pixnet.net/blog/post/45702341-%E4%BB%8B%E7%B4%B9%E4%B8%80%E7%AF%87%E9%97%9C%E6%96%BCsession%E7%9A%84%E5%A5%BD%E6%96%87%E7%AB%A0%2C%E5%AF%AB%E7%9A%84%E5%BE%88%E8%A9%B3%E7%B4%B0" target="_blank" rel="noopener">介紹一篇關於session的好文章,寫的很詳細</a></li>
+</ul>
+</li>
+<li><p><a href="https://en.wikipedia.org/wiki/HTTP_cookie" target="_blank" rel="noopener">HTTP Cookie</a></p>
+</li>
+</ul>
+
+                    
+                        
+
+                    
+                    
+                        <p>
+                            <a href="/2019/09/05/What-is-JWT-JSON-Web-Token/#post-footer" class="postShorten-excerpt_link link">
+                                Comment and share
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
+                        <a class="link-unstyled" href="/2019/06/12/Weekly-Reading-2019-Jun-03-09/">
+                            Weekly Reading (2019/Jun 03 ~ 09)
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2019-06-12T00:00:00+08:00">
+	
+		    Jun 12, 2019
+    	
+    </time>
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <ul>
+<li><p><a href="https://kopu.chat/2019/05/30/computex2019_lynn_visit/" target="_blank" rel="noopener">尖端科技串連未來生活：從 COMPUTEX 2019 洞察效能運算與 A-IoT 半導體市場趨勢</a><br>一直以來都很喜歡「<a href="https://kopu.chat/" target="_blank" rel="noopener">寫點科普，請給指教。</a>」的文章，不管是半導體產業或是近來 的 5G 產業，都是很有水準的產業分析報告。 這篇是今年 <a href="https://www.computextaipei.com.tw/" target="_blank" rel="noopener">COMPUTEX</a> 的相關報導，從內容可看出 AI 持續走紅，不管是高效能運算伺服器或是 IOT 相關的智慧建築等產業，都與 AI 相關。 儘管我覺得現在的 AI 都比較偏向「<a href="https://en.wikipedia.org/wiki/Expert_system" target="_blank" rel="noopener">專家系統</a>」而非真正的 <a href="https://en.wikipedia.org/wiki/Artificial_intelligence" target="_blank" rel="noopener">Artificial Intelligence</a>。</p>
+</li>
+<li><p><a href="https://blog.usejournal.com/how-a-googler-solves-coding-problems-ec5d59e73ec5" target="_blank" rel="noopener">How a Googler solves coding problems</a><br>簡單來說，就是要扎扎實實的做好 SA 跟 SD，甚至搭配 TDD 來避免做白工的機率。</p>
+</li>
+</ul>
+
+                    
+                        
+
+                    
+                    
+                        <p>
+                            <a href="/2019/06/12/Weekly-Reading-2019-Jun-03-09/#post-footer" class="postShorten-excerpt_link link">
+                                Comment and share
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
                         <a class="link-unstyled" href="/2019/06/04/Weekly-Reading-2019-May-27-Jun-02/">
                             Weekly Reading (2019/May 27 ~ Jun 02)
                         </a>
@@ -348,172 +498,6 @@
         
     </article>
     
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a class="link-unstyled" href="/2018/10/09/What-and-how-of-the-HTTP-Cache-基本應用/">
-                            What and how of the HTTP Cache - 基本應用
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2018-10-09T00:00:00+08:00">
-	
-		    Oct 09, 2018
-    	
-    </time>
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <p>這陣子因為工作的關係跟 Cache 有了接觸的機會，從系統底層一直到網路的傳輸多少都有些涉略，也因此想將這陣子所學做些整理。<br>首先本文想先介紹 HTTP 的 Cache 機制，其主要目的，簡單講就是減少 Client 端 (主要為 Browser)與 Server 端之間的資料傳輸的次數和資料量。</p>
-<p>下面就來針對 HTTP 1.0/1.1 的 Cache 機制作個就介紹。</p>
-<h2 id="HTTP-1-0"><a href="#HTTP-1-0" class="headerlink" title="HTTP 1.0"></a>HTTP 1.0</h2><p>在 HTTP 1.0 時就有提供 <a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.21" target="_blank" rel="noopener"><em><strong>Expires</strong></em></a>、<a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.32" target="_blank" rel="noopener"><em><strong>Pragma</strong></em></a>、<a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.29" target="_blank" rel="noopener"><strong>Last-Modified</strong></a> 和 <a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.25" target="_blank" rel="noopener"><strong>If-Modified-Since</strong></a> 這幾個 Header 來達成 Cache 的效果。</p>
-<h3 id="Expires"><a href="#Expires" class="headerlink" title="Expires"></a>Expires</h3><p>用來定義 Cache 資料的過期時間 t，以此來告訴 Browser 資料在 t 時間後才需要更新資料。</p>
-<p>  <img src="https://i.imgur.com/dHlGCR0.png" alt="img_expires"></p>
-<p>如上圖，Server 告訴 Client 這個 Response 在 <em>Thu, 09 Aug 2018 00:00:00 GMT</em> 後才過期。而 Client 在這個時間到之前就不會再發出 Request 跟 Server 要資料。</p>
-<p>而 <strong>Expires</strong> 有一缺點，其是回傳特定的時間點 <strong><em>t</em></strong> ，若 Client 有調整過系統時間或是因不同時區造成其時間為 <strong><em>t’</em></strong> 而 <strong><em>t &lt; t’</em></strong>，則 Expires 就會失去Cache 的效果，同樣發出 Request 來拿資料 (如下圖)。</p>
-<p><img src="https://i.imgur.com/NpNTbcf.png" alt="img_expire_issue"></p>
-<h3 id="Pragma-no-cache"><a href="#Pragma-no-cache" class="headerlink" title="Pragma : no-cache"></a>Pragma : no-cache</h3><p>用來讓 Client 告訴 Proxy 是否使用 Cache。</p>
-<p>  <img src="https://i.imgur.com/NXft5vh.png" alt="img_pragma"><br>  若有 <em>no-cache</em> ，則 Proxy 會再向來源 Server 發送 Request 取得資料；<br>  若無 <em>no-cache</em> ，則直接由 Proxy 回覆 Cached 的資料</p>
-<h3 id="Last-Modified-If-Modified-Since"><a href="#Last-Modified-If-Modified-Since" class="headerlink" title="Last-Modified / If-Modified-Since"></a>Last-Modified / If-Modified-Since</h3><p>顧名思義，Server 在 Response 回傳特定的時間點在 <em>Last-Modified</em> ，而後續 Client 就將這個時間放在 <em>If-Modified-Since</em> 來告訴 Server，Client 的 Cache 是哪個時間點的資料，來判斷是否要回傳新的資料和時間。</p>
-<p>  <img src="https://i.imgur.com/I3qZ30E.png" alt="last-if"></p>
-<hr>
-<h2 id="HTTP-1-1"><a href="#HTTP-1-1" class="headerlink" title="HTTP 1.1"></a>HTTP 1.1</h2><p>在 HTTP 1.1 針對 Cache 增加了像是 <a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9" target="_blank" rel="noopener">Cache-Control</a>, <a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.19" target="_blank" rel="noopener">ETag</a>…等，來完整 Cache 機制</p>
-<h3 id="ETag-If-None-Match"><a href="#ETag-If-None-Match" class="headerlink" title="ETag / If-None-Match"></a><a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.19" target="_blank" rel="noopener">ETag</a> / <a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.26" target="_blank" rel="noopener">If-None-Match</a></h3><p><strong>ETag</strong> 通常會是一段 Server 產生的 hash 字串，例如：<em>UOqMY6DFJ/mlGYgYDOfJGg==</em> ，而這字串就是給 Client 後續驗證資料是否有更動的依據，就像是透過 MD5 驗證檔案有沒有被更改。</p>
-<p><strong>If-None-Match</strong> 則是 Client 收到 Server 的 ETag hash 字串之後，在 Request 用這個 Header 並夾帶 hash 字串，讓 Server 驗證請求的資料是否有變動。</p>
-<ul>
-<li><p>若沒變動，則回傳 <a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.3.5" target="_blank" rel="noopener">304 Not Modified</a> 告知 Client，並且可在 Response 中再夾帶 cache-control: Max-Age 讓 Client 重新計算資料的 Timeout 時間。 </p>
-<p><img src="https://i.imgur.com/hq37xvz.png" alt="304"></p>
-<ul>
-<li>若有變動，則回傳 <a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1" target="_blank" rel="noopener">200 OK</a> 和新的資料，並在 Response 中夾帶新的 ETag 和 cache-control: Max-Age。</li>
-</ul>
-<p><img src="https://i.imgur.com/1yKBifm.png" alt="200"></p>
-</li>
-</ul>
-<hr>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
-<li><a href="https://tools.ietf.org/html/rfc7234#section-2" target="_blank" rel="noopener">RFC 7234 Hypertext Transfer Protocol (HTTP/1.1): Caching</a></li>
-<li><a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching?hl=zh-tw" target="_blank" rel="noopener">HTTP 快取</a></li>
-<li><a href="https://blog.techbridge.cc/2017/06/17/cache-introduction/" target="_blank" rel="noopener">循序漸進理解 HTTP Cache 機制</a></li>
-<li><a href="https://blog.othree.net/log/2012/12/22/cache-control-and-etag/" target="_blank" rel="noopener">Cache Control 與 ETag</a></li>
-<li><a href="https://www.cnblogs.com/tyb1222/archive/2011/12/24/2300246.html" target="_blank" rel="noopener">REST笔记(五):你应该知道的HTTP头——ETag</a></li>
-<li><a href="https://stackoverflow.com/questions/1046966/whats-the-difference-between-cache-control-max-age-0-and-no-cache" target="_blank" rel="noopener">What’s the difference between Cache-Control: max-age=0 and no-cache?</a></li>
-<li><a href="https://blog.toright.com/posts/3414/%E5%88%9D%E6%8E%A2-http-1-1-cache-%E6%A9%9F%E5%88%B6.html" target="_blank" rel="noopener">初探 HTTP 1.1 Cache 機制</a></li>
-</ul>
-
-                    
-                        
-
-                    
-                    
-                        <p>
-                            <a href="/2018/10/09/What-and-how-of-the-HTTP-Cache-基本應用/#post-footer" class="postShorten-excerpt_link link">
-                                Comment and share
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a class="link-unstyled" href="/2018/07/19/Dom-vs-SAX-vs-StAX/">
-                            Dom vs SAX vs StAX
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2018-07-19T02:13:00+08:00">
-	
-		    Jul 19, 2018
-    	
-    </time>
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <p>之前有個 side-project 需要針對 XML 進行解析，也趁此機會好好整理一下<br>在 Java 上，三種不同的解析 XML Document 的方法。</p>
-<h2 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a><a href="https://en.wikipedia.org/wiki/Document_Object_Model" target="_blank" rel="noopener">DOM</a></h2><p>會針對要解析的 XML Document 建立完整的 DOM Tree (如下圖)</p>
-<p> <img src="https://upload.wikimedia.org/wikipedia/commons/5/5a/DOM-model.svg" alt="dom_tree"></p>
-<ul>
-<li><h3 id="優點："><a href="#優點：" class="headerlink" title="優點："></a>優點：</h3><ul>
-<li>可對建立好的 DOM Tree 隨意存取任何一個節點</li>
-</ul>
-</li>
-<li><h3 id="缺點："><a href="#缺點：" class="headerlink" title="缺點："></a>缺點：</h3><ul>
-<li>若 XML Document 過大，則會耗費過多的 Memory，甚至發生無法預期的錯誤，例如： <a href="https://en.wikipedia.org/wiki/Out_of_memory" target="_blank" rel="noopener">OOM</a></li>
-<li>建立 DOM Tree 的時間花費，可能也會是個效能瓶頸。</li>
-</ul>
-</li>
-</ul>
-<h2 id="SAX"><a href="#SAX" class="headerlink" title="SAX"></a><a href="https://en.wikipedia.org/wiki/Simple_API_for_XML" target="_blank" rel="noopener">SAX</a></h2><p>透過 Event-Driven 和 Push-model ，依序將 XML Document 的 Element 一個個 push 到繼承自 DefaultHandler 的自定義 Handler 來解析</p>
-<ul>
-<li><h3 id="優點：-1"><a href="#優點：-1" class="headerlink" title="優點："></a>優點：</h3><ul>
-<li>較 Dom 方法快速許多</li>
-<li>較 Dom 方法節省 Memory</li>
-</ul>
-</li>
-<li><h3 id="缺點：-1"><a href="#缺點：-1" class="headerlink" title="缺點："></a>缺點：</h3><ul>
-<li>無法隨意存取任何一個節點</li>
-<li>若要讀取先前的節點資料，須自行保存</li>
-</ul>
-</li>
-</ul>
-<h2 id="StAX"><a href="#StAX" class="headerlink" title="StAX"></a><a href="https://en.wikipedia.org/wiki/StAX" target="_blank" rel="noopener">StAX</a></h2><p>基本上跟 SAX 同樣都是透過 Event-Driven，但是用 Pull-model 來存取解析 XML Document。</p>
-<ul>
-<li><h3 id="優點：-2"><a href="#優點：-2" class="headerlink" title="優點："></a>優點：</h3><ul>
-<li>較 Dom 方法快速許多</li>
-<li>較 Dom 方法節省 Memory</li>
-</ul>
-</li>
-<li><h3 id="缺點：-2"><a href="#缺點：-2" class="headerlink" title="缺點："></a>缺點：</h3><ul>
-<li>無法隨意存取任何一個節點</li>
-<li>若要讀取先前的節點資料，須自行保存</li>
-</ul>
-</li>
-</ul>
-<h3 id="我的選擇…"><a href="#我的選擇…" class="headerlink" title="我的選擇…"></a>我的選擇…</h3><p>最後選擇用 StAX 來解析 XML Document，一方面 Event-Driven 效能表現比較好，也節省 Memory。 另一方面，不像 SAX 還得先實做對應的 Handler，Pull-model 在實作上比較直覺，因為就像 iterate 一個 Collection 那樣的方式，來取得資料。 當然這是針對我的應用而做的決定，如果遇到的問題不同，或許 Dom 又會是更好的選擇。</p>
-<h3 id="ref"><a href="#ref" class="headerlink" title="ref:"></a><em>ref</em>:</h3><ul>
-<li><a href="https://www.tutorialspoint.com/java_xml/java_dom_parser.htm" target="_blank" rel="noopener">Java Dom Parser, tutorialspoint</a></li>
-<li><a href="https://www.tutorialspoint.com/java_xml/java_sax_parser.htm" target="_blank" rel="noopener">Java SAX Parser, tutorialspoint</a></li>
-<li><a href="https://www.tutorialspoint.com/java_xml/java_stax_parser.htm" target="_blank" rel="noopener">Java StAX Parser, tutorialpoint</a></li>
-<li><a href="http://tutorials.jenkov.com/java-xml/sax-vs-stax.html" target="_blank" rel="noopener">Java SAX vs. StAX, Jenkov.com</a></li>
-</ul>
-
-                    
-                        
-
-                    
-                    
-                        <p>
-                            <a href="/2018/07/19/Dom-vs-SAX-vs-StAX/#post-footer" class="postShorten-excerpt_link link">
-                                Comment and share
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
     <div class="pagination-bar">
     <ul class="pagination">
         
@@ -541,7 +525,7 @@
 
                 <footer id="footer" class="main-content-wrap">
     <span class="copyrights">
-        Copyrights &copy; 2019 W.D. All Rights Reserved.
+        Copyrights &copy; 2020 W.D. All Rights Reserved.
     </span>
 </footer>
 
