@@ -172,6 +172,515 @@
             <div class="postShorten-header">
                 <h1 class="postShorten-title">
                     
+                        <a class="link-unstyled" href="/2018/07/19/Dom-vs-SAX-vs-StAX/">
+                            Dom vs SAX vs StAX
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2018-07-19T02:13:00+08:00">
+	
+		    Jul 19, 2018
+    	
+    </time>
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <p>之前有個 side-project 需要針對 XML 進行解析，也趁此機會好好整理一下<br>在 Java 上，三種不同的解析 XML Document 的方法。</p>
+<h2 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a><a href="https://en.wikipedia.org/wiki/Document_Object_Model" target="_blank" rel="noopener">DOM</a></h2><p>會針對要解析的 XML Document 建立完整的 DOM Tree (如下圖)</p>
+<p> <img src="https://upload.wikimedia.org/wikipedia/commons/5/5a/DOM-model.svg" alt="dom_tree"></p>
+<ul>
+<li><h3 id="優點："><a href="#優點：" class="headerlink" title="優點："></a>優點：</h3><ul>
+<li>可對建立好的 DOM Tree 隨意存取任何一個節點</li>
+</ul>
+</li>
+<li><h3 id="缺點："><a href="#缺點：" class="headerlink" title="缺點："></a>缺點：</h3><ul>
+<li>若 XML Document 過大，則會耗費過多的 Memory，甚至發生無法預期的錯誤，例如： <a href="https://en.wikipedia.org/wiki/Out_of_memory" target="_blank" rel="noopener">OOM</a></li>
+<li>建立 DOM Tree 的時間花費，可能也會是個效能瓶頸。</li>
+</ul>
+</li>
+</ul>
+<h2 id="SAX"><a href="#SAX" class="headerlink" title="SAX"></a><a href="https://en.wikipedia.org/wiki/Simple_API_for_XML" target="_blank" rel="noopener">SAX</a></h2><p>透過 Event-Driven 和 Push-model ，依序將 XML Document 的 Element 一個個 push 到繼承自 DefaultHandler 的自定義 Handler 來解析</p>
+<ul>
+<li><h3 id="優點：-1"><a href="#優點：-1" class="headerlink" title="優點："></a>優點：</h3><ul>
+<li>較 Dom 方法快速許多</li>
+<li>較 Dom 方法節省 Memory</li>
+</ul>
+</li>
+<li><h3 id="缺點：-1"><a href="#缺點：-1" class="headerlink" title="缺點："></a>缺點：</h3><ul>
+<li>無法隨意存取任何一個節點</li>
+<li>若要讀取先前的節點資料，須自行保存</li>
+</ul>
+</li>
+</ul>
+<h2 id="StAX"><a href="#StAX" class="headerlink" title="StAX"></a><a href="https://en.wikipedia.org/wiki/StAX" target="_blank" rel="noopener">StAX</a></h2><p>基本上跟 SAX 同樣都是透過 Event-Driven，但是用 Pull-model 來存取解析 XML Document。</p>
+<ul>
+<li><h3 id="優點：-2"><a href="#優點：-2" class="headerlink" title="優點："></a>優點：</h3><ul>
+<li>較 Dom 方法快速許多</li>
+<li>較 Dom 方法節省 Memory</li>
+</ul>
+</li>
+<li><h3 id="缺點：-2"><a href="#缺點：-2" class="headerlink" title="缺點："></a>缺點：</h3><ul>
+<li>無法隨意存取任何一個節點</li>
+<li>若要讀取先前的節點資料，須自行保存</li>
+</ul>
+</li>
+</ul>
+<h3 id="我的選擇…"><a href="#我的選擇…" class="headerlink" title="我的選擇…"></a>我的選擇…</h3><p>最後選擇用 StAX 來解析 XML Document，一方面 Event-Driven 效能表現比較好，也節省 Memory。 另一方面，不像 SAX 還得先實做對應的 Handler，Pull-model 在實作上比較直覺，因為就像 iterate 一個 Collection 那樣的方式，來取得資料。 當然這是針對我的應用而做的決定，如果遇到的問題不同，或許 Dom 又會是更好的選擇。</p>
+<h3 id="ref"><a href="#ref" class="headerlink" title="ref:"></a><em>ref</em>:</h3><ul>
+<li><a href="https://www.tutorialspoint.com/java_xml/java_dom_parser.htm" target="_blank" rel="noopener">Java Dom Parser, tutorialspoint</a></li>
+<li><a href="https://www.tutorialspoint.com/java_xml/java_sax_parser.htm" target="_blank" rel="noopener">Java SAX Parser, tutorialspoint</a></li>
+<li><a href="https://www.tutorialspoint.com/java_xml/java_stax_parser.htm" target="_blank" rel="noopener">Java StAX Parser, tutorialpoint</a></li>
+<li><a href="http://tutorials.jenkov.com/java-xml/sax-vs-stax.html" target="_blank" rel="noopener">Java SAX vs. StAX, Jenkov.com</a></li>
+</ul>
+
+                    
+                        
+
+                    
+                    
+                        <p>
+                            <a href="/2018/07/19/Dom-vs-SAX-vs-StAX/#post-footer" class="postShorten-excerpt_link link">
+                                Comment and share
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
+                        <a class="link-unstyled" href="/2018/07/18/刻意練習/">
+                            刻意練習 (Peak: Secrets from the New Science of Expoertise)
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2018-07-18T00:00:00+08:00">
+	
+		    Jul 18, 2018
+    	
+    </time>
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <p>聽過一萬小時的理論嗎？ 若想在某個領域達到專家級別，須花上一萬個小時的時間才能夠達成！</p>
+<p>首次看到這個理論是在一本書「<a href="http://www.books.com.tw/products/0010425872" target="_blank" rel="noopener">異數：超凡與平凡的界線在哪裡</a>」。<br>簡單講，如果一天花費 3 小時在打籃球上，大概 10 年後就能成為籃球專家！<br>而這個時間也和一個人完成大學學業，接著碩士，最後念博士差不多。</p>
+<p>但最近看了本篇文章所講的這本書「<a href="http://www.books.com.tw/products/0010752714" target="_blank" rel="noopener">刻意練習</a>」，這本書的作者 <a href="https://en.wikipedia.org/wiki/K._Anders_Ericsson#Publications" target="_blank" rel="noopener">K. Anders Ericsson</a> 所提出的研究正是上述一萬小時的理論基礎。而其卻對一萬小時這理論打了個問號，</p>
+<p>根據其研究，真正要成為專家，一萬個小時並非一定，重點在於每個人學習，練習的方式才是真正重要的要素。</p>
+<h2 id="Ch-1-有目標的練習"><a href="#Ch-1-有目標的練習" class="headerlink" title="Ch.1 有目標的練習"></a>Ch.1 有目標的練習</h2><p>一位運動選手、音樂家、科學家能有傑出的表現並非與生俱來，而是不斷的學習、練習所累積而來。</p>
+<p>練習分為，一般的練習和有效的練習</p>
+<ul>
+<li>一般的練習： 無特定目標的練習，例如：每天打球 2 小時、每天看書 1 小時</li>
+<li>有效的練習：有特定目標，有目的性的練習，例如：每天罰球100顆，且只能 miss 10 顆以內、每天看某某書的第幾章節，並寫心得筆記。</li>
+</ul>
+<p>亦可說，要突破舒適圈，克服新挑戰，做之前做不到的事，才能有所進步！</p>
+<p>總結，有效的練習也就是有目標的練習會有以下特徵</p>
+<ol>
+<li>特定的目標</li>
+<li>達成特定目標的計畫</li>
+<li>評量執行好壞的方式</li>
+<li>專注，專心</li>
+<li>維持，恆心</li>
+</ol>
+<h2 id="Ch-2-駕馭大腦與身體的適應力"><a href="#Ch-2-駕馭大腦與身體的適應力" class="headerlink" title="Ch.2 駕馭大腦與身體的適應力"></a>Ch.2 駕馭大腦與身體的適應力</h2><p>不只是身體的肌肉可以靠透過重量訓練，而變得更結實、更有力。 大腦也能夠經過鍛鍊，而讓大腦各區塊更活躍。</p>
+<ul>
+<li><h3 id="記憶的能力"><a href="#記憶的能力" class="headerlink" title="記憶的能力"></a>記憶的能力</h3><p>倫敦的計程車司機，在經過多年訓練，記住倫敦市區內每條大街小巷、每天不同時間的最佳路徑而讓大腦負責記憶的部份 - 海馬迴比常人大了不少，也表示其記憶的能力受到強化。</p>
+</li>
+<li><h3 id="控制和協調身體的能力"><a href="#控制和協調身體的能力" class="headerlink" title="控制和協調身體的能力"></a>控制和協調身體的能力</h3><p>視障人士經過訓練，閱讀盲字多年後，其手指的敏感程度就已不同於一般人。 例如：閉上眼睛碰觸手指，一般人可能會分辨不出，但有閱讀盲字經驗的人都可清楚分辨。<br>吉他手使用慣用手彈奏吉他時，可以觀察到其控制手部的大腦區域特別活躍。</p>
+</li>
+<li><h3 id="不只是進步，也會退步"><a href="#不只是進步，也會退步" class="headerlink" title="不只是進步，也會退步"></a>不只是進步，也會退步</h3><p>就像肌肉，不再訓練後會逐漸鬆弛，大腦的區塊亦同。</p>
+</li>
+</ul>
+<p>據研究，退休的倫敦計程車司機，其海馬迴的大小比起還在開車的司機，已明顯小了許多。 當然與一般人比較還是大了不少。</p>
+<p>所以不管是身體或大腦，訓練的成果也需要更多的訓練來維持。</p>
+<ul>
+<li>還是要突破舒適圈<br>要能不斷的能力突破，除了持續的訓練，訓練的強度也要能提昇。做以前做不到的事！</li>
+</ul>
+<h2 id="Ch-3-心智表徵"><a href="#Ch-3-心智表徵" class="headerlink" title="Ch.3 心智表徵"></a>Ch.3 心智表徵</h2><ul>
+<li><h3 id="什麼是心智表徵"><a href="#什麼是心智表徵" class="headerlink" title="什麼是心智表徵"></a>什麼是心智表徵</h3><a href="https://zh.wikipedia.org/wiki/%E5%BF%83%E6%99%BA%E8%A1%A8%E5%BE%B5" target="_blank" rel="noopener">心智表徵</a> 可說是一個抽象的概念，可說是對某件事、某個物體的認知。</li>
+</ul>
+<p>例如：</p>
+<ul>
+<li>看到狗，會覺得牠是可愛的、乖巧的或溫馴的，抑或是凶狠的。</li>
+<li>看到大太陽，會覺得熱、煩躁，抑或是溫暖的。</li>
+</ul>
+<p>總之，這樣的認知是經過我們實際的接觸或間接的認識，累積了經驗和記憶所堆積而成，也是專屬於某種事物的 <a href="https://en.wikipedia.org/wiki/Pattern" target="_blank" rel="noopener">Pattern</a>。</p>
+<ul>
+<li><h3 id="心智表徵能幫我們什麼"><a href="#心智表徵能幫我們什麼" class="headerlink" title="心智表徵能幫我們什麼"></a>心智表徵能幫我們什麼</h3>能幫助我們更有效的學習。 而隨著學習，累積了更多相關知識，也能夠調整心智表徵來達成所謂的正循環。<br>例如：</li>
+<li><p>足球場上，剛入門的新手和資深的球員，對於場上的情勢判斷就會有不同，而資深球員和教練又會有所不同。</p>
+</li>
+<li><h3 id="心智表徵有其「領域限定性」"><a href="#心智表徵有其「領域限定性」" class="headerlink" title="心智表徵有其「領域限定性」"></a>心智表徵有其「領域限定性」</h3><p>踢足球而學習的到心智表徵，必定不能運用在棒球或籃球上。</p>
+</li>
+<li><h3 id="建立心智表徵"><a href="#建立心智表徵" class="headerlink" title="建立心智表徵"></a>建立心智表徵</h3><p>綜合以上，建立有效的心智表徵是刻意練習的重要因素，而建立的流程是可反覆的、可評估的、會是越來越的。</p>
+</li>
+</ul>
+<h2 id="Ch-4-刻意練習的黃金法則"><a href="#Ch-4-刻意練習的黃金法則" class="headerlink" title="Ch.4 刻意練習的黃金法則"></a>Ch.4 刻意練習的黃金法則</h2><h3 id="1-刻意練習的領域須發展得相當成熟"><a href="#1-刻意練習的領域須發展得相當成熟" class="headerlink" title="1. 刻意練習的領域須發展得相當成熟"></a>1. 刻意練習的領域須發展得相當成熟</h3><h3 id="2-有該領域的老師或專家，幫忙評估表現及改善"><a href="#2-有該領域的老師或專家，幫忙評估表現及改善" class="headerlink" title="2. 有該領域的老師或專家，幫忙評估表現及改善"></a>2. 有該領域的老師或專家，幫忙評估表現及改善</h3><p>刻意練習有以下特色：</p>
+<ul>
+<li>該領域已有許多專家，並建立了成熟的訓練方式</li>
+<li>需要跨出舒適圈，要能有所突破</li>
+<li>要有定義明確清楚的目標，不是模糊的大目標</li>
+<li>須全神灌注，專心一致</li>
+<li>練習要能有回饋，且能根據回饋進行調整</li>
+<li>能產生有效的心智表徵，並能利用心智表徵</li>
+</ul>
+<h2 id="Ch-5-在工作上運用刻意練習原則"><a href="#Ch-5-在工作上運用刻意練習原則" class="headerlink" title="Ch.5 在工作上運用刻意練習原則"></a>Ch.5 在工作上運用刻意練習原則</h2><h2 id="Ch-6-在日常生活中運用刻意練習原則"><a href="#Ch-6-在日常生活中運用刻意練習原則" class="headerlink" title="Ch.6 在日常生活中運用刻意練習原則"></a>Ch.6 在日常生活中運用刻意練習原則</h2><p>這兩章針對，「刻意練習」在工作和日常生活中的運用，舉出了許多例子。<br>以此表達刻意練習的好和應用的廣泛。</p>
+<h2 id="Ch-7-邁向非凡的路線圖"><a href="#Ch-7-邁向非凡的路線圖" class="headerlink" title="Ch.7 邁向非凡的路線圖"></a>Ch.7 邁向非凡的路線圖</h2><p>這條路線可分四點：</p>
+<ol>
+<li>產生興趣</li>
+<li>變得認真</li>
+<li>全心投入</li>
+<li>開闢新路</li>
+</ol>
+<h2 id="Ch-8-如何解釋「天賦」這回事？"><a href="#Ch-8-如何解釋「天賦」這回事？" class="headerlink" title="Ch.8 如何解釋「天賦」這回事？"></a>Ch.8 如何解釋「天賦」這回事？</h2><p>天賦的確能在學習的初期帶來好處，但針對成為專家這件事，主要還是在於後續是否能持續的刻意練習。</p>
+<h2 id="Ch-9-用刻意練習打造全新的世界"><a href="#Ch-9-用刻意練習打造全新的世界" class="headerlink" title="Ch.9 用刻意練習打造全新的世界"></a>Ch.9 用刻意練習打造全新的世界</h2><p>傳遞、推廣「刻意練習」的知識，讓全世界都能透過這樣的方式，達到更高的境界，讓這世界能變得更美好！</p>
+
+                    
+                        
+
+                    
+                    
+                        <p>
+                            <a href="/2018/07/18/刻意練習/#post-footer" class="postShorten-excerpt_link link">
+                                Comment and share
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
+                        <a class="link-unstyled" href="/2018/07/03/Setup-linux-terminal-with-chinese/">
+                            Setup linux terminal with chinese
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2018-07-03T00:00:00+08:00">
+	
+		    Jul 03, 2018
+    	
+    </time>
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <p>最近用 Vagrant 建環境時，因為下載的 Ubuntu Box 只有安裝英文語系，也就是沒辦法在 Terminal 上正常顯示和輸入中文。<br>為避免記性差了，特以此文章做個紀錄！</p>
+<h2 id="解決步驟："><a href="#解決步驟：" class="headerlink" title="解決步驟："></a>解決步驟：</h2><h3 id="1-確認目前系統安裝的語系"><a href="#1-確認目前系統安裝的語系" class="headerlink" title="1. 確認目前系統安裝的語系"></a>1. 確認目前系統安裝的語系</h3><p>輸入 <em>locale -a</em><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ locale -a</span><br><span class="line"></span><br><span class="line">C</span><br><span class="line">C.UTF-8</span><br><span class="line">en_US.utf8</span><br><span class="line">POSIX</span><br></pre></td></tr></table></figure></p>
+<p>可以看到只有英文語系（C, POSIX, en_US.UTF8…等）的設定。</p>
+<h3 id="2-確認目前語系的設定"><a href="#2-確認目前語系的設定" class="headerlink" title="2. 確認目前語系的設定"></a>2. 確認目前語系的設定</h3><p>輸入 <em>locale</em><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">  $ locale</span><br><span class="line">  </span><br><span class="line">LANG=en_US.utf8</span><br></pre></td></tr></table></figure></p>
+<p>可以看到只有 <strong>LANG</strong> 被設定為 _en<em>US.UTF8</em><br>下面也列出語系相關的設定值：</p>
+<ul>
+<li><p>LANG<br>為所有語系設定的預設值，若其他語系設定有設定值，則取代此預設值。</p>
+</li>
+<li><p>LC<em>ADDRESS<br>地址的顯示格式 e.g. </em>台灣, 台北<em> 或是 </em>台北, 台灣_</p>
+</li>
+<li><p>LC_ALL<br>所有語系設定的設定值，可直接覆蓋其他語系設定的設定值。</p>
+</li>
+<li><p>LC_COLLATE<br>字串的排序方式。 e.g. 檔名字典排序</p>
+</li>
+<li><p>LC_CTYPE<br>字元轉換為文字或數字的設定。 e.g. 鍵盤的輸入字元轉換為文字</p>
+</li>
+<li><p>LC_IDENTIFICATION<br>語系資訊的 Metadata 的設定。</p>
+</li>
+<li><p>LC<em>MEASUREMENT<br>度量衡使用的單位 e.g. </em>公斤<em>/</em>英鎊<em>, </em>公尺<em>/</em>英尺_</p>
+</li>
+<li><p>LC_MESSAGES<br>系統訊息顯示的語系。</p>
+</li>
+<li><p>LC_MONETARY<br>貨幣使用的單位和名稱。 e.g. <em>NTD</em>, <em>USD</em></p>
+</li>
+<li><p>LC_NAME<br>名字顯示的格式。 e.g. <em>First name</em>, <em>Last name</em></p>
+</li>
+<li><p>LC_NUMERIC<br>數字顯示的格式。 e.g. 123.456, 123,456</p>
+</li>
+<li><p>LC_PAPER<br>紙張列印尺寸的設定。 e.g. A4, 11 x 17 英尺</p>
+</li>
+<li><p>LC_RESPONSE<br>系統回應訊息的顯示格式。 e.g. <em>Yes</em>/<em>No</em>, <em>y</em>/<em>n</em></p>
+</li>
+<li><p>LC_TELEPHONE<br>電話號碼的顯示格式。</p>
+</li>
+<li><p>LC_TIME<br>時間和日期的顯示格式。</p>
+</li>
+</ul>
+<h3 id="3-新增系統語系"><a href="#3-新增系統語系" class="headerlink" title="3. 新增系統語系"></a>3. 新增系統語系</h3><p>輸入 <em>sudo locale-gen locale1, locale2</em> …</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ sudo locale-gen zh_TW zh_TW.UTF-8</span><br><span class="line"></span><br><span class="line">Generating locales...</span><br><span class="line">  zh_TW.BIG5... done</span><br><span class="line">  zh_TW.UTF-8... done</span><br><span class="line">Generation complete.</span><br></pre></td></tr></table></figure>
+<p>或是編輯 <em>/var/lib/locales/supported.d/local</em><br>增加想新增的語系後，輸入 <em>sudo locale-gen</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ sudo locale-gen</span><br><span class="line"></span><br><span class="line">en_US.UTF-8 UTF-8</span><br><span class="line">zh_TW.UTF-8 UTF-8</span><br><span class="line">zh_TW BIG5</span><br></pre></td></tr></table></figure>
+<h3 id="4-變更語系設定"><a href="#4-變更語系設定" class="headerlink" title="4. 變更語系設定"></a>4. 變更語系設定</h3><ul>
+<li><h4 id="變更系統層級的全域設定"><a href="#變更系統層級的全域設定" class="headerlink" title="變更系統層級的全域設定"></a>變更系統層級的全域設定</h4><p>編輯 <em>/etc/default/locale</em><br>將  <strong>LANG</strong> 和 <strong>LC_ALL</strong> 設定為 _<strong>zh_TW.UTF-8</strong>_</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ sudo vim /etc/default/locale</span><br><span class="line"></span><br><span class="line">  LANG=&quot;zh_TW.UTF-8&quot;</span><br><span class="line">  LC_ALL=&quot;zh_TW.UTF-8&quot;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><h4 id="變更個人-User-層級的設定"><a href="#變更個人-User-層級的設定" class="headerlink" title="變更個人 User 層級的設定"></a>變更個人 User 層級的設定</h4><p>編輯 _/.bash<em>profile</em> 等 User 設定檔<br>將  <strong>LANG</strong> 和 <strong>LC_ALL</strong> 設定為 _<strong>zh_TW.UTF-8</strong>_</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ sudo vim _/.bash_profile_</span><br><span class="line"></span><br><span class="line">  export LANG=&quot;zh_TW.UTF-8&quot;</span><br><span class="line">  export LC_ALL=&quot;zh_TW.UTF-8&quot;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="5-最後"><a href="#5-最後" class="headerlink" title="5. 最後"></a>5. 最後</h3><p>重新登入後，就可以看到 Terminal 支援中文囉！</p>
+<h2 id="Ref"><a href="#Ref" class="headerlink" title="Ref:"></a><em>Ref</em>:</h2><ul>
+<li><a href="https://help.ubuntu.com/community/Locale" target="_blank" rel="noopener">Ubuntu - Locale</a></li>
+<li><a href="http://sfs.chc.edu.tw/~chi/blog/index.php?load=read&amp;id=296" target="_blank" rel="noopener">Ubuntu 14.04 主機的終端機中文顯示</a></li>
+<li><a href="http://www.davidpai.tw/ubuntu/2011/ubuntu-set-locale" target="_blank" rel="noopener">[Ubuntu] 如何設定語系locale</a></li>
+</ul>
+
+                    
+                        
+
+                    
+                    
+                        <p>
+                            <a href="/2018/07/03/Setup-linux-terminal-with-chinese/#post-footer" class="postShorten-excerpt_link link">
+                                Comment and share
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
+                        <a class="link-unstyled" href="/2017/11/20/JVM-command-line-utils/">
+                            JVM command-line utils
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2017-11-20T00:00:00+08:00">
+	
+		    Nov 20, 2017
+    	
+    </time>
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <p>話說，當軟體過了開發衝刺的高峰後，接下來就可以開始進行 <a href="https://docs.oracle.com/cd/E13222_01/wls/docs81/perform/JVMTuning.html" target="_blank" rel="noopener">JVM tuning</a> 的動作了，而這時就會用到一些工具來觀察 <a href="https://en.wikipedia.org/wiki/Java_virtual_machine" target="_blank" rel="noopener">JVM</a> 運行的狀況。<br>基本上還是推薦好操作，好上手的工具來使用，例如：<a href="https://visualvm.github.io/" target="_blank" rel="noopener">VisualVM</a>、<a href="https://www.ej-technologies.com/products/jprofiler/overview.html" target="_blank" rel="noopener">Profiler</a>或至少用個 <a href="https://docs.oracle.com/javase/7/docs/technotes/guides/management/jconsole.html" target="_blank" rel="noopener">JConsole</a>！</p>
+<p>但有時，天不從人願，就是會遇到只有 console 的情況… 這時就只好用 JDK 內建的 command-line 工具來觀察 JVM 了！</p>
+<h3 id="1-jps-查看目前系統上運行的JVM的-Process-資訊"><a href="#1-jps-查看目前系統上運行的JVM的-Process-資訊" class="headerlink" title="1. jps 查看目前系統上運行的JVM的 Process 資訊"></a>1. jps 查看目前系統上運行的JVM的 Process 資訊</h3><p>我主要是用來看觀察目標的 PID，以供後續使用，僅此而已。但下面講到的 jcmd 也有這樣的功能，所以就更少用到了。</p>
+<ul>
+<li><em>jps</em> &lt;argument&gt;<ul>
+<li>-l 條列各個JVM啟動點 main 的完整 package 資訊</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="2-jcmd-觀察-JVM-設定-資源和-thread-使用量"><a href="#2-jcmd-觀察-JVM-設定-資源和-thread-使用量" class="headerlink" title="2. jcmd 觀察 JVM 設定/資源和 thread 使用量"></a>2. jcmd 觀察 JVM 設定/資源和 thread 使用量</h3><p>這個工具能觀察的東西就多了，例如 JVM 的系統參數、JVM 啟動參數、JVM 運行時間、載入的 Class 資訊、目前運行的 thread 資訊等等，都是在進行 tuning 時參考的資訊。</p>
+<table>
+<thead>
+<tr>
+<th>Commands</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Thread.print</td>
+<td>Print all threads with stacktraces. <strong><em>Commonly used</em></strong></td>
+</tr>
+<tr>
+<td>GC.rotate_log</td>
+<td>Force the GC log file to be rotated.</td>
+</tr>
+<tr>
+<td>GC.class_stats</td>
+<td>Provide statistics about Java class meta data.</td>
+</tr>
+<tr>
+<td>GC.class_histogram</td>
+<td>Provide statistics about the Java heap usage. <strong><em>Commonly used</em></strong></td>
+</tr>
+<tr>
+<td>GC.heap_dump</td>
+<td>Generate a HPROF format dump of the Java heap.</td>
+</tr>
+<tr>
+<td>GC.run_finalization</td>
+<td>Call java.lang.System.runFinalization().</td>
+</tr>
+<tr>
+<td>GC.run</td>
+<td>Call java.lang.System.gc().</td>
+</tr>
+<tr>
+<td>VM.uptime</td>
+<td>Print VM uptime.</td>
+</tr>
+<tr>
+<td>VM.flags</td>
+<td>Print VM flag options and their current values. <strong><em>Commonly used</em></strong></td>
+</tr>
+<tr>
+<td>VM.system_properties</td>
+<td>Print VM flag options and their current values. <strong><em>Commonly used</em></strong></td>
+</tr>
+<tr>
+<td>VM.command_line</td>
+<td>Print system properties. <strong><em>Commonly used</em></strong></td>
+</tr>
+<tr>
+<td>VM.version</td>
+<td>Print JVM version information.</td>
+</tr>
+<tr>
+<td>VM.native_memory</td>
+<td>Print native memory usage</td>
+</tr>
+<tr>
+<td>ManagementAgent.stop</td>
+<td>Stop remote management agent.</td>
+</tr>
+<tr>
+<td>ManagementAgent.start_local</td>
+<td>Start local management agent.</td>
+</tr>
+<tr>
+<td>ManagementAgent.start</td>
+<td>Start remote management agent.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="3-jstat-即時觀察-JVM-GC的情況"><a href="#3-jstat-即時觀察-JVM-GC的情況" class="headerlink" title="3. jstat 即時觀察 JVM GC的情況"></a>3. jstat 即時觀察 JVM GC的情況</h3><p>最後，jstat 這項工具主要用於觀察 GC 的狀況，例如：各記憶體區塊的使用狀況、GC event 的次數、GC 花費的時間等等，透過這些資訊配合上一個 jcmd 就更容易找出 JVM 的 bottleneck。</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-class</td>
+<td>Class loader statistics. <strong><em>Commonly used</em></strong></td>
+</tr>
+<tr>
+<td>-compiler</td>
+<td>Java HotSpot VM Just-in-Time compiler statistics.</td>
+</tr>
+<tr>
+<td>-gc</td>
+<td>Garbage-collected heap statistics.</td>
+</tr>
+<tr>
+<td>-gccapacity</td>
+<td>Memory pool generation and space capacities.</td>
+</tr>
+<tr>
+<td>-gccause</td>
+<td>Displays the summary of garbage collection statistics, includes the causes of the last garbage collection event and (when applicable) the current garbage collection event.</td>
+</tr>
+<tr>
+<td>-gcmetacapacity</td>
+<td>Metaspace size statistics.</td>
+</tr>
+<tr>
+<td>-gcnew</td>
+<td>New generation statistics.</td>
+</tr>
+<tr>
+<td>-gcnewcapacity</td>
+<td>New generation space size statistics.</td>
+</tr>
+<tr>
+<td>-gcold</td>
+<td>Old generation and metaspace behavior statistics.</td>
+</tr>
+<tr>
+<td>-gcoldcapacity</td>
+<td>Old generation size statistics.</td>
+</tr>
+<tr>
+<td>-gcutil</td>
+<td>Summary of garbage collection statistics. <strong><em>Commonly used</em></strong></td>
+</tr>
+<tr>
+<td>-printcompilation</td>
+<td>Java HotSpot VM compiler method statistics.</td>
+</tr>
+</tbody>
+</table>
+<p>下面以我常用的 <em>-gcutil</em> 來說明觀察 GC 時的參數<br><img src="imgs/gcutil.png" alt="gcutil"></p>
+<ul>
+<li><strong>S0</strong>: Survivor space 0 記憶體使用率</li>
+<li><strong>S1</strong>: Survivor space 1 記憶體使用率</li>
+<li><strong>E</strong>:  Eden space 記憶體使用率</li>
+<li><strong>O</strong>:  Old space 記憶體使用率</li>
+<li><strong>P</strong>:  記憶體使用率</li>
+<li><strong>YGC</strong>: young generation GC events 次數</li>
+<li><strong>YGCT</strong>: Young generation GC time </li>
+<li><strong>FGC</strong>: Full GC events 次數</li>
+<li><strong>FGCT</strong>: Full GC time in second since the JVM started</li>
+<li><strong>GCT</strong>: Total gc time in second since the JVM started</li>
+</ul>
+<hr>
+<h4 id="ref"><a href="#ref" class="headerlink" title="ref:"></a><em>ref:</em></h4><ul>
+<li><p><a href="http://www.oracle.com/webfolder/technetwork/tutorials/obe/java/JavaJCMD/index.html" target="_blank" rel="noopener">Java SE 7: Reviewing JVM Performance Command Line Tools</a></p>
+</li>
+<li><p><a href="http://docs.oracle.com/javase/1.5.0/docs/tooldocs/share/jstat.html" target="_blank" rel="noopener">jstat - Java Virtual Machine Statistics Monitoring Tool</a></p>
+</li>
+<li><p><a href="https://stackoverflow.com/questions/29798704/specific-meanings-of-jstat-parameters-ygct-fgct-gct" target="_blank" rel="noopener">Specific meanings of jstat parameters : YGCT FGCT GCT</a></p>
+</li>
+</ul>
+
+                    
+                        
+
+                    
+                    
+                        <p>
+                            <a href="/2017/11/20/JVM-command-line-utils/#post-footer" class="postShorten-excerpt_link link">
+                                Comment and share
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
                         <a class="link-unstyled" href="/2017/11/13/Java-Static-Analysis-Tools/">
                             Java Static Analysis Tools
                         </a>
@@ -225,263 +734,6 @@
         
     </article>
     
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a class="link-unstyled" href="/2017/11/04/吾家有女正長成/">
-                            吾家有女正長成
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2017-11-04T00:00:00+08:00">
-	
-		    Nov 04, 2017
-    	
-    </time>
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <p>轉眼過了兩個多月，小女盼盼也快三個月大了，這段日子下了班就是和老婆一同照顧她，陪著她，伴著她。 這中間有辛苦的、有忙碌的、有生氣的，但印象最深最多的是甜蜜的！</p>
-<p><img src="/imgs/fig_m1.jpg" alt="fig_m1"></p>
-<h4 id="第一個月"><a href="#第一個月" class="headerlink" title="第一個月:"></a>第一個月:</h4><p>基本上都是在月子中心度過，除了前面幾天老婆還在恢復外，後面都是盡量將盼盼推進房母嬰同室，一方面可以看到盼盼，一方面也能在護理師的幫助下，學會照顧她。 剛開始什麼都懞懞懂懂，盼盼稍有個動靜就緊張不已。 </p>
-<p>也幫盼盼取了名字叫：「蘇品臻」，品：品行、品格  臻：完美、完善，希望她一切都能完好。  總之，第一次抱她；第一次的餵奶；第一次的換尿布；第一次幫她洗澡，種種的第一次都在這個時候～</p>
-<hr>
-<p><img src="/imgs/fig_m2.jpg" alt="fig_m2"><br><img src="/imgs/fig_m22.jpg" alt="fig_m22"></p>
-<h4 id="第二個月"><a href="#第二個月" class="headerlink" title="第二個月:"></a>第二個月:</h4><p>終於將盼盼接了回家，也開始了沒有睡眠時間的日子XD，就像輪班一樣，盼盼大概 2 ~ 3 小時要喝一次奶，所以平常白天交給老婆照顧，我晚上回到家就先洗澡才接手抱她。  接近半夜，老婆就先去休息，我顧到凌晨二、三點才又換手交給她。</p>
-<p>儘管在月子中心時已經練習過，但剛回到家還是手忙腳亂，一哭了就趕緊看是不是尿尿了，或是肚子餓了要喝奶了，有時也會因為不懂她為何一直哭而生氣。  還好，相處久了就大概知道她要的是什麼。</p>
-<hr>
-<p><img src="/imgs/fig_m3.jpg" alt="fig_m3"></p>
-<h4 id="近來："><a href="#近來：" class="headerlink" title="近來："></a>近來：</h4><p>差不多兩個半月，盼盼終於能夠睡過夜，一次睡超過 5~6 小時，半夜比較不會起床哭鬧。  記得第一次睡過夜時，還有些小感動，終於出頭天的港覺～<br>這也表示盼盼她長大了，不只是睡過夜，笑容也變多了，也開始會發出咿咿呀呀的聲音！</p>
-<p>盼盼，蘇品臻，謝謝妳來到爸爸媽媽身邊，當我們的小公主；爸爸媽媽都愛妳，只希望妳身體健健康康，一切安好！<br><img src="/imgs/fig_m33.jpg" alt="fig_m33"></p>
-
-                    
-                        
-
-                    
-                    
-                        <p>
-                            <a href="/2017/11/04/吾家有女正長成/#post-footer" class="postShorten-excerpt_link link">
-                                Comment and share
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a class="link-unstyled" href="/2017/10/14/Weekly-reading-2017-Oct-8-13/">
-                            Weekly reading (2017/Oct 8-13)
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2017-10-14T00:00:00+08:00">
-	
-		    Oct 14, 2017
-    	
-    </time>
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <h2 id="Airbnb’s-10-Takeaways-from-Moving-to-Microservices"><a href="#Airbnb’s-10-Takeaways-from-Moving-to-Microservices" class="headerlink" title="Airbnb’s 10 Takeaways from Moving to Microservices"></a><a href="https://thenewstack.io/airbnbs-10-takeaways-moving-microservices" target="_blank" rel="noopener">Airbnb’s 10 Takeaways from Moving to Microservices</a></h2><p>作者為 <a href="https://www.airbnb.com/" target="_blank" rel="noopener">Airbnb</a> 的工程師<a href="https://www.linkedin.com/in/melaniecebula/" target="_blank" rel="noopener">Melanie Cubula</a>，在本文敘述了 Airbnb 遷移至 Microservices 架構的過程以及10點建議。<br>Airbnb 從2008年至今，服務已經擴展到191國家65000個城市，在今年夏天總計有450萬人在網站上瀏覽訊息。<br>而要運作這樣的服務，每週部署了3500個mircoservice，每年部署了7.5萬次，一切為900位工程師努力的結果，並持續成長中。</p>
-<ol>
-<li>Monolith first<ul>
-<li>先把主要的業務功能照顧好，再來想最佳化。Airbnb也是在發展到有50萬行程式碼後，才發覺需要做microservice。</li>
-</ul>
-</li>
-<li>DevOps culture <ul>
-<li>要建立 DevOps 文化，但如何建立和誰來建立在各個企業我想都是個問題，就像導入 Agile 一樣，必須要有熱心的關鍵人物或Team，經由高層的授意或權力釋放，整個建立的過程才能順利。 以Airbnb為例，其是由SysOps起頭，來帶領或教導其他部門的工程師一同來學習，一同建立才有這樣的結果！</li>
-</ul>
-</li>
-<li>Configuration as Code<ul>
-<li>目前許多的 <a href="https://xebialabs.com/periodic-table-of-devops-tools/" target="_blank" rel="noopener">DevOps tools</a>  都是為了這個目的。 因為現在的系統架構都太複雜了，已經不是單純人工可以處理。</li>
-</ul>
-</li>
-<li>Monitoring and Alerting</li>
-<li>Continuous Delivery</li>
-<li>Automate, Automate, Automate<ul>
-<li>上面三點就是在講，透過自動化來執行整個軟體從開發到發佈的流程，並透過監控來取得feedback來調整優化流程。</li>
-</ul>
-</li>
-<li>Your First Service = Bad<ul>
-<li>不只業務邏輯，還有架構也是可改變的，簡單講就是，此一時非彼一時也。</li>
-</ul>
-</li>
-<li>Services Own Their Data <ul>
-<li>只要有一定的規範，自己動手一定最有效率！</li>
-</ul>
-</li>
-<li>Break Apart the Monolith<ul>
-<li>一步一腳印的概念！</li>
-</ul>
-</li>
-<li>Standardize Service Creation<ul>
-<li>這點在前期應該不容易，一方面服務可能還不夠多，一方面也呼應第一點。</li>
-</ul>
-</li>
-</ol>
-<h3 id="ref"><a href="#ref" class="headerlink" title="ref:"></a><em>ref:</em></h3><ul>
-<li><a href="https://en.wikipedia.org/wiki/Microservices" target="_blank" rel="noopener">Micorservice</a></li>
-</ul>
-
-                    
-                        
-
-                    
-                    
-                        <p>
-                            <a href="/2017/10/14/Weekly-reading-2017-Oct-8-13/#post-footer" class="postShorten-excerpt_link link">
-                                Comment and share
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a class="link-unstyled" href="/2017/08/27/吾家有女初長成/">
-                            吾家有女初長成
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2017-08-27T00:00:00+08:00">
-	
-		    Aug 27, 2017
-    	
-    </time>
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <p>已經一個月沒有發新文章，因為家裡發生了件大事，也是我人生中的一件大事，就是 吾家有女初生成!!!</p>
-<p>就在等待了整 40 週 + 1 天後，在 8/14 的凌晨，她誕生了。</p>
-<p><img src="/imgs/baby1.jpg" alt="baby1"></p>
-<p>在這一刻，我的身份也立刻升級成為一位父親，這是一份責任重大的職位。<br>也是讓人願意為其付出，甘之如飴的職位。</p>
-<p><img src="/imgs/baby3.jpg" alt="baby3"></p>
-<p>最後，希望妳能好好的健康長大，成為怎樣的人我們晚點再說～</p>
-<p><img src="/imgs/baby2.jpg" alt="baby2"><br><img src="/imgs/baby4.jpg" alt="baby4"></p>
-
-                    
-                        
-
-                    
-                    
-                        <p>
-                            <a href="/2017/08/27/吾家有女初長成/#post-footer" class="postShorten-excerpt_link link">
-                                Comment and share
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a class="link-unstyled" href="/2017/07/31/Weekly-reading-2017-Jul-24-30/">
-                            Weekly reading (2017/Jul 24-30)
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2017-07-31T00:00:00+08:00">
-	
-		    Jul 31, 2017
-    	
-    </time>
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <h2 id="根本就没有什么所谓的开源商业模式"><a href="#根本就没有什么所谓的开源商业模式" class="headerlink" title="根本就没有什么所谓的开源商业模式"></a><a href="http://www.ocselected.org/posts/business_model/there_is_no_open_source_business_model/" target="_blank" rel="noopener">根本就没有什么所谓的开源商业模式</a></h2><p>作者翻譯了<a href="https://twitter.com/stephenrwalli" target="_blank" rel="noopener">Stephen R. Walli</a>對於 Open Source 是否存在 Business Model 這個問題，所提出的看法。<br>看來這篇後，針對參與Open Source的影響能歸納出以下幾點：</p>
-<ol>
-<li><p>增進公司產品技術成熟度<br>若將產品開源或選用Open Source軟體並參與其中，則可說是集眾人之智一同來開發、測試和維護。</p>
-</li>
-<li><p>節省公司成本<br>文中以 <a href="https://en.wikipedia.org/wiki/Interix" target="_blank" rel="noopener">Interix</a> 為例，指出與其花費人力、金錢重新打造系統，不如選用熱門的Open Source軟體來得划算。</p>
-</li>
-<li><p>成就個人<br>參與 Open Source 專案，就是是參與一個軟體專案的開發，甚至可能是世界級的，這樣的經歷比開發政府專案實在好太多！</p>
-</li>
-</ol>
-<p><em>ref:</em></p>
-<ul>
-<li><a href="https://www.slideshare.net/LCChina/there-is-no-open-source-business-model" target="_blank" rel="noopener">slide</a></li>
-<li><a href="https://medium.com/@stephenrwalli/there-is-no-open-source-business-model-cdc4cc20238" target="_blank" rel="noopener">原文</a></li>
-</ul>
-<hr>
-<h2 id="Upgrading-Pinterest-to-HBase-1-2-from-0-94"><a href="#Upgrading-Pinterest-to-HBase-1-2-from-0-94" class="headerlink" title="Upgrading Pinterest to HBase 1.2 from 0.94"></a><a href="https://medium.com/@Pinterest_Engineering/upgrading-pinterest-to-hbase-1-2-from-0-94-e6e34c157783" target="_blank" rel="noopener">Upgrading Pinterest to HBase 1.2 from 0.94</a></h2><p>Pinterest 是一個全球10大社群網站之一，使用者主要可以在上面分享照片和文章，也因此在服務背後的資料庫 <a href="http://hbase.apache.org/" target="_blank" rel="noopener">HBase</a> 保存了 10PB 以上的資料以及10M 以上的 QPS<br>作者主要敘述他們從HBase 0.94 到 1.2 的升級過程，包含：</p>
-<ol>
-<li>如何達到 <a href="https://dzone.com/articles/zero-downtime-%E2%80%93-what-it-and" target="_blank" rel="noopener">zero downtime</a></li>
-<li>現有資料的 replication</li>
-<li>備援/Roll back 機制</li>
-<li>HBase 效能的調整</li>
-</ol>
-<p>因為目前產品使用也有使用到 HBase ，所以整篇看完特別有感，況且這樣的版本遷移也是總有一天會遇到的事情！</p>
-<p><em>ref:</em></p>
-<ul>
-<li><a href="http://opentsdb.github.io/asynchbase/" target="_blank" rel="noopener">AsyncHBase</a></li>
-<li><a href="https://issues.apache.org/jira/browse/HBASE-12814" target="_blank" rel="noopener">Thrift-Based Patch</a></li>
-<li><a href="http://hbase.apache.org/book.html#upgrade0.96" target="_blank" rel="noopener">Upgrade HBase</a></li>
-<li><a href="https://blogs.apache.org/hbase/entry/offheap-read-path-in-production" target="_blank" rel="noopener">Offheap Read-Path</a></li>
-</ul>
-
-                    
-                        
-
-                    
-                    
-                        <p>
-                            <a href="/2017/07/31/Weekly-reading-2017-Jul-24-30/#post-footer" class="postShorten-excerpt_link link">
-                                Comment and share
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
     <div class="pagination-bar">
     <ul class="pagination">
         
@@ -500,7 +752,7 @@
             </a>
           </li>
         
-        <li class="pagination-number">page 4 of 7</li>
+        <li class="pagination-number">page 4 of 8</li>
     </ul>
 </div>
 
@@ -510,7 +762,7 @@
 
                 <footer id="footer" class="main-content-wrap">
     <span class="copyrights">
-        Copyrights &copy; 2020 W.D. All Rights Reserved.
+        Copyrights &copy; 2021 W.D. All Rights Reserved.
     </span>
 </footer>
 

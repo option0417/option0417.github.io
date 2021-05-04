@@ -172,6 +172,221 @@
             <div class="postShorten-header">
                 <h1 class="postShorten-title">
                     
+                        <a class="link-unstyled" href="/2021/05/04/Weekly-Reading-2021-Apr26-May02/">
+                            Weekly Reading (2021 Apr26~May02)
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2021-05-04T00:00:00+08:00">
+	
+		    May 04, 2021
+    	
+    </time>
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <h3 id="深度解读：Kafka-放弃-ZooKeeper，消息系统兴起二次革命"><a href="#深度解读：Kafka-放弃-ZooKeeper，消息系统兴起二次革命" class="headerlink" title="深度解读：Kafka 放弃 ZooKeeper，消息系统兴起二次革命"></a><a href="https://www.infoq.cn/article/phf3gfjutdhwmctg6kxe" target="_blank" rel="noopener">深度解读：Kafka 放弃 ZooKeeper，消息系统兴起二次革命</a></h3><p>原本 Kafka 必須依賴 ZooKeeper 來完成分散式的控制，但在 Kafka 的 v2.8.0 版本後拿掉了對 ZooKeeper 依賴，改以內建的 Kafka Raft Quorum 來控制。</p>
+<p>而這麼做的主要原因是，Kafka 和 ZooKeeper 都是分散式系統，隨著系統成長眾多節點之間的交互構通，越來越複雜，進而嚴重影響效能。而 Kafka 的 Scalability 亦會被 ZooKeeper 所限制。</p>
+<p>因上述原因，Kafka 團隊自行開發基於 Raft 共識演算法的 KRaft Quorum 來替代 使用 ZAB 的 ZooKpeer。</p>
+<p>其結果，效能大幅提升，在一個有 200萬 patition 的 Cluster 中，Shutdown 到 Recover 的時間，可由數分鐘的進步到只需 30 秒。<br>而系統建置的需求也明顯降低，原本需要 6 個節點 (3 個供 Kafka、3 個供 ZooKpeer)，現在也只需要 3 個節點即可。</p>
+<ul>
+<li>Ref:<br><a href="https://www.confluent.io/blog/kafka-without-zookeeper-a-sneak-peek/" target="_blank" rel="noopener">1. Apache Kafka Made Simple: A First Glimpse of a Kafka Without ZooKeeper</a></li>
+</ul>
+
+                    
+                        
+
+                    
+                    
+                        <p>
+                            <a href="/2021/05/04/Weekly-Reading-2021-Apr26-May02/#post-footer" class="postShorten-excerpt_link link">
+                                Comment and share
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
+                        <a class="link-unstyled" href="/2021/01/20/Weekly-Reading-2021-Jan11-17/">
+                            Weekly Reading (2021/Jan 11~17)
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2021-01-20T00:00:00+08:00">
+	
+		    Jan 20, 2021
+    	
+    </time>
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <h3 id="老石談芯-不想让自己的努力白费？试试这三个方法让你脱颖而出【读书分享】"><a href="#老石談芯-不想让自己的努力白费？试试这三个方法让你脱颖而出【读书分享】" class="headerlink" title="老石談芯-不想让自己的努力白费？试试这三个方法让你脱颖而出【读书分享】"></a><a href="https://www.youtube.com/watch?v=bESRxEFuqP4" target="_blank" rel="noopener">老石談芯-不想让自己的努力白费？试试这三个方法让你脱颖而出【读书分享】</a></h3><p>「老石談芯」這位 Youtuber 是在他分享自身高效工作經驗的影片分享認識到他， 而這部關於如何分享經驗、推銷自己甚至成功的影片，更是讓我想特別將它記錄下來。</p>
+<p>影片內容主要環繞在一本書<a href="https://www.amazon.com/Show-Your-Work-Austin-Kleon/dp/076117897X" target="_blank" rel="noopener">「Show Your Work」</a>，這本書提出了 10 個方式，來告訴我們，如何堅持、不斷的分享有用的、能幫助人的事情。 來達到學業、事業或生活上的成功。</p>
+<p>老石萃取出三個重要，容易理解、達成的方法，</p>
+<ul>
+<li><p>方法一：不必是天才，也有資格分享內容。<br>簡單講，初學者也能幫助到同是初學的人，誰沒嫩過！</p>
+</li>
+<li><p>方法二：每天分享一些有用的內容</p>
+<ul>
+<li>每天，就表示要堅持，努力不懈。</li>
+<li>有用的內容，它可以是每天的工作或學習的內容。<br>能幫助到別人就是有用的內容。</li>
+</ul>
+</li>
+<li><p>方法三：教會別人你會的東西</p>
+<ul>
+<li>不必怕別人學了會勝過自已。  能夠教會別人，也表示自己真的有理解，也就能夠在更深入。</li>
+</ul>
+</li>
+</ul>
+<p>最後，影片中也分享了，書中所提的 10 個方式：</p>
+<ol>
+<li>你不必是個天才</li>
+<li>專注過程而非結果</li>
+<li>每天分享一點內容</li>
+<li>運用你的想像力</li>
+<li>講有趣的故事</li>
+<li>教別人你會的東西</li>
+<li>不要分享垃圾內容</li>
+<li>學會面對各種評論</li>
+<li>推銷自己</li>
+<li>堅持下去</li>
+</ol>
+
+                    
+                        
+
+                    
+                    
+                        <p>
+                            <a href="/2021/01/20/Weekly-Reading-2021-Jan11-17/#post-footer" class="postShorten-excerpt_link link">
+                                Comment and share
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
+                        <a class="link-unstyled" href="/2020/07/26/Weekly--Reading-2020-Jul-20-26/">
+                            Weekly Reading (2020/Jul 20 ~ 26)
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2020-07-26T00:00:00+08:00">
+	
+		    Jul 26, 2020
+    	
+    </time>
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <h3 id="末日世界的人性為何崩塌？由心理學看《屍速列車：感染半島》"><a href="#末日世界的人性為何崩塌？由心理學看《屍速列車：感染半島》" class="headerlink" title="末日世界的人性為何崩塌？由心理學看《屍速列車：感染半島》"></a><a href="https://pansci.asia/archives/188867" target="_blank" rel="noopener">末日世界的人性為何崩塌？由心理學看《屍速列車：感染半島》</a></h3><ul>
+<li>刻畫末日的電影、小說或漫畫，都會有失去人性的一方來代表邪惡，當壞人。 但如果這樣的劇情發生在真實世界，人是否真的會失去人性，為何失去人性，抑或，要如何避免失去人性。 相信都能從篇文章看出端倪。</li>
+</ul>
+<h3 id="No-you-couldn’t-have-made-more-money-than-the-Twitter-hacker"><a href="#No-you-couldn’t-have-made-more-money-than-the-Twitter-hacker" class="headerlink" title="No, you couldn’t have made more money than the Twitter hacker"></a><a href="https://fortenf.org/e/security/2020/07/15/twitter-hack.html" target="_blank" rel="noopener">No, you couldn’t have made more money than the Twitter hacker</a></h3><ul>
+<li><strong>Talk is cheap, show me the code!</strong><br>前陣子 Twitter 遭 Hacker入侵，幾個有頭有臉大人物的帳號都被拿到存取權限，Hacker 接著透過帳號發布關於比特幣的假訊息，藉此賺到價值約10幾萬美金的比特幣。<br>接著，就有網友跳出來說，如果擁有這樣的權限，能夠賺得更多。 而這篇文章就是從其他角度來分析，為何你沒辦法賺得比 Hacker 更多了！</li>
+</ul>
+
+                    
+                        
+
+                    
+                    
+                        <p>
+                            <a href="/2020/07/26/Weekly--Reading-2020-Jul-20-26/#post-footer" class="postShorten-excerpt_link link">
+                                Comment and share
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
+                        <a class="link-unstyled" href="/2020/07/20/Weekly-Reading-2020-Jul-13-19/">
+                            Weekly Reading (2020/Jul 13 ~ 19)
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2020-07-20T00:00:00+08:00">
+	
+		    Jul 20, 2020
+    	
+    </time>
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <h3 id="OAuth-2-0-flows-explained-in-GIFs"><a href="#OAuth-2-0-flows-explained-in-GIFs" class="headerlink" title="OAuth 2.0 flows explained in GIFs"></a><a href="https://dev.to/hem/oauth-2-0-flows-explained-in-gifs-2o7a" target="_blank" rel="noopener">OAuth 2.0 flows explained in GIFs</a></h3><ul>
+<li>透過 GIF 動畫，說明 OAuth 2.0 的流程，是個複習的好機會！ </li>
+</ul>
+
+                    
+                        
+
+                    
+                    
+                        <p>
+                            <a href="/2020/07/20/Weekly-Reading-2020-Jul-13-19/#post-footer" class="postShorten-excerpt_link link">
+                                Comment and share
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
                         <a class="link-unstyled" href="/2020/07/13/Weekly-Reading-2020-Jul-06-12/">
                             Weekly Reading (2020/Jul 06 ~ 12)
                         </a>
@@ -225,223 +440,6 @@
         
     </article>
     
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a class="link-unstyled" href="/2020/07/06/Weekly-Reading-2020-Jun-29-Jul-05/">
-                            Weekly Reading (2020/Jun 29 ~ Jul 05)
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2020-07-06T17:00:04+08:00">
-	
-		    Jul 06, 2020
-    	
-    </time>
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <h3 id="The-Devastating-Decline-of-a-Brilliant-Young-Coder"><a href="#The-Devastating-Decline-of-a-Brilliant-Young-Coder" class="headerlink" title="The Devastating Decline of a Brilliant Young Coder"></a><a href="https://www.wired.com/story/lee-holloway-devastating-decline-brilliant-young-coder" target="_blank" rel="noopener">The Devastating Decline of a Brilliant Young Coder</a></h3><ul>
-<li><p>敘述 <a href="https://www.cloudflare.com/" target="_blank" rel="noopener">Cloudflare</a> 的共同創辦人，也是主要的程式開發者 <em><strong>Lee Holloway</strong></em> 為何從人人稱羨的天才工程師身份，到因行為怪異而離開所創辦的公司，到現在需要專人照顧的生活。</p>
-<p>而這一切都是因為 <a href="https://www.uhn.ca/PatientsFamilies/Health_Information/Health_Topics/Documents/Frontotemporal_Dementia_Chinese.pdf" target="_blank" rel="noopener"><strong>額顳葉癡呆症(FTD)</strong></a> 影響所致，無論是他自己或旁人皆無能為力。  </p>
-<p>讓我更覺得要把握當下，好好過生活。尤其有了家庭後，更要照顧好自己，才能照顧整個家。 但也要為家人備好後路。</p>
-</li>
-</ul>
-<h3 id="「一流的人如何保持巔峰-Peak-」讀後感-1-amp-2"><a href="#「一流的人如何保持巔峰-Peak-」讀後感-1-amp-2" class="headerlink" title="「一流的人如何保持巔峰(Peak)」讀後感 1 &amp; 2"></a><a href="https://greenhornfinancefootnote.blogspot.com/2020/06/peak1.html" target="_blank" rel="noopener">「一流的人如何保持巔峰(Peak)」讀後感 1</a> &amp; <a href="http://greenhornfinancefootnote.blogspot.com/2020/06/peak2.html" target="_blank" rel="noopener">2</a></h3><ul>
-<li>人要怎麼進步，要如何好還要更好？ 簡單來說，就是給自己 <strong>適當的壓力</strong>，也就是「No pain, no gain」。<br>而面對壓力時的心態也是重要的一環，樂於接受挑戰的人，在壓力下成長的幅度會大於不喜歡接受挑戰的人。 也就是<a href="https://en.wikipedia.org/wiki/Mindset#Fixed_and_Growth_Mindset" target="_blank" rel="noopener">成長心態和定型心態</a>的差異。</li>
-</ul>
-<h3 id="計時攻擊-TIMING-ATTACKS"><a href="#計時攻擊-TIMING-ATTACKS" class="headerlink" title="計時攻擊 TIMING ATTACKS"></a><a href="https://coolshell.cn/articles/21003.html" target="_blank" rel="noopener">計時攻擊 TIMING ATTACKS</a></h3><ul>
-<li>可謂是進階的暴力法，透過程式計算時間的差異來猜測使用者的資料。<ul>
-<li>例如：有一密碼 <strong>12345</strong>，用 <strong>12340</strong> 和 <strong>00000</strong> 這兩個字串做測試，則不論是 <em>字串比對</em> 或是 <em>hash計算</em>，相信 <strong>00000</strong> 的驗證時間會比另一個字串快。</li>
-</ul>
-</li>
-</ul>
-
-                    
-                        
-
-                    
-                    
-                        <p>
-                            <a href="/2020/07/06/Weekly-Reading-2020-Jun-29-Jul-05/#post-footer" class="postShorten-excerpt_link link">
-                                Comment and share
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a class="link-unstyled" href="/2019/09/25/Weekly-Reading-2019-Sep-16-22/">
-                            Weekly Reading (2019/Sep 16 ~ 22)
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2019-09-25T00:00:00+08:00">
-	
-		    Sep 25, 2019
-    	
-    </time>
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <ul>
-<li><p><a href="https://www.ithome.com.tw/voice/132905" target="_blank" rel="noopener">從Cookie到Storage</a><br>可分兩層面來看，</p>
-<ol>
-<li>從應用面來看，這類 Client 的資料儲存適合放推薦商品、歷史紀錄這類提升使用者體驗的資料。</li>
-<li>從安全性來看，認證驗證機制還是以 Session 或 JWT 這類 Server 為主的方式會比較好。</li>
-</ol>
-</li>
-<li><p><a href="https://blog.niclin.tw/2019/08/26/how-to-be-a-bad-developer/" target="_blank" rel="noopener">如何讓自己成為失敗的軟體工程師</a><br>本文作者以反串的方式，列出開發時的壞習慣、錯誤的觀念等，說明怎樣成為一位失敗的軟體工程師。  當然，反過來看就是「怎樣成為一位成功的軟體工程師」。</p>
-</li>
-</ul>
-
-                    
-                        
-
-                    
-                    
-                        <p>
-                            <a href="/2019/09/25/Weekly-Reading-2019-Sep-16-22/#post-footer" class="postShorten-excerpt_link link">
-                                Comment and share
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a class="link-unstyled" href="/2019/09/17/Weekly-Reading-2019-Sep-09/">
-                            Weekly Reading (2019/Sep 09 ~ 15)
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2019-09-17T00:00:00+08:00">
-	
-		    Sep 17, 2019
-    	
-    </time>
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <ul>
-<li><p><a href="https://vocus.cc/bass/5cd1184afd897800012a535c" target="_blank" rel="noopener">別跟我稱兄道弟，我們不是一家人 : 瘋狂的 Netflix</a></p>
-<p>不近人情的要求，相對也可得到豐富的報酬，各取所需罷了。</p>
-</li>
-<li><p><a href="https://martinfowler.com/articles/is-quality-worth-cost.html" target="_blank" rel="noopener">Is High Quality Software Worth the Cost?</a></p>
-<p>作者 <a href="https://en.wikipedia.org/wiki/Martin_Fowler_(software_engineer" target="_blank" rel="noopener">Martin Fowler</a>) 首先將 Quality 分作 <strong>External</strong> 使用者能直接體會到的特性 <em>(ex. 好的UI , 較少Bug)</em> 和 <strong>Internal</strong> 使用者較無法體會的特性 <em>(ex. 設計良好的 Software Architecture)</em>。</p>
-<p>好的 UI 設計能吸引使用者，賣得好價錢。那使用者看不到的架構設計值得追求嗎？ 答案當然是 Yes!!<br>優良的設計能在同樣的品質下，增減功能。 若在不良的設計下增減功能，常常會是個悲劇。</p>
-</li>
-<li><p><a href="https://www.infoq.cn/article/bBpKUAcd*JwLhIEVSVbD" target="_blank" rel="noopener">谁在“谋杀” Hadoop？</a><br>因為工作，在 Hadoop 上琢磨不少時間。 文中的一段話</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">除了竞争关系，这篇外媒评论文中还提到了一个重要观点，</span><br><span class="line">那就是 Hadoop 使用繁琐，用户体验糟糕，MongoDB 和 Elasticsearch 使用方便，</span><br><span class="line">而这也导致了 Hadoop 的“衰败”。</span><br></pre></td></tr></table></figure>
-<p>看了心有戚戚焉，在使用 Hadoop 的確踩了不少坑。<br>現在關於 Big Data 的 solution，Hadoop 已經不是唯一的選擇了。</p>
-</li>
-<li><p><a href="https://blog.cloudflare.com/cloudflare-outage/" target="_blank" rel="noopener">Cloudflare outage caused by bad software deploy</a><br>看似簡單的 Regular expression，也是能讓系統崩潰的… </p>
-</li>
-<li><p><a href="https://blog.techbridge.cc/2019/08/17/webauthn-intro/" target="_blank" rel="noopener">一起來了解 Web Authentication</a><br>加入了實體裝置來作為驗證途徑，在現在人手一機的世界或許會是之後的趨勢，值得花時間深入研究。</p>
-</li>
-<li><p><a href="https://www.infoq.com/presentations/cockroachdb-distributed-sql/" target="_blank" rel="noopener">CockroachDB: Architecture of a Geo-distributed SQL Database</a><br>架構上和 <a href="https://hbase.apache.org/" target="_blank" rel="noopener">HBase</a> 相似，同樣有 Leadership、Replication等概念，但主要以 <a href="https://en.wikipedia.org/wiki/Raft_(computer_science" target="_blank" rel="noopener">Raft</a>) 作為 <a href="https://en.wikipedia.org/wiki/Consensus_(computer_science" target="_blank" rel="noopener">consensus algorithm</a>)。<br>不同的是有所謂 <a href="https://en.wikipedia.org/wiki/Distributed_transaction" target="_blank" rel="noopener">Distributed Transaction</a> 的功能。<br>但從其流程來看，若寫入頻繁的話，效能會是個議題。</p>
-</li>
-</ul>
-
-                    
-                        
-
-                    
-                    
-                        <p>
-                            <a href="/2019/09/17/Weekly-Reading-2019-Sep-09/#post-footer" class="postShorten-excerpt_link link">
-                                Comment and share
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a class="link-unstyled" href="/2019/09/05/吾家有子初長成/">
-                            吾家有子初長成
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2019-09-05T00:00:00+08:00">
-	
-		    Sep 05, 2019
-    	
-    </time>
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <p>原本 2 大 1 小 1 狗的生活，在 6/22 添加了新成員「安安」！<br>讓我除有一女外再來一子，集滿了個「好」字！<br><img src="/imgs/anan1.jpg" alt="Anan1"></p>
-<hr>
-<p>這也表示身為父母，往後的責任更為重大。<br>儘管生活已幾乎沒有自己的時間，但相信會是先苦後甘，就讓我好好期待未來的美好。<br><img src="/imgs/anan2.jpg" alt="Anan2"></p>
-<hr>
-<p>而對安安，爸爸媽媽一樣只希望你，健健康康，平平安安，快快樂樂的長大！<br><img src="/imgs/anan3.jpg" alt="Anan3"></p>
-
-                    
-                        
-
-                    
-                    
-                        <p>
-                            <a href="/2019/09/05/吾家有子初長成/#post-footer" class="postShorten-excerpt_link link">
-                                Comment and share
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
     <div class="pagination-bar">
     <ul class="pagination">
         
@@ -453,7 +451,7 @@
             </a>
           </li>
         
-        <li class="pagination-number">page 1 of 7</li>
+        <li class="pagination-number">page 1 of 8</li>
     </ul>
 </div>
 
@@ -463,7 +461,7 @@
 
                 <footer id="footer" class="main-content-wrap">
     <span class="copyrights">
-        Copyrights &copy; 2020 W.D. All Rights Reserved.
+        Copyrights &copy; 2021 W.D. All Rights Reserved.
     </span>
 </footer>
 
