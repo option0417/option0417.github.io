@@ -4,6 +4,14 @@ title = "Just for fun"
 
 theme= "m10c"
 
+# Owner Settings
+[params]
+  author = "W.D Su"
+  description = "Just for fun with coding and other wonderful thing"
+  avatar = "imgs/profile.jpg"
+  favicon = "favicon.ico"
+
+
 [[menu.main]]
   identifier = "tags"
   name = "Tags"
